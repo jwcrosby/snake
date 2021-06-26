@@ -67,9 +67,38 @@ main {
     justify-content: center;
 }
 
-/* main > #game-grid {
-    build a grid
-} */
+main > #game-grid {
+    display: grid;
+    grid-template-rows: repeat(11, 50px);
+    grid-template-columns: repeat(13, 50px);
+    grid-gap: 0vmin;
+} 
+main > #game-grid > .cell {
+    background-color: #80cbc4;
+    border: 1px solid #fff;
+}
+
+main > #game-grid > .snakehead {
+    background-color: black;
+}
+
+main > #game-grid > .snakebody {
+    background-color: rgb(50, 49, 49);
+}
+
+main > #game-grid > .itemapple {
+    background-color: rgb(233, 89, 89)
+}
+
+main > #game-grid > .itembanana {
+    background-color: rgb(235, 235, 74)
+}
+
+main > #game-grid > .itemorange {
+    background-color: rgb(240, 183, 76);
+}
+
+
 
 footer {
     background-color: #f77f00;
@@ -100,6 +129,6 @@ footer > #arrow-button-container {
 }
 
 footer > #arrow-button-container > img {
-    max-height: 120px;
+    max-height: 110px;
     padding: 0px 10px;
 }
