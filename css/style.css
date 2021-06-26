@@ -1,0 +1,105 @@
+html {
+    box-sizing: border-box;
+}
+
+  /* The Universal Selector */
+  *, /* All elements*/
+  *::before, /* All ::before pseudo-elements */
+  *::after { /* All ::after pseudo-elements */
+    /* height & width will now include border & padding by default
+       but can be over-ridden as needed */
+    box-sizing: inherit;
+}
+
+/* resets font size to be 62.5% of the user preference - 
+     in most browser configurations this will be 10px */
+:root {
+    font-size: 62.5%;
+    /* --cursive: 'Dancing Script', cursive;
+    --serif: 'Playfair Display', serif; */
+}
+
+body {
+    background-color: #eae2b7
+}
+
+header {
+    background-color: #fcbf49;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+header > #title-image {
+    max-height: 180px;
+    padding: 15px 0 10px 90px;
+}
+
+header > #title {
+    color: #003049;
+    font-size: 3rem;    
+    padding: 0 90px 0 0;
+}
+
+header > #dark-mode-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+main {
+    background-color: #d62828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main > #game-grid-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* main > #game-grid {
+    build a grid
+} */
+
+footer {
+    background-color: #f77f00;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "rules arrows";
+    padding: 0px 90px;
+}
+
+footer > #game-rules {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: rules;
+
+    font-size: 2rem;
+}
+
+footer > #arrow-button-container {
+    grid-area: arrows;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0px 30px 0px;
+}
+
+footer > #arrow-button-container > img {
+    max-height: 120px;
+    padding: 0px 10px;
+}

@@ -1,7 +1,7 @@
 /*------------------------ Pseudocode ------------------------*/
 // 1. HTML: Create basic elements based on wireframe
     // 1.1. The main game board is a grid, which lives within a flexbox
-    
+
 // 2. JS: Create objects, variables, constants 
 
 // 3. JS: Store cached elements
@@ -11,8 +11,6 @@
 // 5. JS: Create functions
 
 // 6. CSS: Styling (including light/dark mode)
-
-
 
 
 // Established rules:
@@ -59,6 +57,15 @@ const gameboard = [
     [11,1],[11,2],[11,3],[11,4],[11,5],[11,6],[11,7],[11,8],[11,9],[11,10],[11,11],[11,12],[11,13]
 ]
 
+// const gameboard = [
+//     {
+//         row: ;
+//         column: ;
+//         LeftNeighbor: ;
+//     }
+// ]
+//need a class to build an object
+
 const pointsNeededToWin = "15"
 
 /*------------------------------ Variables ------------------------------*/
@@ -71,7 +78,7 @@ let numberOfFruitEaten // The players current score
 let isWinner // Will be "true" if the player has won the game
 let isLoser // Will be "true" if the player has lost the game
 
-let timerIntervalID //Utilized by the 
+let timerIntervalID //Utilized by the snake movement loop
 let seconds //
 
 /*---------------------- Cached Element References ----------------------*/
