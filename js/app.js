@@ -38,9 +38,6 @@ removed from the grid.
 itself or with the border of the gameboard. */
 
 
-// !! Set the body based on the heads last known location
-
-
 /*------------------------------ Constants ------------------------------*/
 
 // const oldGameboard = [
@@ -82,6 +79,8 @@ let seconds //
 const gridContainerElement = document.querySelector("#game-grid") 
 // const gameBoardElement = Array.from(document.querySelector(".cell"))
 
+const upKeyBtnElement = document.querySelector("#up-arrow-image")
+const downKeyBtnElement = document.querySelector("#down-arrow-image")
 const leftKeyBtnElement = document.querySelector("#left-arrow-image")
 const rightKeyBtnElement = document.querySelector("#right-arrow-image")
 // const toggleDarkModeBtn = document.querySelector("")
@@ -93,11 +92,10 @@ const rightKeyBtnElement = document.querySelector("#right-arrow-image")
 
 /*--------------------------- Event Listeners ---------------------------*/
 
-leftKeyBtnElement.addEventListener("click", (event) => handleLeftClick(event)) //Listens for a click on the Left Key button element
-rightKeyBtnElement.addEventListener("click",(event) => handleLeftClick(event)) //Listens for a click on the Right Key button element
-leftKeyBtnElement.addEventListener("click", (event) => handleLeftClick(event)) //Listens for a click on the Left Key button element
-rightKeyBtnElement.addEventListener("click",(event) => handleLeftClick(event)) //Listens for a click on the Right Key button element
-
+upKeyBtnElement.addEventListener("click", (event) => handleClick(event)) //Listens for a click on the Up Key button element
+downKeyBtnElement.addEventListener("click",(event) => handleClick(event)) //Listens for a click on the Down Key button element
+leftKeyBtnElement.addEventListener("click", (event) => handleClick(event)) //Listens for a click on the Left Key button element
+rightKeyBtnElement.addEventListener("click",(event) => handleClick(event)) //Listens for a click on the Right Key button element
 
 // Listens for Up, Down, Left, Right arrows on the keyboard
 document.addEventListener("keydown",(event) => {
@@ -125,23 +123,26 @@ function init() {
     //Set the initial snake parameters
     snake = {
         size: 2,
-        location: [[9,7], [9,6]],
-        // headLocation: this.location[0],
         headLocation: [9,7],
-        tailLocation: this.location[location.length - 1],
-        headDirection: "Up",
-        tailDirection: "Right"
+        bodyLocation: [],
+        headDirection: "Right",
+        // tailLocation: this.location[location.length - 1],
+        // tailDirection: "Right"
     }
 
     //Render the snake
     renderSnake()
 
-    // //Add fruit to the gameboard
-    // numberOfFruitEaten = 0
-    // fruitLocations = [[4,3], [2,8], [5,10]]
+    //Add fruit to the gameboard
+    fruitLocations = {
+        apple: [4,3],
+        banana:[2,8],
+        orange: [5,10]
+    }
 
-    //Set the rules of the game
-    pointsNeededToWin = "15"
+    //Point system
+    numberOfFruitEaten = 0
+    pointsNeededToWin = 15
 
     //Start the loop that moves the snake
     startLoop()
@@ -155,7 +156,7 @@ function generateGameboard() {
         for(let column = 1; column <= gridColumns; column++){
 
             //For each row/column combination, add a new array ([1,1], [1,2] etc) to the gameBoard array
-            gameBoard.push([row,column])
+            gameBoard.push([row, column])
         }
     }
 
@@ -321,39 +322,23 @@ function checkIfGameWonOrLost() {
     //Also, add a new window element to the page that displays a win/loss message and the restart button
 }
 
-function handleLeftClick() {
-
-    console.log("left click")
-
-    //Turn the snake left 
-    turnSnakeLeft()
-}
-
-function handleRightClick() {
-
-    console.log("right click")
-
-    //The the snake right
-    turnSnakeRight()
-}
-
 function handleClick(event) {
     //Check which element was clicked and change the snakes direction accordingly
     switch (event.target) {
-        case "ArrowUp":
+        case upKeyBtnElement:
             snake.headDirection = "Up"
             break;
 
-        case "ArrowRight":
-            snake.headDirection = "Right"
-            break;
-
-        case "ArrowDown":
+        case downKeyBtnElement:
             snake.headDirection = "Down"
             break;
 
-        case "ArrowLeft":
+        case leftKeyBtnElement:
             snake.headDirection = "Left"
+            break;
+
+        case rightKeyBtnElement:
+            snake.headDirection = "Right"
             break;
     }
 }
@@ -365,16 +350,16 @@ function handleKey(event) {
             snake.headDirection = "Up"
             break;
 
-        case "ArrowRight":
-            snake.headDirection = "Right"
-            break;
-
         case "ArrowDown":
             snake.headDirection = "Down"
             break;
 
         case "ArrowLeft":
             snake.headDirection = "Left"
+            break;
+
+        case "ArrowRight":
+            snake.headDirection = "Right"
             break;
     }
 }
