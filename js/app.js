@@ -131,9 +131,10 @@ function init() {
 
     //Set the initial snake parameters
     snake = {
+        speed: 300,
         size: 2,
         headLocation: [9,7],
-        bodyLocation: [],
+        bodyLocation: [[9,6]],
         headDirection: "Right",
         previousHeadLocations: []
         // tailLocation: this.location[location.length - 1],
@@ -196,22 +197,12 @@ function renderGameElements() {
     //Loop through every row/column combination on the gameBoard grid
     gameBoard.forEach((cell) => {
 
-        //Find the matching div
+        //Find the corresponding div element
         matchingCellElement = document.querySelector(`#r${cell[0]}c${cell[1]}`)
-
-        //RENDER SNAKEHEAD
-        //If the cell's coordinates match snake head's coordinates
-        if(snake.headLocation.toString() === cell.toString()) {
-
-            //Add the snake styling
-            matchingCellElement.setAttribute("class", "cell snake-head")
-        
-            //Log the snakes location (cause you can)
-            console.log(`Snake is on ${snake.headLocation}`)
 
         //RENDER APPLE
         //If the cell's coordinates match apple's coordinates
-        } else if(fruitLocations.apple.toString() === cell.toString()) {
+        if(fruitLocations.apple.toString() === cell.toString()) {
 
             //Add the apple styling
             matchingCellElement.setAttribute("class", "cell item-apple")
@@ -235,9 +226,31 @@ function renderGameElements() {
         } else {
             //Add the empty cell styling
             matchingCellElement.setAttribute("class", "cell")
-            }
+        }
         
+        //RENDER SNAKEHEAD
+        //If the cell's coordinates match snake head's coordinates
+        if(snake.headLocation.toString() === cell.toString()) {
+
+            //Add the snake styling
+            matchingCellElement.setAttribute("class", "cell snake-head")
+        
+            //Log the snakes location (cause you can)
+            console.log(`Snake is on ${snake.headLocation}`)
+        }
+
+        //RENDER SNAKEBODY
+        snake.bodyLocation.forEach((location) => {
+
+        if(location.toString() === cell.toString()) {
+
+            //Add the snake styling
+            matchingCellElement.setAttribute("class", "cell snake-head")
+            }
+        })
     })
+
+    
 }
 
 function renderScore() {
@@ -255,7 +268,7 @@ function startLoop() {
         seconds = 0;
     }
     // Start a new timer interval
-    timerIntervalId = setInterval(everyLoopThisHappens, 800);
+    timerIntervalId = setInterval(everyLoopThisHappens, snake.speed);
 }
 
 //A timer that moves the snake forward and renders its position
@@ -343,7 +356,10 @@ function moveSnakeForward() {
 
             console.log("APPLE HIT!")
 
-            //If so, increase the size of the snake
+            //Add a point and render it
+            addPoint()
+
+            //Increase the size of the snake
             growSnake()
 
         //Check if you hit the banana
@@ -351,7 +367,10 @@ function moveSnakeForward() {
 
             console.log("BANANA HIT!")
 
-            //If so, increase the size of the snake
+            //Add a point and render it
+            addPoint()
+
+            //Increase the size of the snake
             growSnake()
 
         //Check if you hit the orange
@@ -359,13 +378,20 @@ function moveSnakeForward() {
 
             console.log("ORANGE HIT!")
 
-            //Add to the total score
-            numberOfFruitEaten =+
+            //Add a point and render it
+            addPoint()
 
-            //If so, increase the size of the snake
+            //Increase the size of the snake
             growSnake()
         }
     } 
+
+    function addPoint() {
+        //Add to the total score
+        numberOfFruitEaten += 1
+
+        renderScore()
+    }
 
     function growSnake() {
         //Log the increase in size to the snake.size parameter
@@ -375,11 +401,8 @@ function moveSnakeForward() {
         snake.bodyLocation = snake.previousHeadLocations.slice(0, snake.size - 1)
 
         console.log(snake.bodyLocation)
+        console.log(snake.size)
 
-        //Add snake body to render
-
-        //Use slice on snake.previousHeadLocations to determine which elements should be renders
-        //body = snake.previousHeadLocations.slice(0, (snake.size - 1))
     }
 
     function checkIfSnakeHitItself() {

@@ -153,8 +153,9 @@ footer > #arrow-button-container > #right-arrow-image {
 footer > #score {
     grid-area: score;
 
-    grid-template-rows: 1fr;
-    grid-template-columns: 40% 60%;
+    display: grid;
+    grid-template-rows: 20% auto;
+    grid-template-columns: 1fr;
     grid-template-areas: 
         "scorewords"
         "scorenumbers";
@@ -162,6 +163,8 @@ footer > #score {
 }
 
 footer > #score > #score-title {
+    grid-area: scorewords;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,6 +174,8 @@ footer > #score > #score-title {
 }
 
 footer > #score > #score-number {
+    grid-area: scorenumbers;
+    
     display: flex;
     align-items: center;
     justify-content: center;
