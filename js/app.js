@@ -73,9 +73,12 @@ const oldGameboard = [
 const pointsNeededToWin = "15"
 
 /*------------------------------ Variables ------------------------------*/
+let snake
+
 let gridRows
 let gridColumns
 let gameBoard
+
 
 let snakeSize // Current size of the snake
 let snakeHeadLocation // The snake's head's current location on the gameBoard
@@ -86,7 +89,7 @@ let numberOfFruitEaten // The players current score
 let isWinner // Will be "true" if the player has won the game
 let isLoser // Will be "true" if the player has lost the game
 
-let timerIntervalID //Utilized by the snake movement loop
+let timerIntervalId //Utilized by the snake movement loop
 let seconds //
 
 /*---------------------- Cached Element References ----------------------*/
@@ -108,20 +111,13 @@ const rightKeyBtnElement = document.querySelector("#right-arrow-image")
 
 /*--------------------------- Event Listeners ---------------------------*/
 
-leftKeyBtnElement.addEventListener("click", handleLeftClick) //Listens for a click on the Left Key button element
-rightKeyBtnElement.addEventListener("click", handleRightClick) //Listens for a click on the Right Key button element
+leftKeyBtnElement.addEventListener("click", (event) => handleLeftClick(event.key)) //Listens for a click on the Left Key button element
+rightKeyBtnElement.addEventListener("click",(event) => handleLeftClick(event.key)) //Listens for a click on the Right Key button element
 
-//Listens for a Left or Right arrow on the keyboard
-// document.addEventListener("keydown",(event) => {
-//     switch (event.key) {
-//         case "ArrowLeft":
-//             handleLeftClick
-//             break;
-//         case "ArrowRight":
-//             handleRightClick
-//             break;
-//     }
-// })
+// Listens for Up, Down, Left, Right arrows on the keyboard
+document.addEventListener("keydown",(event) => {
+            handleKey(event.key)
+    })
 
 // toggleDarkModeBtn.addEventListener("click", toggleDarkMode) //Listens for a click on the Dark Mode button element
 // restartGameBtn.addEventListener("click", restartGame) //Listens for a click on the Restart Game button element
@@ -138,50 +134,134 @@ function init() {
     gridRows = 11
     gridColumns = 13
 
-    //generate the gameboard
+    //Generate the gameboard
     generateGameboard()
 
     //Set the initial snake parameters
-    let snake = {
+    snake = {
         size: 2,
         location: [[9,7], [9,6]],
         // headLocation: this.location[0],
         headLocation: [9,7],
         tailLocation: this.location[location.length - 1],
-        headDirection: "Right",
+        headDirection: "Up",
         tailDirection: "Right"
     }
 
-    //Add fruit to the gameboard
-    numberOfFruitEaten = 0
-    fruitLocations = [[4,3], [2,8], [5,10]]
+    //Render the snake
+    renderSnake()
+
+    // //Add fruit to the gameboard
+    // numberOfFruitEaten = 0
+    // fruitLocations = [[4,3], [2,8], [5,10]]
 
     //Start the loop that moves the snake
-    // startLoop()
+    startLoop()
+}
 
-    renderSnake()
+function generateGameboard() {
+
+    //Loop (gridRows) times
+    for(let row = 1; row <= gridRows; row++){
+        //Loop (gridColumns) times
+        for(let column = 1; column <= gridColumns; column++){
+
+            //For each row/column combination, add a new array ([1,1], [1,2] etc) to the gameBoard array
+            gameBoard.push([row,column])
+        }
+    }
+
+    //Render the game board
+    renderGameBoard()
+}
+
+function renderGameBoard() {
+
+    //For each cell on the gameboard
+    gameBoard.forEach((element) => {
+
+        //Create a new div element
+        let newGridCellDiv = document.createElement("div")
+
+        //Give the new div a class and an ID
+        newGridCellDiv.classList.add('cell');
+        newGridCellDiv.setAttribute("id", `r${element[0]}c${element[1]}`)
+
+        //Append the new div to the grid container
+        gridContainerElement.appendChild(newGridCellDiv)
+    });
+
+    //Assign the grid parameters in CSS
+    gridContainerElement.style.gridTemplateRows = `repeat(${gridRows}, 50px)`
+    gridContainerElement.style.gridTemplateColumns = `repeat(${gridColumns}, 50px)`
 }
 
 function renderSnake() {
 
-    console.log(gameBoard)
+    //Loop through every row/column combination on the gameBoard grid
+    gameBoard.forEach((cell) => {
 
-    gameBoard.forEach((element) => {
+        //Find the matching div
+        matchingCellElement = document.querySelector(`#r${cell[0]}c${cell[1]}`)
 
-        console.log(element)
+        //If the cell's coordinates match the headLocation coordinates
+        if(snake.headLocation.toString() === cell.toString()) {
 
-    })
+            //Add the snake styling
+            matchingCellElement.classList.add('snakehead')
+
+            //Log the snakes location (cause you can)
+            console.log(`Snake is on ${snake.headLocation}`)
+
+        } else {
+
+            //Add the snake styling
+            matchingCellElement.classList.remove('snakehead')
+            }
+        
+    } )
+}
+
+// This function kicks off the timer. Every X seconds, the snake moves.
+function startLoop() {
+	// Check for an active timer interval
+    if (timerIntervalId) {
+	// If interval exists, clear it and reset seconds to zero
+        clearInterval(timerIntervalId);
+        seconds = 0;
+    }
+    // Start a new timer interval
+    timerIntervalId = setInterval(everyLoopThisHappens, 800);
+}
+
+//A timer that moves the snake forward and renders its position
+function everyLoopThisHappens() {
+    if(!isWinner && !isLoser){
+
+        //Every X seconds, move the snake forward
+        moveSnakeForward()
+
+        //Render the snakes current position
+        renderSnake()
+
+        // //Determine if the snake hit itself
+        // checkIfSnakeHitItself()
+
+        // //Determine if the snake hit fruit
+        // checkIfSnakeHitFruit()
+
+        // //Determine if the player have enough points won the game
+        // checkIfGameWonOrLost()
+    }
 }
 
 function moveSnakeForward() {
-    //Use the snakes current location and size 
-    // Determine the snakes current direction
-
+    // Above: [X - 1, Y]
+    // Below: [X + 1, Y]
+    // Left: [X, Y - 1]
+    // Right: [X, Y + 1]
         switch (snake.headDirection) {
-//         Above: [X - 1, Y];
-//         Below: [X + 1, Y];
-//         Left: [X, Y - 1];
-//         Right: [X, Y + 1];
+
         case "Up":
             //Check if the grid cell above the snake's head has an index off the board
             if(snake.headLocation[0] - 1 <= 0) {
@@ -195,7 +275,7 @@ function moveSnakeForward() {
 
         case "Down":
             //Check if the grid cell below the snake's head has an index off the board
-            if(snake.headLocation[0] + 1 >= gridRows) {
+            if(snake.headLocation[0] + 1 > gridRows) {
                 //If so, move the snake head to the top of the board
                 snake.headLocation = [1, snake.headLocation[1]]
             } else {
@@ -206,100 +286,25 @@ function moveSnakeForward() {
 
         case "Left":
             //Check if the grid cell above the snake's head has an index off the board
-            if(snake.headLocation[1] - 1 >= 0) {
-                //If so, move the snake head to the bottom of the board
-                snake.headLocation = [snake.headLocation[0], snake.headLocation[1]]
+            if(snake.headLocation[1] - 1 <= 0) {
+                //If so, move the snake head to the right of the board
+                snake.headLocation = [snake.headLocation[0], gridColumns]
             } else {
                 //Otherwise, move the head to the cell directly left the current head location
-                snake.headLocation = [snake.headLocation[0], snake.headLocation[1]]
+                snake.headLocation = [snake.headLocation[0], snake.headLocation[1] - 1]
             }
             break;
 
         case "Right":
             //Check if the grid cell above the snake's head has an index off the board
-            if(snake.headLocation[1] - 1 >= 0) {
-                //If so, move the snake head to the bottom of the board
-                snake.headLocation = [snake.headLocation[0], snake.headLocation[1]]
+            if(snake.headLocation[1] + 1 > gridColumns) {
+                //If so, move the snake head to the left of the board
+                snake.headLocation = [snake.headLocation[0], 1]
             } else {
                 //Otherwise, move the head to the cell directly right the current head location
-                snake.headLocation = [snake.headLocation[0], snake.headLocation[1]]
+                snake.headLocation = [snake.headLocation[0], snake.headLocation[1] + 1]
             }
             break;
-    }
-}
-
-function generateGameboard() {
-
-    //Loop (gridRows) times
-    for(let row = 1; row <= gridRows; row++){
-        //Loop (gridColumns) times
-        for(let column = 1; column <= gridColumns; column++){
-
-            //Create an array of arrays 
-            //Use that array to create corresponding elements on render
-            gameBoard.push([row,column])
-
-            // console.log(gameBoard)
-        }
-    }
-
-    //Render the game board
-    renderGameBoard()
-}
-
-function renderGameBoard() {
-
-    //For each cell on the gameboard
-    gameBoard.forEach((element) => {
-
-        // create a new div element
-        let newGridCellDiv = document.createElement("div")
-
-        // give it a class and an ID
-        newGridCellDiv.classList.add('cell');
-        newGridCellDiv.setAttribute("id", `r${element[0]}c${element[1]}`)
-
-        // Append the new div to the 
-        gridContainerElement.appendChild(newGridCellDiv)
-        console.log(newGridCellDiv.id)
-    });
-
-    //Assign the grid parameters in CSS
-    gridContainerElement.style.gridTemplateRows = `repeat(${gridRows}, 50px)`
-    gridContainerElement.style.gridTemplateColumns = `repeat(${gridColumns}, 50px)`
-}
-
-// This function kicks off the timer. Every X seconds, the snake moves.
-function startLoop() {
-	// Check for an active timer interval
-    if (timerIntervalId) {
-	// If interval exists, clear it and reset seconds to zero
-        clearInterval(timerIntervalId);
-        seconds = 0;
-    }
-    // Start a new timer interval
-    timerIntervalId = setInterval(everyLoopThisHappens, 2000);
-}
-
-//A timer that moves the snake forward and renders its position
-function everyLoopThisHappens() {
-    if(!isWinner && !isLoser){
-
-        //Every X seconds, move the snake forward
-        moveSnakeForward()
-
-        //Render the snakes current position
-        renderSnakePosition()
-
-
-        //Determine if the snake hit itself
-        checkIfSnakeHitItself()
-
-        //Determine if the snake hit fruit
-        checkIfSnakeHitFruit()
-
-        //Determine if the player have enough points won the game
-        checkIfGameWonOrLost()
     }
 }
 
@@ -344,10 +349,44 @@ function handleRightClick() {
     turnSnakeRight()
 }
 
-function turnSnakeLeft() {
+function handleClick() {
+    switch (snake.headDirection) {
+        case "ArrowUp":
+            snake.headDirection = "Up"
+            break;
+
+        case "ArrowRight":
+            snake.headDirection = "Right"
+            break;
+
+        case "ArrowDown":
+            snake.headDirection = "Down"
+            break;
+
+        case "ArrowLeft":
+            snake.headDirection = "Left"
+            break;
+    }
 }
 
-function turnSnakeRight() {
+function handleKey(key) {
+    switch (key) {
+        case "ArrowUp":
+            snake.headDirection = "Up"
+            break;
+
+        case "ArrowRight":
+            snake.headDirection = "Right"
+            break;
+
+        case "ArrowDown":
+            snake.headDirection = "Down"
+            break;
+
+        case "ArrowLeft":
+            snake.headDirection = "Left"
+            break;
+    }
 }
 
 function toggleDarkMode() {
