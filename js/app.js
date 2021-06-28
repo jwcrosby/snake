@@ -130,9 +130,6 @@ function init() {
         // tailDirection: "Right"
     }
 
-    //Render the snake
-    renderSnake()
-
     //Add fruit to the gameboard
     fruitLocations = {
         apple: [4,3],
@@ -143,6 +140,9 @@ function init() {
     //Point system
     numberOfFruitEaten = 0
     pointsNeededToWin = 15
+
+    //Render the the snake and the fruit
+    render()
 
     //Start the loop that moves the snake
     startLoop()
@@ -185,7 +185,7 @@ function renderGameBoard() {
     gridContainerElement.style.gridTemplateColumns = `repeat(${gridColumns}, 50px)`
 }
 
-function renderSnake() {
+function render() {
 
     //Loop through every row/column combination on the gameBoard grid
     gameBoard.forEach((cell) => {
@@ -193,22 +193,45 @@ function renderSnake() {
         //Find the matching div
         matchingCellElement = document.querySelector(`#r${cell[0]}c${cell[1]}`)
 
-        //If the cell's coordinates match the headLocation coordinates
+        //RENDER SNAKEHEAD
+        //If the cell's coordinates match snake head's coordinates
         if(snake.headLocation.toString() === cell.toString()) {
 
             //Add the snake styling
-            matchingCellElement.classList.add('snakehead')
-
+            matchingCellElement.setAttribute("class", "cell snake-head")
+        
             //Log the snakes location (cause you can)
             console.log(`Snake is on ${snake.headLocation}`)
 
-        } else {
+        //RENDER APPLE
+        //If the cell's coordinates match apple's coordinates
+        } else if(fruitLocations.apple.toString() === cell.toString()) {
 
-            //Add the snake styling
-            matchingCellElement.classList.remove('snakehead')
+            //Add the apple styling
+            matchingCellElement.setAttribute("class", "cell item-apple")
+
+        //RENDER BANANA
+        //If the cell's coordinates match banana's coordinates
+        } else if(fruitLocations.banana.toString() === cell.toString()) {
+
+            //Add the banana styling
+            matchingCellElement.setAttribute("class", "cell item-banana")
+
+        //RENDER ORANGE
+        //If the cell's coordinates match orange's coordinates
+        } else if(fruitLocations.orange.toString() === cell.toString()) {
+
+            //Add the orange styling
+            matchingCellElement.setAttribute("class", "cell item-orange")
+
+        //RENDER EMPTY CELL
+        //If the cell's coordinates match none of the above's coordinates
+        } else {
+            //Add the empty cell styling
+            matchingCellElement.setAttribute("class", "cell")
             }
         
-    } )
+    })
 }
 
 // This function kicks off the timer. Every X seconds, the snake moves.
@@ -231,13 +254,13 @@ function everyLoopThisHappens() {
         moveSnakeForward()
 
         //Render the snakes current position
-        renderSnake()
+        render()
+
+        //Determine if the snake hit fruit
+        checkIfSnakeHitFruit()
 
         // //Determine if the snake hit itself
         // checkIfSnakeHitItself()
-
-        // //Determine if the snake hit fruit
-        // checkIfSnakeHitFruit()
 
         // //Determine if the player have enough points won the game
         // checkIfGameWonOrLost()
@@ -294,30 +317,56 @@ function moveSnakeForward() {
                 snake.headLocation = [snake.headLocation[0], snake.headLocation[1] + 1]
             }
             break;
+        }
     }
+
+    function checkIfSnakeHitFruit() {
+        //Check if you hit the apple 
+        if(snake.headLocation.toString() === fruitLocations.apple.toString()) {
+
+            console.log("APPLE HIT!")
+
+            //If so, increase the size of the snake
+            growSnake()
+
+        //Check if you hit the banana
+        } else if(snake.headLocation.toString() === fruitLocations.banana.toString()) {
+
+            console.log("BANANA HIT!")
+
+            //If so, increase the size of the snake
+            growSnake()
+
+        //Check if you hit the orange
+        } else if(snake.headLocation.toString() === fruitLocations.orange.toString()) {
+
+            console.log("ORANGE HIT!")
+            
+            //If so, increase the size of the snake
+            growSnake()
 }
 
-function checkIfSnakeHitItself() {
-    //If so, end the game
-    gameOver()
-}
 
-function checkIfSnakeHitFruit() {
 
-    //If so, increase the size of the snake
-    growSnake()
-}
+        //If so, increase the size of the snake
+        growSnake()
+    }
 
-function growSnake() {
-    //Determine where to place the new appendage
+    function growSnake() {
+        //Determine where to place the new appendage
 
-    //Add to snake body array
-}
+        //Add to snake body array
+    }
 
-function checkIfGameWonOrLost() {
-    //Determine if the game has been won or lost using the isWinner and isLoser variables
-
-    //If so, stop the loop
+    function checkIfSnakeHitItself() {
+        //If so, end the game
+        gameOver()
+    }
+    
+    function checkIfGameWonOrLost() {
+        //Determine if the game has been won or lost using the isWinner and isLoser variables
+        
+        //If so, stop the loop
 
     //Also, add a new window element to the page that displays a win/loss message and the restart button
 }
@@ -372,4 +421,8 @@ function restartGame() {
 
 }
 
+function renderScore() {
+
+
+}
 

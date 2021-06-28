@@ -78,27 +78,24 @@ main > #game-grid > .cell {
     border: 1px solid #fff;
 }
 
-main > #game-grid > .snakehead {
-    background-color: black;
-}
-
-main > #game-grid > .snakebody {
-    background-color: rgb(50, 49, 49);
-}
-
-main > #game-grid > .itemapple {
+main > #game-grid > .item-apple {
     background-color: rgb(233, 89, 89)
 }
 
-main > #game-grid > .itembanana {
+main > #game-grid > .item-banana {
     background-color: rgb(235, 235, 74)
 }
 
-main > #game-grid > .itemorange {
+main > #game-grid > .item-orange {
     background-color: rgb(240, 183, 76);
 }
+main > #game-grid > .snake-head {
+    background-color: black;
+}
 
-
+main > #game-grid > .snake-body {
+    background-color: rgb(50, 49, 49);
+}
 
 footer {
     background-color: #f77f00;
