@@ -369,12 +369,15 @@ function moveSnakeForward() {
 
     function growSnake() {
         //Log the increase in size to the snake.size parameter
-        snake.size =+ 1
+        snake.size += 1
 
-        //Add to snack body array
+        //Add to snake body array
+        snake.bodyLocation = snake.previousHeadLocations.slice(0, snake.size - 1)
+
+        console.log(snake.bodyLocation)
 
         //Add snake body to render
-        
+
         //Use slice on snake.previousHeadLocations to determine which elements should be renders
         //body = snake.previousHeadLocations.slice(0, (snake.size - 1))
     }
