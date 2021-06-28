@@ -1,110 +1,115 @@
-// /*------------------------ Pseudocode ------------------------*/
-// // 1. HTML: Create basic elements based on wireframe
-//     // 1.1. The main game board is a grid, which lives within a flexbox
+/*------------------------ Pseudocode ------------------------*/
+// 1. HTML: Create basic elements based on wireframe
+    // 1.1. The main game board is a grid, which lives within a flexbox
 
-// // 2. JS: Create objects, variables, constants 
+// 2. JS: Create objects, variables, constants 
 
-// // 3. JS: Store cached elements
+// 3. JS: Store cached elements
 
-// // 4. JS: Add event listeners
+// 4. JS: Add event listeners
 
-// // 5. JS: Create functions
+// 5. JS: Create functions
 
-// // 6. CSS: Styling (including light/dark mode)
-
-
-// // Established rules:
-// // -Single player game
-// // -The gameboard is a 13 x 11 grid
-// // -On init, the snake occupies 2 squares, facing right, moving left to right
-// // -On init, there are 3 food items on the gameboard
-// // -On init (or first click?), the snake begins moving forward, starting the game 
-
-// /* How to play: 
-// -The snake will move forward in a straight line.
-
-// -The player uses left and right turns to manuever the snake towards
-// food items on the grid. 
-
-// -Every time the snake makes contact with a food item, the snack grows in 
-// length (occupies an additional square on the grid). The food item is also
-// removed from the grid.
-
-// -Every time the snake makes contact with 3 food items, it will move faster.*/
-
-// // How to win: The player wins when they have collected 20 items
-
-// /* How to lose: The player loses when the snake makes contact with
-// itself or with the border of the gameboard. */
+// 6. CSS: Styling (including light/dark mode)
 
 
-// // !! Set the body based on the heads last known location
+// Established rules:
+// -Single player game
+// -The gameboard is a 13 x 11 grid
+// -On init, the snake occupies 2 squares, facing right, moving left to right
+// -On init, there are 3 food items on the gameboard
+// -On init (or first click?), the snake begins moving forward, starting the game 
+
+/* How to play: 
+-The snake will move forward in a straight line.
+
+-The player uses left and right turns to manuever the snake towards
+food items on the grid. 
+
+-Every time the snake makes contact with a food item, the snack grows in 
+length (occupies an additional square on the grid). The food item is also
+removed from the grid.
+
+-Every time the snake makes contact with 3 food items, it will move faster.*/
+
+// How to win: The player wins when they have collected 20 items
+
+/* How to lose: The player loses when the snake makes contact with
+itself or with the border of the gameboard. */
 
 
-// /*------------------------------ Constants ------------------------------*/
+// !! Set the body based on the heads last known location
+
+
+/*------------------------------ Constants ------------------------------*/
+
+const oldGameboard = [
+    [1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7], [1,8], [1,9], [1,10], [1,11], [1,12], [1,13],
+    [2,1], [2,2], [2,3], [2,4], [2,5], [2,6], [2,7], [2,8], [2,9], [2,10], [2,11], [2,12], [2,13],
+    [3,1], [3,2], [3,3], [3,4], [3,5], [3,6], [3,7], [3,8], [3,9], [3,10], [3,11], [3,12], [3,13],
+    [4,1], [4,2], [4,3], [4,4], [4,5], [4,6], [4,7], [4,8], [4,9], [4,10], [4,11], [4,12], [4,13],
+    [5,1], [5,2], [5,3], [5,4], [5,5], [5,6], [5,7], [5,8], [5,9], [5,10], [5,11], [5,12], [5,13],
+    [6,1], [6,2], [6,3], [6,4], [6,5], [6,6], [6,7], [6,8], [6,9], [6,10], [6,11], [6,12], [6,13],
+    [7,1], [7,2], [7,3], [7,4], [7,5], [7,6], [7,7], [7,8], [7,9], [7,10], [7,11], [7,12], [7,13],
+    [8,1], [8,2], [8,3], [8,4], [8,5], [8,6], [8,7], [8,8], [8,9], [8,10], [8,11], [8,12], [8,13],
+    [9,1], [9,2], [9,3], [9,4], [9,5], [9,6], [9,7], [9,8], [9,9], [9,10], [9,11], [9,12], [9,13],
+    [10,1],[10,2],[10,3],[10,4],[10,5],[10,6],[10,7],[10,8],[10,9],[10,10],[10,11],[10,12],[10,13],
+    [11,1],[11,2],[11,3],[11,4],[11,5],[11,6],[11,7],[11,8],[11,9],[11,10],[11,11],[11,12],[11,13]
+]
+
 
 // const gameboard = [
-//     [1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7], [1,8], [1,9], [1,10], [1,11], [1,12], [1,13],
-//     [2,1], [2,2], [2,3], [2,4], [2,5], [2,6], [2,7], [2,8], [2,9], [2,10], [2,11], [2,12], [2,13],
-//     [3,1], [3,2], [3,3], [3,4], [3,5], [3,6], [3,7], [3,8], [3,9], [3,10], [3,11], [3,12], [3,13],
-//     [4,1], [4,2], [4,3], [4,4], [4,5], [4,6], [4,7], [4,8], [4,9], [4,10], [4,11], [4,12], [4,13],
-//     [5,1], [5,2], [5,3], [5,4], [5,5], [5,6], [5,7], [5,8], [5,9], [5,10], [5,11], [5,12], [5,13],
-//     [6,1], [6,2], [6,3], [6,4], [6,5], [6,6], [6,7], [6,8], [6,9], [6,10], [6,11], [6,12], [6,13],
-//     [7,1], [7,2], [7,3], [7,4], [7,5], [7,6], [7,7], [7,8], [7,9], [7,10], [7,11], [7,12], [7,13],
-//     [8,1], [8,2], [8,3], [8,4], [8,5], [8,6], [8,7], [8,8], [8,9], [8,10], [8,11], [8,12], [8,13],
-//     [9,1], [9,2], [9,3], [9,4], [9,5], [9,6], [9,7], [9,8], [9,9], [9,10], [9,11], [9,12], [9,13],
-//     [10,1],[10,2],[10,3],[10,4],[10,5],[10,6],[10,7],[10,8],[10,9],[10,10],[10,11],[10,12],[10,13],
-//     [11,1],[11,2],[11,3],[11,4],[11,5],[11,6],[11,7],[11,8],[11,9],[11,10],[11,11],[11,12],[11,13]
+//     {
+//         row: X;
+//         column: Y;
+//         neighborAbove: [X - 1, Y];
+//         neighborBelow: [X + 1, Y];
+//         neighborLeft: [X, Y - 1];
+//         neighborRight: [X, Y + 1];
+//     }
 // ]
+//need a class to build an object
 
+const pointsNeededToWin = "15"
 
+/*------------------------------ Variables ------------------------------*/
+let gridRows
+let gridColumns
+let gameBoard
 
-// // const gameboard = [
-// //     {
-// //         row: X;
-// //         column: Y;
-// //         neighborAbove: [X - 1, Y];
-// //         neighborBelow: [X + 1, Y];
-// //         neighborLeft: [X, Y - 1];
-// //         neighborRight: [X, Y + 1];
-// //     }
-// // ]
-// //need a class to build an object
+let snakeSize // Current size of the snake
+let snakeHeadLocation // The snake's head's current location on the gameBoard
+let snakeBodyLocation // The snake's body's current locations on the gameBoard. An array of arrays.
+let fruitLocations // The various fruit locations on the gameBoard. An array of arrays.
+let snakeCurrentDirection // The direction the snake is moving, "Up", Down", Right", "Left"
+let numberOfFruitEaten // The players current score
+let isWinner // Will be "true" if the player has won the game
+let isLoser // Will be "true" if the player has lost the game
 
-// const pointsNeededToWin = "15"
+let timerIntervalID //Utilized by the snake movement loop
+let seconds //
 
-// /*------------------------------ Variables ------------------------------*/
-// let snakeSize // Current size of the snake
-// let snakeHeadLocation // The snake's head's current location on the gameBoard
-// let snakeBodyLocation // The snake's body's current locations on the gameBoard. An array of arrays.
-// let fruitLocations // The various fruit locations on the gameBoard. An array of arrays.
-// let snakeCurrentDirection // The direction the snake is moving, "Up", Down", Right", "Left"
-// let numberOfFruitEaten // The players current score
-// let isWinner // Will be "true" if the player has won the game
-// let isLoser // Will be "true" if the player has lost the game
-
-// let timerIntervalID //Utilized by the snake movement loop
-// let seconds //
-
-// /*---------------------- Cached Element References ----------------------*/
+/*---------------------- Cached Element References ----------------------*/
 
 // const gameBoardArray = document.querySelector("")
 // const winLoseMessageContainer = document.querySelector("")
 
-// const leftKeyBtn = document.querySelector("")
-// const rightKeyBtn = document.querySelector("")
+const gridContainer = document.querySelector("#game-grid") 
+
+const leftKeyBtn = document.querySelector("#left-arrow-image")
+const rightKeyBtn = document.querySelector("#right-arrow-image")
 // const toggleDarkModeBtn = document.querySelector("")
 // const restartGameBtn = document.querySelector("")
 
-// // Element.classList.add('this')
-// // Element.classList.remove('this')
+// Element.classList.add('this')
+// Element.classList.remove('this')
 
-// /*--------------------------- Event Listeners ---------------------------*/
+/*--------------------------- Event Listeners ---------------------------*/
 
-// leftKeyBtn.addEventListener("click", handleLeftClick) //Listens for a click on the Left Key button element
-// rightKeyBtn.addEventListener("click", handleRightClick) //Listens for a click on the Right Key button element
+leftKeyBtn.addEventListener("click", handleLeftClick) //Listens for a click on the Left Key button element
+rightKeyBtn.addEventListener("click", handleRightClick) //Listens for a click on the Right Key button element
 
-// //Listens for a Left or Right arrow on the keyboard
+//Listens for a Left or Right arrow on the keyboard
 // document.addEventListener("keydown",(event) => {
 //     switch (event.key) {
 //         case "ArrowLeft":
@@ -120,31 +125,91 @@
 // restartGameBtn.addEventListener("click", restartGame) //Listens for a click on the Restart Game button element
 
 
-// /*------------------------------ Functions ------------------------------*/
+/*------------------------------ Functions ------------------------------*/
 
-// //init()
+init()
 
-// function init() {
+function init() {
 
-//     //Set the initial size of the snake
-//     snakeSize = 2
+    //Set the initial game board parameters
+    gameBoard = []
+    gridRows = 11
+    gridColumns = 13
 
-//     //Set the initial location of the snake
-//     snakeHeadLocation = [9,7]
-//     snakeBodyLocation = [[9,6]]
+    //generate the gameboard
+    generateGameboard()
 
-//     //Add fruit to the gameboard
-//     fruitLocations = [[4,3], [2,8], [5,10]]
+    //Set the initial snake parameters
+    snakeSize = 2
+    snakeBodyLocation = [[9,7], [9,6]]
+    snakeCurrentDirection = "RIGHT"
 
-//     snakeCurrentDirection = "RIGHT"
+    //Add fruit to the gameboard
+    numberOfFruitEaten = 0
+    fruitLocations = [[4,3], [2,8], [5,10]]
 
-//     numberOfFruitEaten = 0
+    //Start the loop that moves the snake
+    // startLoop()
+}
 
-//     //Start the loop that moves the snake
-//     startLoop()
+// function renderSnake() {
+
+//     let snake = {
+//         size: 2,
+//         Location: [[9,7], [9,6]],
+
+//         headDirection: "Right",
+
+
+
+//         tailDirection: "Right",
+//         tailLocation: []
+//     }
+
 // }
 
-// //This function kicks off the timer. Every X seconds, the snake moves.
+function generateGameboard() {
+
+    //Loop (gridRows) times
+    for(let row = 1; row <= gridRows; row++){
+        //Loop (gridColumns) times
+        for(let column = 1; column <= gridColumns; column++){
+
+            //Create an array of arrays 
+            //Use that array to create corresponding elements on render
+            gameBoard.push([row,column])
+
+            // console.log(gameBoard)
+        }
+    }
+
+    //Render the game board
+    renderGameBoard()
+}
+
+function renderGameBoard() {
+
+    //For each cell on the gameboard
+    gameBoard.forEach((element) => {
+
+        // create a new div element
+        let newGridCellDiv = document.createElement("div")
+
+        // give it a class and an ID
+        newGridCellDiv.classList.add('cell');
+        newGridCellDiv.setAttribute("id", `row${element[1]}column${element[1]}`)
+
+        // Append the new div to the 
+        gridContainer.appendChild(newGridCellDiv)
+    });
+
+    //Assign the grid parameters in CSS
+    gridContainer.style.gridTemplateRows = `repeat(${gridRows}, 50px)`
+    gridContainer.style.gridTemplateColumns = `repeat(${gridColumns}, 50px)`
+}
+
+
+//This function kicks off the timer. Every X seconds, the snake moves.
 // function startLoop() {
 // 	// Check for an active timer interval
 //     if (timerIntervalId) {
@@ -156,106 +221,87 @@
 //     timerIntervalId = setInterval(everyLoopThisHappens, 2000);
 // }
 
-// //A timer that moves the snake forward and renders its position
-// function everyLoopThisHappens() {
-//     if(!isWinner && !isLoser){
+//A timer that moves the snake forward and renders its position
+function everyLoopThisHappens() {
+    if(!isWinner && !isLoser){
 
-//         //Every X seconds, move the snake forward
-//         moveSnakeForward()
+        //Every X seconds, move the snake forward
+        moveSnakeForward()
 
-//         //Render the snakes current position
-//         renderSnakePosition()
+        //Render the snakes current position
+        renderSnakePosition()
 
-//         //Determine if the snake hit the border of the grid
-//         checkIfSnakeHitBorder()
+        //Determine if the snake hit the border of the grid
+        checkIfSnakeHitBorder()
 
-//         //Determine if the snake hit itself
-//         checkIfSnakeHitItself()
+        //Determine if the snake hit itself
+        checkIfSnakeHitItself()
 
-//         //Determine if the snake hit fruit
-//         checkIfSnakeHitFruit()
+        //Determine if the snake hit fruit
+        checkIfSnakeHitFruit()
 
-//         //Determine if the player have enough points won the game
-//         checkIfGameWonOrLost()
-//     }
-// }
-
-// function moveSnakeForward() {
-//     //Use the snakes current location and size 
-//     // etermine the snakes current direction
-// }
-
-// function checkIfSnakeHitBorder() {
-//     //If so, end the game
-//     gameOver()
-// }
-
-// function checkIfSnakeHitItself() {
-//     //If so, end the game
-//     gameOver()
-// }
-
-// function checkIfSnakeHitFruit() {
-
-//     //If so, increase the size of the snake
-//     growSnake()
-// }
-
-// function growSnake() {
-//     //Determine where to place the new appendage
-
-//     //Add to snake body array
-// }
-
-// function checkIfGameWonOrLost() {
-//     //Determine if the game has been won or lost using the isWinner and isLoser variables
-
-//     //If so, stop the loop
-
-//     //Also, add a new window element to the page that displays a win/loss message and the restart button
-// }
-
-// function handleLeftClick() {
-//     //Turn the snake left 
-//     turnSnakeLeft()
-// }
-
-// function handleRightClick() {
-//     //The the snake right
-//     turnSnakeRight()
-// }
-
-// function turnSnakeLeft() {
-// }
-
-// function turnSnakeRight() {
-// }
-
-// function toggleDarkMode() {
-
-// }
-
-// function restartGame() {
-
-// }
-
-//Set rows and columns
-let gridRows = 11
-let gridColumns = 13
-
-//Loop (gridRows) times
-for(let row = 1; row <= gridRows; row++){
-    //Loop (gridColumns) times
-    for(let column = 1; column <= gridColumns; column++){
-
-        //Use the ?createGirdCell? class to create an object
-        //For every row/column combination
-        //Create an array of those objects
-        //Use that array to create corresponding elements on render
-        console.log(row)
-        console.log("x")
-        console.log(column)
+        //Determine if the player have enough points won the game
+        checkIfGameWonOrLost()
     }
+}
+
+function moveSnakeForward() {
+    //Use the snakes current location and size 
+    // etermine the snakes current direction
+}
+
+function checkIfSnakeHitBorder() {
+    //If so, end the game
+    gameOver()
+}
+
+function checkIfSnakeHitItself() {
+    //If so, end the game
+    gameOver()
+}
+
+function checkIfSnakeHitFruit() {
+
+    //If so, increase the size of the snake
+    growSnake()
+}
+
+function growSnake() {
+    //Determine where to place the new appendage
+
+    //Add to snake body array
+}
+
+function checkIfGameWonOrLost() {
+    //Determine if the game has been won or lost using the isWinner and isLoser variables
+
+    //If so, stop the loop
+
+    //Also, add a new window element to the page that displays a win/loss message and the restart button
+}
+
+function handleLeftClick() {
+    //Turn the snake left 
+    turnSnakeLeft()
+}
+
+function handleRightClick() {
+    //The the snake right
+    turnSnakeRight()
+}
+
+function turnSnakeLeft() {
+}
+
+function turnSnakeRight() {
+}
+
+function toggleDarkMode() {
+
+}
+
+function restartGame() {
+
 }
 
 
