@@ -83,9 +83,11 @@ const upKeyBtnElement = document.querySelector("#up-arrow-image")
 const downKeyBtnElement = document.querySelector("#down-arrow-image")
 const leftKeyBtnElement = document.querySelector("#left-arrow-image")
 const rightKeyBtnElement = document.querySelector("#right-arrow-image")
+
 // const toggleDarkModeBtn = document.querySelector("")
 // const restartGameBtn = document.querySelector("")
 
+const pointsBoxElement = document.querySelector("#score-number")
 
 // Element.classList.add('this')
 // Element.classList.remove('this')
@@ -120,12 +122,20 @@ function init() {
     //Generate the gameboard
     generateGameboard()
 
+    //Point system
+    numberOfFruitEaten = 0
+    pointsNeededToWin = 15
+
+    //Render Points
+    renderScore()
+
     //Set the initial snake parameters
     snake = {
         size: 2,
         headLocation: [9,7],
         bodyLocation: [],
         headDirection: "Right",
+        previousHeadLocations: []
         // tailLocation: this.location[location.length - 1],
         // tailDirection: "Right"
     }
@@ -137,12 +147,8 @@ function init() {
         orange: [5,10]
     }
 
-    //Point system
-    numberOfFruitEaten = 0
-    pointsNeededToWin = 15
-
     //Render the the snake and the fruit
-    render()
+    renderGameElements()
 
     //Start the loop that moves the snake
     startLoop()
@@ -185,7 +191,7 @@ function renderGameBoard() {
     gridContainerElement.style.gridTemplateColumns = `repeat(${gridColumns}, 50px)`
 }
 
-function render() {
+function renderGameElements() {
 
     //Loop through every row/column combination on the gameBoard grid
     gameBoard.forEach((cell) => {
@@ -234,6 +240,12 @@ function render() {
     })
 }
 
+function renderScore() {
+
+    pointsBoxElement.innerHTML = numberOfFruitEaten
+
+}
+
 // This function kicks off the timer. Every X seconds, the snake moves.
 function startLoop() {
 	// Check for an active timer interval
@@ -250,11 +262,16 @@ function startLoop() {
 function everyLoopThisHappens() {
     if(!isWinner && !isLoser){
 
-        //Every X seconds, move the snake forward
+        //Add current location to list of previous locations
+        snake.previousHeadLocations.unshift(snake.headLocation)
+
+        // console.log(snake.previousHeadLocations)
+
+        //Move the snake forward
         moveSnakeForward()
 
         //Render the snakes current position
-        render()
+        renderGameElements()
 
         //Determine if the snake hit fruit
         checkIfSnakeHitFruit()
@@ -341,21 +358,25 @@ function moveSnakeForward() {
         } else if(snake.headLocation.toString() === fruitLocations.orange.toString()) {
 
             console.log("ORANGE HIT!")
-            
+
+            //Add to the total score
+            numberOfFruitEaten =+
+
             //If so, increase the size of the snake
             growSnake()
-}
-
-
-
-        //If so, increase the size of the snake
-        growSnake()
-    }
+        }
+    } 
 
     function growSnake() {
-        //Determine where to place the new appendage
+        //Log the increase in size to the snake.size parameter
+        snake.size =+ 1
 
-        //Add to snake body array
+        //Add to snack body array
+
+        //Add snake body to render
+        
+        //Use slice on snake.previousHeadLocations to determine which elements should be renders
+        //body = snake.previousHeadLocations.slice(0, (snake.size - 1))
     }
 
     function checkIfSnakeHitItself() {
@@ -418,11 +439,6 @@ function toggleDarkMode() {
 }
 
 function restartGame() {
-
-}
-
-function renderScore() {
-
 
 }
 

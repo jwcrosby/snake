@@ -103,15 +103,16 @@ footer {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: 
-        "rules arrows filler";
+        "rules arrows score";
     padding: 0px 90px;
 }
 
 footer > #game-rules {
+    grid-area: rules;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-area: rules;
 
     font-size: 2rem;
 }
@@ -149,6 +150,29 @@ footer > #arrow-button-container > #right-arrow-image {
     grid-area: right;
 }
 
-footer > #arrow-button-container > #filler {
-    grid-area: filler;
+footer > #score {
+    grid-area: score;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 40% 60%;
+    grid-template-areas: 
+        "scorewords"
+        "scorenumbers";
+
+}
+
+footer > #score > #score-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    padding: 50px 0 0 0;
+
+}
+
+footer > #score > #score-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10rem;
 }
