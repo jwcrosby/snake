@@ -43,34 +43,19 @@ itself or with the border of the gameboard. */
 
 /*------------------------------ Constants ------------------------------*/
 
-const oldGameboard = [
-    [1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7], [1,8], [1,9], [1,10], [1,11], [1,12], [1,13],
-    [2,1], [2,2], [2,3], [2,4], [2,5], [2,6], [2,7], [2,8], [2,9], [2,10], [2,11], [2,12], [2,13],
-    [3,1], [3,2], [3,3], [3,4], [3,5], [3,6], [3,7], [3,8], [3,9], [3,10], [3,11], [3,12], [3,13],
-    [4,1], [4,2], [4,3], [4,4], [4,5], [4,6], [4,7], [4,8], [4,9], [4,10], [4,11], [4,12], [4,13],
-    [5,1], [5,2], [5,3], [5,4], [5,5], [5,6], [5,7], [5,8], [5,9], [5,10], [5,11], [5,12], [5,13],
-    [6,1], [6,2], [6,3], [6,4], [6,5], [6,6], [6,7], [6,8], [6,9], [6,10], [6,11], [6,12], [6,13],
-    [7,1], [7,2], [7,3], [7,4], [7,5], [7,6], [7,7], [7,8], [7,9], [7,10], [7,11], [7,12], [7,13],
-    [8,1], [8,2], [8,3], [8,4], [8,5], [8,6], [8,7], [8,8], [8,9], [8,10], [8,11], [8,12], [8,13],
-    [9,1], [9,2], [9,3], [9,4], [9,5], [9,6], [9,7], [9,8], [9,9], [9,10], [9,11], [9,12], [9,13],
-    [10,1],[10,2],[10,3],[10,4],[10,5],[10,6],[10,7],[10,8],[10,9],[10,10],[10,11],[10,12],[10,13],
-    [11,1],[11,2],[11,3],[11,4],[11,5],[11,6],[11,7],[11,8],[11,9],[11,10],[11,11],[11,12],[11,13]
-]
-
-
-// const gameboard = [
-//     {
-//         row: X;
-//         column: Y;
-//         neighborAbove: [X - 1, Y];
-//         neighborBelow: [X + 1, Y];
-//         neighborLeft: [X, Y - 1];
-//         neighborRight: [X, Y + 1];
-//     }
+// const oldGameboard = [
+//     [1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7], [1,8], [1,9], [1,10], [1,11], [1,12], [1,13],
+//     [2,1], [2,2], [2,3], [2,4], [2,5], [2,6], [2,7], [2,8], [2,9], [2,10], [2,11], [2,12], [2,13],
+//     [3,1], [3,2], [3,3], [3,4], [3,5], [3,6], [3,7], [3,8], [3,9], [3,10], [3,11], [3,12], [3,13],
+//     [4,1], [4,2], [4,3], [4,4], [4,5], [4,6], [4,7], [4,8], [4,9], [4,10], [4,11], [4,12], [4,13],
+//     [5,1], [5,2], [5,3], [5,4], [5,5], [5,6], [5,7], [5,8], [5,9], [5,10], [5,11], [5,12], [5,13],
+//     [6,1], [6,2], [6,3], [6,4], [6,5], [6,6], [6,7], [6,8], [6,9], [6,10], [6,11], [6,12], [6,13],
+//     [7,1], [7,2], [7,3], [7,4], [7,5], [7,6], [7,7], [7,8], [7,9], [7,10], [7,11], [7,12], [7,13],
+//     [8,1], [8,2], [8,3], [8,4], [8,5], [8,6], [8,7], [8,8], [8,9], [8,10], [8,11], [8,12], [8,13],
+//     [9,1], [9,2], [9,3], [9,4], [9,5], [9,6], [9,7], [9,8], [9,9], [9,10], [9,11], [9,12], [9,13],
+//     [10,1],[10,2],[10,3],[10,4],[10,5],[10,6],[10,7],[10,8],[10,9],[10,10],[10,11],[10,12],[10,13],
+//     [11,1],[11,2],[11,3],[11,4],[11,5],[11,6],[11,7],[11,8],[11,9],[11,10],[11,11],[11,12],[11,13]
 // ]
-//need a class to build an object
-
-const pointsNeededToWin = "15"
 
 /*------------------------------ Variables ------------------------------*/
 let snake
@@ -79,13 +64,10 @@ let gridRows
 let gridColumns
 let gameBoard
 
-
-let snakeSize // Current size of the snake
-let snakeHeadLocation // The snake's head's current location on the gameBoard
-let snakeBodyLocation // The snake's body's current locations on the gameBoard. An array of arrays.
 let fruitLocations // The various fruit locations on the gameBoard. An array of arrays.
-let snakeCurrentDirection // The direction the snake is moving, "Up", Down", Right", "Left"
 let numberOfFruitEaten // The players current score
+
+let pointsNeededToWin
 let isWinner // Will be "true" if the player has won the game
 let isLoser // Will be "true" if the player has lost the game
 
@@ -111,12 +93,15 @@ const rightKeyBtnElement = document.querySelector("#right-arrow-image")
 
 /*--------------------------- Event Listeners ---------------------------*/
 
-leftKeyBtnElement.addEventListener("click", (event) => handleLeftClick(event.key)) //Listens for a click on the Left Key button element
-rightKeyBtnElement.addEventListener("click",(event) => handleLeftClick(event.key)) //Listens for a click on the Right Key button element
+leftKeyBtnElement.addEventListener("click", (event) => handleLeftClick(event)) //Listens for a click on the Left Key button element
+rightKeyBtnElement.addEventListener("click",(event) => handleLeftClick(event)) //Listens for a click on the Right Key button element
+leftKeyBtnElement.addEventListener("click", (event) => handleLeftClick(event)) //Listens for a click on the Left Key button element
+rightKeyBtnElement.addEventListener("click",(event) => handleLeftClick(event)) //Listens for a click on the Right Key button element
+
 
 // Listens for Up, Down, Left, Right arrows on the keyboard
 document.addEventListener("keydown",(event) => {
-            handleKey(event.key)
+            handleKey(event)
     })
 
 // toggleDarkModeBtn.addEventListener("click", toggleDarkMode) //Listens for a click on the Dark Mode button element
@@ -154,6 +139,9 @@ function init() {
     // //Add fruit to the gameboard
     // numberOfFruitEaten = 0
     // fruitLocations = [[4,3], [2,8], [5,10]]
+
+    //Set the rules of the game
+    pointsNeededToWin = "15"
 
     //Start the loop that moves the snake
     startLoop()
@@ -349,8 +337,9 @@ function handleRightClick() {
     turnSnakeRight()
 }
 
-function handleClick() {
-    switch (snake.headDirection) {
+function handleClick(event) {
+    //Check which element was clicked and change the snakes direction accordingly
+    switch (event.target) {
         case "ArrowUp":
             snake.headDirection = "Up"
             break;
@@ -369,8 +358,9 @@ function handleClick() {
     }
 }
 
-function handleKey(key) {
-    switch (key) {
+function handleKey(event) {
+    //Check which key was pressed and change the snakes direction accordingly
+    switch (event.key) {
         case "ArrowUp":
             snake.headDirection = "Up"
             break;
