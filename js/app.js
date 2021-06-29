@@ -243,7 +243,7 @@ function renderGameElements() {
         if(location.toString() === cell.toString()) {
 
             //Add the snake styling
-            matchingCellElement.setAttribute("class", "cell snake-head")
+            matchingCellElement.setAttribute("class", "cell snake-body")
             }
         })
     })
@@ -294,12 +294,12 @@ function everyLoopThisHappens() {
 }
 
 function logPreviousLocations() {
-    //
+    //Log every movements that the snake takes
     snake.previousHeadLocations.unshift(snake.headLocation)
 }
 
 function updateBodyLocations() {
-    //
+    //Cut off a portion of the snake's previous movements based on the snake's size
     snake.bodyLocations = snake.previousHeadLocations.slice(0, snake.size - 1)
 }
 
