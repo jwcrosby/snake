@@ -429,39 +429,76 @@ function moveSnakeForward() {
         snake.size += 1
     }
 
-    function changeAppleLocation(fruitLocation) {
-        //! Need to combine to changeFruitLocation(), having trouble with object.keys
-        do {
-            //Set a random location on the grid
-            newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
+    function changeAppleLocation() {
+    //! Need to combine to changeFruitLocation(), having trouble with object.keys
+    //Declare a variable that represents whether or not the item hit the snakeBody
+    let collisionWithSnakeBody = true
 
-        } while (
-            //Continue to set random numbers if they match any existing items on the grid
-            newFruitLocation.toString() === fruitLocations.apple.toString() ||
-            newFruitLocation.toString() === fruitLocations.banana.toString() ||
-            newFruitLocation.toString() === fruitLocations.orange.toString() ||
-            newFruitLocation.toString() === snake.headLocation.toString() 
-            //!Proof - need to ensure that fruit can't spawn on items in bodyLocations array
-        )
-        //Once the loop is broken, set the fruit's new location
-        fruitLocations.apple = newFruitLocation
-    }
+    do {
+        //Set a random location on the grid
+        newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
+
+        //Set collisionWithSnakeBody to false
+        collisionWithSnakeBody = false
+
+        //For every subArray in bodLocations 
+        snake.bodyLocations.forEach((subArray) => {
+
+            //Check if the newFruitLocation is equal to the bodyLocation subArray item
+            if(newFruitLocation.toString() === subArray.toString()) {
+                //If this is true for the snakeBodyLocation subArray, set collisionWithSnakeBody back to true
+                collisionWithSnakeBody = true
+            }
+        })
+
+    } while (
+        //Continue to set random grid locations if the location matches any existing items on the grid
+        newFruitLocation.toString() === fruitLocations.apple.toString() ||
+        newFruitLocation.toString() === fruitLocations.banana.toString() ||
+        newFruitLocation.toString() === fruitLocations.orange.toString() ||
+        newFruitLocation.toString() === snake.headLocation.toString() || 
+        //Including anything in snake.bodyLocations
+        collisionWithSnakeBody
+    )
+
+    //Once the loop is broken, set the fruit's new location
+    fruitLocations.apple = newFruitLocation   
+}
 
     function changeBananaLocation() {
         //! Need to combine to changeFruitLocation(), having trouble with object.keys
+        //Declare a variable that represents whether or not the item hit the snakeBody
+        let collisionWithSnakeBody = true
+
         do {
             //Set a random location on the grid
             newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
 
+            //Set collisionWithSnakeBody to false
+            collisionWithSnakeBody = false
+
+            //For every subArray in bodLocations 
+            snake.bodyLocations.forEach((subArray) => {
+
+                //Check if the newFruitLocation is equal to the bodyLocation subArray item
+                if(newFruitLocation.toString() === subArray.toString()) {
+                    //If this is true for the snakeBodyLocation subArray, set collisionWithSnakeBody back to true
+                    collisionWithSnakeBody = true
+                }
+            })
+
         } while (
-            //Continue to set random numbers if they match any existing items on the grid
+            //Continue to set random grid locations if the location matches any existing items on the grid
             newFruitLocation.toString() === fruitLocations.apple.toString() ||
             newFruitLocation.toString() === fruitLocations.banana.toString() ||
             newFruitLocation.toString() === fruitLocations.orange.toString() ||
-            newFruitLocation.toString() === snake.headLocation.toString())
-        //Once the loop is broken, set the fruit's new location
-        fruitLocations.banana = newFruitLocation
+            newFruitLocation.toString() === snake.headLocation.toString() || 
+            //Including anything in snake.bodyLocations
+            collisionWithSnakeBody
+        )
 
+        //Once the loop is broken, set the fruit's new location
+        fruitLocations.banana = newFruitLocation   
     }
 
     function changeOrangeLocation() {
