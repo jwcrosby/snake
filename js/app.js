@@ -282,11 +282,8 @@ function everyLoopThisHappens() {
         //Render the snakes current position
         renderGameElements()
 
-        //Determine if the snake hit fruit
-        checkIfSnakeHitFruit()
-
-        // //!!Determine if the snake hit itself
-        // checkIfSnakeHitItself()
+        //Determine if the snake hit fruit or itself
+        checkForCollision()
 
         // //!!Determine if the player have enough points won the game
         // checkIfGameWonOrLost()
@@ -356,7 +353,7 @@ function moveSnakeForward() {
         }
     }
 
-    function checkIfSnakeHitFruit() {
+    function checkForCollision() {
         //Check if you hit the apple 
         if(snake.headLocation.toString() === fruitLocations.apple.toString()) {
 
@@ -412,7 +409,19 @@ function moveSnakeForward() {
     }
 
     function changeFruitLocation() {
-        //Maybe a do while loop?
+
+        let newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
+
+        console.log(newFruitLocation)
+        console.log(randomNumberBetween(1, 2))
+
+        if(newFruitLocation.toString() !== fruitLocations.orange.toString()) {
+
+            fruitLocations.orange = newFruitLocation
+
+        }
+        //let random1 = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
         //Find a random spot on the map to move the fruit [r, c] = [random#between1andgridRows, random#between1andgridColumns]
         //Check if something is in that spot. If it is, do is again.
         //Make sure that something is not already there
@@ -420,6 +429,11 @@ function moveSnakeForward() {
         //There can be a function after every action that updates a location that also updates this list
         //Then you can reference that list exclusively to determine if a space is occupied
         //Otherwise you need to loop through what? Snake? Fruit? if that's item, nbd
+    }
+
+    function randomNumberBetween(min, max) {
+        //Generate a random number between min and max
+        return Math.floor(Math.random() * (max - min)) + min
     }
 
     function checkIfSnakeHitItself() {
