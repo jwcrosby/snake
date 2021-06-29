@@ -131,14 +131,12 @@ function init() {
 
     //Set the initial snake parameters
     snake = {
-        speed: 300,
+        speed: 500,
         size: 2,
         headLocation: [9,7],
-        bodyLocation: [[9,6]],
+        bodyLocations: [[9,6]],
         headDirection: "Right",
         previousHeadLocations: []
-        // tailLocation: this.location[location.length - 1],
-        // tailDirection: "Right"
     }
 
     //Add fruit to the gameboard
@@ -236,11 +234,11 @@ function renderGameElements() {
             matchingCellElement.setAttribute("class", "cell snake-head")
         
             //Log the snakes location (cause you can)
-            console.log(`Snake is on ${snake.headLocation}`)
+            //console.log(`Snake is on ${snake.headLocation}`)
         }
 
         //RENDER SNAKEBODY
-        snake.bodyLocation.forEach((location) => {
+        snake.bodyLocations.forEach((location) => {
 
         if(location.toString() === cell.toString()) {
 
@@ -249,14 +247,11 @@ function renderGameElements() {
             }
         })
     })
-
-    
 }
 
 function renderScore() {
-
+    //
     pointsBoxElement.innerHTML = numberOfFruitEaten
-
 }
 
 // This function kicks off the timer. Every X seconds, the snake moves.
@@ -276,12 +271,13 @@ function everyLoopThisHappens() {
     if(!isWinner && !isLoser){
 
         //Add current location to list of previous locations
-        snake.previousHeadLocations.unshift(snake.headLocation)
-
-        // console.log(snake.previousHeadLocations)
+        logPreviousLocations()
 
         //Move the snake forward
         moveSnakeForward()
+
+        //Update the location of the snake's body
+        updateBodyLocations()
 
         //Render the snakes current position
         renderGameElements()
@@ -295,6 +291,16 @@ function everyLoopThisHappens() {
         // //Determine if the player have enough points won the game
         // checkIfGameWonOrLost()
     }
+}
+
+function logPreviousLocations() {
+    //
+    snake.previousHeadLocations.unshift(snake.headLocation)
+}
+
+function updateBodyLocations() {
+    //
+    snake.bodyLocations = snake.previousHeadLocations.slice(0, snake.size - 1)
 }
 
 function moveSnakeForward() {
@@ -396,13 +402,6 @@ function moveSnakeForward() {
     function growSnake() {
         //Log the increase in size to the snake.size parameter
         snake.size += 1
-
-        //Add to snake body array
-        snake.bodyLocation = snake.previousHeadLocations.slice(0, snake.size - 1)
-
-        console.log(snake.bodyLocation)
-        console.log(snake.size)
-
     }
 
     function checkIfSnakeHitItself() {
