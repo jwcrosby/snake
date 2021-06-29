@@ -63,6 +63,7 @@ let gameBoard
 
 let fruitLocations // The various fruit locations on the gameBoard. An array of arrays.
 let numberOfFruitEaten // The players current score
+let newFruitLocation
 
 let pointsNeededToWin
 let isWinner // Will be "true" if the player has won the game
@@ -143,7 +144,7 @@ function init() {
     fruitLocations = {
         apple: [4,3],
         banana:[2,8],
-        orange: [5,10]
+        orange: [5,10],
     }
 
     //Render the the snake and the fruit
@@ -365,7 +366,8 @@ function moveSnakeForward() {
             //Increase the size of the snake
             growSnake()
 
-            //!Move the fruit
+            //Move the fruit
+            changeAppleLocation()
 
         //Check if you hit the banana
         } else if(snake.headLocation.toString() === fruitLocations.banana.toString()) {
@@ -378,7 +380,8 @@ function moveSnakeForward() {
             //Increase the size of the snake
             growSnake()
 
-            //!Move the fruit
+            //Move the fruit
+            changeBananaLocation()
 
         //Check if you hit the orange
         } else if(snake.headLocation.toString() === fruitLocations.orange.toString()) {
@@ -391,8 +394,7 @@ function moveSnakeForward() {
             //Increase the size of the snake
             growSnake()
 
-            //!Move the fruit
-            changeFruitLocation()
+            changeOrangeLocation()
         }
     } 
 
@@ -408,27 +410,59 @@ function moveSnakeForward() {
         snake.size += 1
     }
 
-    function changeFruitLocation() {
+    function changeAppleLocation() {
+        //! Need to combine to changeFruitLocation(), having trouble with object.keys
+        do {
+            //Set a random location on the grid
+            newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
 
-        let newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
+        } while (
+            //Continue to set random numbers if they match any existing items on the grid
+            newFruitLocation.toString() === fruitLocations.apple.toString() ||
+            newFruitLocation.toString() === fruitLocations.banana.toString() ||
+            newFruitLocation.toString() === fruitLocations.orange.toString() ||
+            newFruitLocation.toString() === snake.headLocation.toString() 
+            //!Proof - need to ensure that fruit can't spawn on items in bodyLocations array
+        )
+        //Once the loop is broken, set the fruit's new location
+        fruitLocations.apple = newFruitLocation
+    }
 
-        console.log(newFruitLocation)
-        console.log(randomNumberBetween(1, 2))
+    function changeBananaLocation() {
+        //! Need to combine to changeFruitLocation(), having trouble with object.keys
+        do {
+            //Set a random location on the grid
+            newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
 
-        if(newFruitLocation.toString() !== fruitLocations.orange.toString()) {
+        } while (
+            //Continue to set random numbers if they match any existing items on the grid
+            newFruitLocation.toString() === fruitLocations.apple.toString() ||
+            newFruitLocation.toString() === fruitLocations.banana.toString() ||
+            newFruitLocation.toString() === fruitLocations.orange.toString() ||
+            newFruitLocation.toString() === snake.headLocation.toString() 
+            //!Proof - need to ensure that fruit can't spawn on items in bodyLocations array
+        )
+        //Once the loop is broken, set the fruit's new location
+        fruitLocations.banana = newFruitLocation
 
-            fruitLocations.orange = newFruitLocation
+    }
 
-        }
-        //let random1 = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+    function changeOrangeLocation() {
+        //! Need to combine to changeFruitLocation(), having trouble with object.keys
+        do {
+            //Set a random location on the grid
+            newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
 
-        //Find a random spot on the map to move the fruit [r, c] = [random#between1andgridRows, random#between1andgridColumns]
-        //Check if something is in that spot. If it is, do is again.
-        //Make sure that something is not already there
-        //Maybe you should make a list called "occupiedSpaces", reset every time the game loops. 
-        //There can be a function after every action that updates a location that also updates this list
-        //Then you can reference that list exclusively to determine if a space is occupied
-        //Otherwise you need to loop through what? Snake? Fruit? if that's item, nbd
+        } while (
+            //Continue to set random numbers if they match any existing items on the grid
+            newFruitLocation.toString() === fruitLocations.apple.toString() ||
+            newFruitLocation.toString() === fruitLocations.banana.toString() ||
+            newFruitLocation.toString() === fruitLocations.orange.toString() ||
+            newFruitLocation.toString() === snake.headLocation.toString() 
+            //!Proof - need to ensure that fruit can't spawn on items in bodyLocations array
+        )
+        //Once the loop is broken, set the fruit's new location
+        fruitLocations.orange = newFruitLocation
     }
 
     function randomNumberBetween(min, max) {
