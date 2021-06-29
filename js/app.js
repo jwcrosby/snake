@@ -131,7 +131,7 @@ function init() {
 
     //Set the initial snake parameters
     snake = {
-        speed: 500,
+        speed: 300,
         size: 2,
         headLocation: [9,7],
         bodyLocations: [[9,6]],
@@ -225,17 +225,6 @@ function renderGameElements() {
             //Add the empty cell styling
             matchingCellElement.setAttribute("class", "cell")
         }
-        
-        //RENDER SNAKEHEAD
-        //If the cell's coordinates match snake head's coordinates
-        if(snake.headLocation.toString() === cell.toString()) {
-
-            //Add the snake styling
-            matchingCellElement.setAttribute("class", "cell snake-head")
-        
-            //Log the snakes location (cause you can)
-            //console.log(`Snake is on ${snake.headLocation}`)
-        }
 
         //RENDER SNAKEBODY
         snake.bodyLocations.forEach((location) => {
@@ -246,6 +235,17 @@ function renderGameElements() {
             matchingCellElement.setAttribute("class", "cell snake-body")
             }
         })
+
+        //RENDER SNAKEHEAD
+        //If the cell's coordinates match snake head's coordinates
+        if(snake.headLocation.toString() === cell.toString()) {
+
+            //Add the snake styling
+            matchingCellElement.setAttribute("class", "cell snake-head")
+        
+            //Log the snakes location (cause you can)
+            //console.log(`Snake is on ${snake.headLocation}`)
+        }
     })
 }
 
@@ -285,10 +285,10 @@ function everyLoopThisHappens() {
         //Determine if the snake hit fruit
         checkIfSnakeHitFruit()
 
-        // //Determine if the snake hit itself
+        // //!!Determine if the snake hit itself
         // checkIfSnakeHitItself()
 
-        // //Determine if the player have enough points won the game
+        // //!!Determine if the player have enough points won the game
         // checkIfGameWonOrLost()
     }
 }
@@ -368,6 +368,8 @@ function moveSnakeForward() {
             //Increase the size of the snake
             growSnake()
 
+            //!Move the fruit
+
         //Check if you hit the banana
         } else if(snake.headLocation.toString() === fruitLocations.banana.toString()) {
 
@@ -379,6 +381,8 @@ function moveSnakeForward() {
             //Increase the size of the snake
             growSnake()
 
+            //!Move the fruit
+
         //Check if you hit the orange
         } else if(snake.headLocation.toString() === fruitLocations.orange.toString()) {
 
@@ -389,6 +393,9 @@ function moveSnakeForward() {
 
             //Increase the size of the snake
             growSnake()
+
+            //!Move the fruit
+            changeFruitLocation()
         }
     } 
 
@@ -404,17 +411,28 @@ function moveSnakeForward() {
         snake.size += 1
     }
 
+    function changeFruitLocation() {
+        //Maybe a do while loop?
+        //Find a random spot on the map to move the fruit [r, c] = [random#between1andgridRows, random#between1andgridColumns]
+        //Check if something is in that spot. If it is, do is again.
+        //Make sure that something is not already there
+        //Maybe you should make a list called "occupiedSpaces", reset every time the game loops. 
+        //There can be a function after every action that updates a location that also updates this list
+        //Then you can reference that list exclusively to determine if a space is occupied
+        //Otherwise you need to loop through what? Snake? Fruit? if that's item, nbd
+    }
+
     function checkIfSnakeHitItself() {
-        //If so, end the game
+        //!!If so, end the game
         gameOver()
     }
     
     function checkIfGameWonOrLost() {
-        //Determine if the game has been won or lost using the isWinner and isLoser variables
+        //!!Determine if the game has been won or lost using the isWinner and isLoser variables
         
-        //If so, stop the loop
+        //!!If so, stop the loop
 
-    //Also, add a new window element to the page that displays a win/loss message and the restart button
+    //!!Also, add a new window element to the page that displays a win/loss message and the restart button
 }
 
 function handleClick(event) {
@@ -460,10 +478,10 @@ function handleKey(event) {
 }
 
 function toggleDarkMode() {
-
+//!!
 }
 
 function restartGame() {
-
+//!!
 }
 
