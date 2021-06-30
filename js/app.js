@@ -575,29 +575,31 @@ function checkForWinner() {
 }
 
 function gameWin() {
-    console.log("You win! :)")
-
     //Stop the snake's movement
     stopTheSnake()
 
     //Set the modal text
     setModalText("You win! :)")
 
+    //Set the retry button text
+    setRestartText("Click here or press SPACE to try again!")
+
     //Unhide the modal window
     showModalWindow()
 
     //Allow the user to press spacebar to restart
-    // toggleSpacebarRestartListenerOn()
+    toggleSpacebarRestartListenerOn()
 }
 
 function gameLose() {
-    console.log("You lose! :(")
-
     //Stop the snake's movement
     stopTheSnake()
 
     //Set the modal text
     setModalText("You lose! :(")
+
+    //Set the retry button text
+    setRestartText("Click here or press SPACE to try again!")
 
     //Unhide the modal window
     showModalWindow()
@@ -616,6 +618,10 @@ function hideModalWindow() {
 
 function setModalText(text) {
     modalTextElement.innerText = text
+}
+
+function setRestartText(text) {
+    restartGameBtn.innerText = text
 }
 
 function initialStartLoop() {
