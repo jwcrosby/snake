@@ -127,11 +127,11 @@ footer > #arrow-button-container {
         "notl up notr"
         "left nomid right"
         "nobl down nobr";
-    padding: 30px 20px 30px 20px;
+    margin: 20px;
 }
 
 footer > #arrow-button-container > img {
-    max-height: 110px;
+    max-height: 95px;
 }
 
 footer > #arrow-button-container > #up-arrow-image {
@@ -154,7 +154,7 @@ footer > #score {
     grid-area: score;
 
     display: grid;
-    grid-template-rows: 20% auto;
+    grid-template-rows: 1fr 2fr;
     grid-template-columns: 1fr;
     grid-template-areas: 
         "scorewords"
@@ -169,8 +169,8 @@ footer > #score > #score-title {
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    padding: 50px 0 0 0;
-
+    margin: 80px 0 -20px 0;
+    padding: 0;
 }
 
 footer > #score > #score-number {
@@ -180,6 +180,8 @@ footer > #score > #score-number {
     align-items: center;
     justify-content: center;
     font-size: 10rem;
+    margin: -60px 0 0 0;
+    padding: 0;
 }
 
 /* The Modal (background) */
@@ -192,7 +194,7 @@ footer > #score > #score-number {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
 }
 
 #modal-window {
@@ -212,7 +214,7 @@ footer > #score > #score-number {
 }
 
 #modal-text {
-    font-size: 40px;
+    font-size: 3rem;
     text-align: center;
     margin-top: 25px;
 }
@@ -221,7 +223,7 @@ footer > #score > #score-number {
 #try-again-btn {
     /* display: none; */
     color: rgb(207, 73, 73);
-    font-size: 24px;
+    font-size: 2.25rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 5px;
