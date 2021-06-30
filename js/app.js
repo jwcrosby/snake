@@ -85,6 +85,8 @@ let isLoser // Will be "true" if the player has lost the game
 let timerIntervalId //Utilized by the snake movement loop
 let seconds //
 
+let loopOn
+
 /*---------------------- Cached Element References ----------------------*/
 
 // const gameBoardArray = document.querySelector("")
@@ -93,6 +95,7 @@ let seconds //
 const gridContainerElement = document.querySelector("#game-grid") 
 // const gameBoardElement = Array.from(document.querySelector(".cell"))
 
+const arrowBtnContainerElement = document.querySelector("#arrow-button-container")
 const upKeyBtnElement = document.querySelector("#up-arrow-image")
 const downKeyBtnElement = document.querySelector("#down-arrow-image")
 const leftKeyBtnElement = document.querySelector("#left-arrow-image")
@@ -108,10 +111,12 @@ const pointsBoxElement = document.querySelector("#score-number")
 
 /*--------------------------- Event Listeners ---------------------------*/
 
-upKeyBtnElement.addEventListener("click", (event) => handleClick(event)) //Listens for a click on the Up Key button element
-downKeyBtnElement.addEventListener("click",(event) => handleClick(event)) //Listens for a click on the Down Key button element
-leftKeyBtnElement.addEventListener("click", (event) => handleClick(event)) //Listens for a click on the Left Key button element
-rightKeyBtnElement.addEventListener("click",(event) => handleClick(event)) //Listens for a click on the Right Key button element
+arrowBtnContainerElement.addEventListener("click", () => anyArrowKey())
+arrowBtnContainerElement.addEventListener("click", (event) => handleClick(event))
+// upKeyBtnElement.addEventListener("click", (event) => handleClick(event)) //Listens for a click on the Up Key button element
+// downKeyBtnElement.addEventListener("click",(event) => handleClick(event)) //Listens for a click on the Down Key button element
+// leftKeyBtnElement.addEventListener("click", (event) => handleClick(event)) //Listens for a click on the Left Key button element
+// rightKeyBtnElement.addEventListener("click",(event) => handleClick(event)) //Listens for a click on the Right Key button element
 
 // Listens for Up, Down, Left, Right arrows on the keyboard
 document.addEventListener("keydown",(event) => {
@@ -147,9 +152,9 @@ function init() {
     snake = {
         speed: 300,
         size: 2,
-        headLocation: [9,7],
-        bodyLocations: [[9,6]],
-        headDirection: "Right",
+        headLocation: [9,6],
+        bodyLocations: [[9,5]],
+        headDirection: "",
         previousHeadLocations: []
     }
 
@@ -160,11 +165,11 @@ function init() {
         orange: [5,10]
     }
 
+    //
+    loopOn = false
+
     //Render the the snake and the fruit
     renderGameElements()
-
-    //Start the loop that moves the snake
-    startLoop()
 }
 
 function generateGameboard() {
@@ -370,207 +375,237 @@ function moveSnakeForward() {
         }
     }
 
-    function checkForItemCollision() {
-        //Check if you hit the apple 
-        if(snake.headLocation.toString() === fruitLocations.apple.toString()) {
+function checkForItemCollision() {
+    //Check if you hit the apple 
+    if(snake.headLocation.toString() === fruitLocations.apple.toString()) {
 
-            console.log("APPLE HIT!")
+        console.log("APPLE HIT!")
 
-            //Add a point and render it
-            addPoint()
+        //Add a point and render it
+        addPoint()
 
-            //Increase the size of the snake
-            growSnake()
+        //Increase the size of the snake
+        growSnake()
 
-            //Move the fruit
-            changeAppleLocation()
+        //Move the fruit
+        changeAppleLocation()
 
-        //Check if you hit the banana
-        } else if(snake.headLocation.toString() === fruitLocations.banana.toString()) {
+    //Check if you hit the banana
+    } else if(snake.headLocation.toString() === fruitLocations.banana.toString()) {
 
-            console.log("BANANA HIT!")
+        console.log("BANANA HIT!")
 
-            //Add a point and render it
-            addPoint()
+        //Add a point and render it
+        addPoint()
 
-            //Increase the size of the snake
-            growSnake()
+        //Increase the size of the snake
+        growSnake()
 
-            //Move the fruit
-            changeBananaLocation()
+        //Move the fruit
+        changeBananaLocation()
 
-        //Check if you hit the orange
-        } else if(snake.headLocation.toString() === fruitLocations.orange.toString()) {
+    //Check if you hit the orange
+    } else if(snake.headLocation.toString() === fruitLocations.orange.toString()) {
 
-            console.log("ORANGE HIT!")
+        console.log("ORANGE HIT!")
 
-            //Add a point and render it
-            addPoint()
+        //Add a point and render it
+        addPoint()
 
-            //Increase the size of the snake
-            growSnake()
+        //Increase the size of the snake
+        growSnake()
 
-            changeOrangeLocation()
-        }
+        changeOrangeLocation()
     }
+}
 
-    function addPoint() {
-        //Add to the total score
-        numberOfFruitEaten += 1
+function addPoint() {
+    //Add to the total score
+    numberOfFruitEaten += 1
 
-        renderScore()
-    }
+    renderScore()
+}
 
-    function growSnake() {
-        //Log the increase in size to the snake.size parameter
-        snake.size += 1
-    }
+function growSnake() {
+    //Log the increase in size to the snake.size parameter
+    snake.size += 1
+}
 
-    function changeAppleLocation() {
-        // Need to refactor to changeFruitLocation(), having trouble with fruitLocations.key
+function changeAppleLocation() {
+    // Need to refactor to changeFruitLocation(), having trouble with fruitLocations.key
 
-        //Declare a variable that represents whether or not the item hit the snakeBody
-        let collisionWithSnakeBody = true
+    //Declare a variable that represents whether or not the item hit the snakeBody
+    let collisionWithSnakeBody = true
 
-        do {
-            //Set a random location on the grid
-            newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
+    do {
+        //Set a random location on the grid
+        newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
 
-            //Set collisionWithSnakeBody to false
-            collisionWithSnakeBody = false
+        //Set collisionWithSnakeBody to false
+        collisionWithSnakeBody = false
 
-            //For every subArray in bodyLocations 
-            snake.bodyLocations.forEach((location) => {
-
-                //Check if the newFruitLocation is equal to the bodyLocation subArray item
-                if(newFruitLocation.toString() === location.toString()) {
-                    //If this is true for the snakeBodyLocation subArray, set collisionWithSnakeBody back to true
-                    collisionWithSnakeBody = true
-                }
-            })
-
-        } while (
-            //Continue to set random grid locations if the location matches any existing items on the grid
-            newFruitLocation.toString() === fruitLocations.apple.toString() ||
-            newFruitLocation.toString() === fruitLocations.banana.toString() ||
-            newFruitLocation.toString() === fruitLocations.orange.toString() ||
-            newFruitLocation.toString() === snake.headLocation.toString() || 
-            //Including anything in snake.bodyLocations
-            collisionWithSnakeBody
-        )
-
-        //Once the loop is broken, set the fruit's new location
-        fruitLocations.apple = newFruitLocation   
-    }
-
-    function changeBananaLocation() {
-        // Need to refactor to changeFruitLocation(), having trouble with fruitLocations.key
-
-        //Declare a variable that represents whether or not the item hit the snakeBody
-        let collisionWithSnakeBody = true
-
-        do {
-            //Set a random location on the grid
-            newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
-
-            //Set collisionWithSnakeBody to false
-            collisionWithSnakeBody = false
-
-            //For every subArray in bodyLocations 
-            snake.bodyLocations.forEach((location) => {
-
-                //Check if the newFruitLocation is equal to the bodyLocation subArray item
-                if(newFruitLocation.toString() === location.toString()) {
-                    //If this is true for the snakeBodyLocation subArray, set collisionWithSnakeBody back to true
-                    collisionWithSnakeBody = true
-                }
-            })
-
-        } while (
-            //Continue to set random grid locations if the location matches any existing items on the grid
-            newFruitLocation.toString() === fruitLocations.apple.toString() ||
-            newFruitLocation.toString() === fruitLocations.banana.toString() ||
-            newFruitLocation.toString() === fruitLocations.orange.toString() ||
-            newFruitLocation.toString() === snake.headLocation.toString() || 
-            //Including anything in snake.bodyLocations
-            collisionWithSnakeBody
-        )
-
-        //Once the loop is broken, set the fruit's new location
-        fruitLocations.banana = newFruitLocation   
-    }
-
-    function changeOrangeLocation() {
-        // Need to refactor to changeFruitLocation(), having trouble with fruitLocations.key
-
-        //Declare a variable that represents whether or not the item hit the snakeBody
-        let collisionWithSnakeBody = true
-
-        do {
-            //Set a random location on the grid
-            newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
-
-            //Set collisionWithSnakeBody to false
-            collisionWithSnakeBody = false
-
-            //For every subArray in bodyLocations 
-            snake.bodyLocations.forEach((location) => {
-
-                //Check if the newFruitLocation is equal to the bodyLocation subArray item
-                if(newFruitLocation.toString() === location.toString()) {
-                    //If this is true for the snakeBodyLocation subArray, set collisionWithSnakeBody back to true
-                    collisionWithSnakeBody = true
-                }
-            })
-
-        } while (
-            //Continue to set random grid locations if the location matches any existing items on the grid
-            newFruitLocation.toString() === fruitLocations.apple.toString() ||
-            newFruitLocation.toString() === fruitLocations.banana.toString() ||
-            newFruitLocation.toString() === fruitLocations.orange.toString() ||
-            newFruitLocation.toString() === snake.headLocation.toString() || 
-            //Including anything in snake.bodyLocations
-            collisionWithSnakeBody
-        )
-
-        //Once the loop is broken, set the fruit's new location
-        fruitLocations.orange = newFruitLocation   
-    }
-
-    function randomNumberBetween(min, max) {
-        //Generate a random number between min and max
-        return Math.floor(Math.random() * (max - min)) + min
-    }
-
-    function checkForBodyCollision() {
-        //Check every bodyLocation on the gameBoard grid
+        //For every subArray in bodyLocations 
         snake.bodyLocations.forEach((location) => {
 
-            //If the head collides with a bodyLocation
-            if(snake.headLocation.toString() === location.toString()) {
-
-                //The player loses the game
-                gameLose()
+            //Check if the newFruitLocation is equal to the bodyLocation subArray item
+            if(newFruitLocation.toString() === location.toString()) {
+                //If this is true for the snakeBodyLocation subArray, set collisionWithSnakeBody back to true
+                collisionWithSnakeBody = true
             }
         })
-    }
 
-    function checkForWinner() {
-        if(numberOfFruitEaten === pointsNeededToWin) {
-            //Run the gameWin function
-            gameWin()
+    } while (
+        //Continue to set random grid locations if the location matches any existing items on the grid
+        newFruitLocation.toString() === fruitLocations.apple.toString() ||
+        newFruitLocation.toString() === fruitLocations.banana.toString() ||
+        newFruitLocation.toString() === fruitLocations.orange.toString() ||
+        newFruitLocation.toString() === snake.headLocation.toString() || 
+        //Including anything in snake.bodyLocations
+        collisionWithSnakeBody
+    )
+
+    //Once the loop is broken, set the fruit's new location
+    fruitLocations.apple = newFruitLocation   
+}
+
+function changeBananaLocation() {
+    // Need to refactor to changeFruitLocation(), having trouble with fruitLocations.key
+
+    //Declare a variable that represents whether or not the item hit the snakeBody
+    let collisionWithSnakeBody = true
+
+    do {
+        //Set a random location on the grid
+        newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
+
+        //Set collisionWithSnakeBody to false
+        collisionWithSnakeBody = false
+
+        //For every subArray in bodyLocations 
+        snake.bodyLocations.forEach((location) => {
+
+            //Check if the newFruitLocation is equal to the bodyLocation subArray item
+            if(newFruitLocation.toString() === location.toString()) {
+                //If this is true for the snakeBodyLocation subArray, set collisionWithSnakeBody back to true
+                collisionWithSnakeBody = true
+            }
+        })
+
+    } while (
+        //Continue to set random grid locations if the location matches any existing items on the grid
+        newFruitLocation.toString() === fruitLocations.apple.toString() ||
+        newFruitLocation.toString() === fruitLocations.banana.toString() ||
+        newFruitLocation.toString() === fruitLocations.orange.toString() ||
+        newFruitLocation.toString() === snake.headLocation.toString() || 
+        //Including anything in snake.bodyLocations
+        collisionWithSnakeBody
+    )
+
+    //Once the loop is broken, set the fruit's new location
+    fruitLocations.banana = newFruitLocation   
+}
+
+function changeOrangeLocation() {
+    // Need to refactor to changeFruitLocation(), having trouble with fruitLocations.key
+
+    //Declare a variable that represents whether or not the item hit the snakeBody
+    let collisionWithSnakeBody = true
+
+    do {
+        //Set a random location on the grid
+        newFruitLocation = [randomNumberBetween(1, gridRows), randomNumberBetween(1, gridColumns)]
+
+        //Set collisionWithSnakeBody to false
+        collisionWithSnakeBody = false
+
+        //For every subArray in bodyLocations 
+        snake.bodyLocations.forEach((location) => {
+
+            //Check if the newFruitLocation is equal to the bodyLocation subArray item
+            if(newFruitLocation.toString() === location.toString()) {
+                //If this is true for the snakeBodyLocation subArray, set collisionWithSnakeBody back to true
+                collisionWithSnakeBody = true
+            }
+        })
+
+    } while (
+        //Continue to set random grid locations if the location matches any existing items on the grid
+        newFruitLocation.toString() === fruitLocations.apple.toString() ||
+        newFruitLocation.toString() === fruitLocations.banana.toString() ||
+        newFruitLocation.toString() === fruitLocations.orange.toString() ||
+        newFruitLocation.toString() === snake.headLocation.toString() || 
+        //Including anything in snake.bodyLocations
+        collisionWithSnakeBody
+    )
+
+    //Once the loop is broken, set the fruit's new location
+    fruitLocations.orange = newFruitLocation   
+}
+
+function randomNumberBetween(min, max) {
+    //Generate a random number between min and max
+    return Math.floor(Math.random() * (max - min)) + min
+}
+
+function checkForBodyCollision() {
+    //Check every bodyLocation on the gameBoard grid
+    snake.bodyLocations.forEach((location) => {
+
+        //If the head collides with a bodyLocation
+        if(snake.headLocation.toString() === location.toString()) {
+
+            //The player loses the game
+            gameLose()
         }
-    }
+    })
+}
 
-    function gameLose() {
-        console.log("You lose! :(")
+function checkForWinner() {
+    if(numberOfFruitEaten === pointsNeededToWin) {
+        //Run the gameWin function
+        gameWin()
     }
+}
 
-    function gameWin() {
-        console.log("You win! :)")
-    }
+function gameLose() {
+    console.log("You lose! :(")
+
+    //
+    stopTheSnake()
+}
+
+function gameWin() {
+    console.log("You win! :)")
+
+    //
+    stopTheSnake()
+}
+
+function initialLoopStart() {
+    //When the game first loads, start the snake's movement
+    if(!loopOn) {
+        startLoop()
+        }
+}
+
+function stopTheSnake() {
+    //Clear the direction
+    snake.headDirection = ""
+
+    //Pause the timer
+    startLoop()
+
+    //Set the loopOn boolean to false
+    loopOn = false
+
+    //Toggle both event listeners on arrows
+
+}
 
 function handleClick(event) {
+    //If the snake is not moving yet, start it's movement
+    initialLoopStart()
+
     //Check which element was clicked and change the snakes direction accordingly
     switch (event.target) {
         case upKeyBtnElement:
@@ -588,10 +623,14 @@ function handleClick(event) {
         case rightKeyBtnElement:
             snake.headDirection = "Right"
             break;
-    }
+        }
 }
 
 function handleKey(event) {
+
+    //If the snake is not moving yet, start it's movement
+    initialLoopStart()
+
     //Check which key was pressed and change the snakes direction accordingly
     switch (event.key) {
         case "ArrowUp":

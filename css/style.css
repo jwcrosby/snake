@@ -184,7 +184,7 @@ footer > #score > #score-number {
 
 /* The Modal (background) */
 .modal {
-    /* display: none; Hidden by default */
+    display: none; /* Hidden by default*/
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -201,7 +201,7 @@ footer > #score > #score-number {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #fefefe;
+    background-color: #f0f0f0;
     margin: 25% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
