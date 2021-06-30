@@ -83,7 +83,6 @@ let isWinner // Will be "true" if the player has won the game
 let isLoser // Will be "true" if the player has lost the game
 
 let timerIntervalId // Utilized by the snake movement loop
-let seconds // Used to log how long the loop has been running 
 let loopOn // Used to verify whether or not the loop is running
 
 /*---------------------- Cached Element References ----------------------*/
@@ -104,10 +103,10 @@ const pointsBoxElement = document.querySelector("#score-number")
 /*--------------------------- Event Listeners ---------------------------*/
 
 // Listens for clicks on the Up, Down, Left, Right arrow image elements
-arrowBtnContainerElement.addEventListener("click", (event) => handleClick(event))
+arrowBtnContainerElement.addEventListener("click", handleClick)
 
 // Listens for keydowns on the Up, Down, Left, Right arrows on the keyboard
-document.addEventListener("keydown",(event) => {handleKey(event)})
+document.addEventListener("keydown", handleKey)
 
 // toggleDarkModeBtn.addEventListener("click", toggleDarkMode) //Listens for a click on the Dark Mode button element
 // restartGameBtn.addEventListener("click", restartGame) //Listens for a click on the Restart Game button element
@@ -136,7 +135,7 @@ function init() {
 
     //Set the initial snake parameters
     snake = {
-        speed: 300,
+        speed: 150,
         size: 2,
         headLocation: [9,6],
         bodyLocations: [[9,5]],
@@ -255,19 +254,19 @@ function renderGameElements() {
 }
 
 function renderScore() {
-    //
+    //Render the current number of points of the pointsBox Element
     pointsBoxElement.innerHTML = numberOfFruitEaten
 }
 
-// This function kicks off the timer. Every X seconds, the snake moves.
+//This function kicks off the timer. Every X seconds, the snake moves.
 function startLoop() {
-	// Check for an active timer interval
+	//Check for an active timer interval
     if (timerIntervalId) {
-	// If interval exists, clear it and reset seconds to zero
+	//If interval exists, clear it and reset
         clearInterval(timerIntervalId);
-        seconds = 0;
+        timerIntervalId = null
     }
-    // Start a new timer interval
+    //Start a new timer interval
     timerIntervalId = setInterval(everyLoopThisHappens, snake.speed);
 }
 
@@ -575,17 +574,35 @@ function initialLoopStart() {
 }
 
 function stopTheSnake() {
-    //Clear the direction
-    snake.headDirection = ""
-
     //Pause the timer
     startLoop()
 
     //Set the loopOn boolean to false
     loopOn = false
 
-    //!!Toggle both event listeners on arrows
+    //Toggle arrow key/image listeners off
+    toggleArrowButtonListenerOff()
+    toggleArrowKeyListenerOff()
+}
 
+function toggleArrowButtonListenerOn() { 
+    // Listens for clicks on the Up, Down, Left, Right arrow image elements
+    arrowBtnContainerElement.addEventListener("click", handleClick) // Toggle ON
+}
+
+function toggleArrowButtonListenerOff() { 
+    // Listens for clicks on the Up, Down, Left, Right arrow image elements
+    arrowBtnContainerElement.removeEventListener("click", handleClick) // Toggle OFF
+}
+
+function toggleArrowKeyListenerOn() { 
+    // Listens for keydowns on the Up, Down, Left, Right arrows on the keyboard
+    document.addEventListener("keydown", handleKey) // Toggle ON
+}
+
+function toggleArrowKeyListenerOff() { 
+    // Listens for keydowns on the Up, Down, Left, Right arrows on the keyboard
+    document.removeEventListener("keydown", handleKey) // Toggle OFF
 }
 
 function handleClick(event) {
