@@ -414,7 +414,6 @@ function moveSnakeForward() {
         }
     }
 
-
     function addPoint() {
         //Add to the total score
         numberOfFruitEaten += 1
