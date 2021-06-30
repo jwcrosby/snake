@@ -205,27 +205,31 @@ footer > #score > #score-number {
     justify-content: center;
     flex-direction: column;
     background-color: #f0f0f0;
-    margin: 25% auto; /* 15% from the top and centered */
-    padding: 20px;
     border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
+    margin: 30% auto; /* XX% from the top and centered */
+    width: 40%; /* Could be more or less, depending on screen size */
+    padding: 20px;
 }
 
 #modal-text {
-    font-size: 30px; /* Hidden by default */
+    font-size: 40px;
+    text-align: center;
+    margin-top: 25px;
 }
 
 /* The Close Button */
 #try-again-btn {
     /* display: none; */
-    color: #aaa;
+    color: rgb(207, 73, 73);
     font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 #try-again-btn:hover,
 #try-again-btn:focus {
-    color: black;
+    color: rgb(204, 14, 14);
     text-decoration: none;
     cursor: pointer;
 }

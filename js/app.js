@@ -37,6 +37,12 @@ removed from the grid.
 /* How to lose: The player loses when the snake makes contact with
 itself or with the border of the gameboard. */
 
+//!! ------------------------------ TO DO ------------------------------*
+//! 1.a. Need to prevent the head from change directions if it is opposite to current direction
+//! 1.b. Need to prevent the body parts from updating location if the head doesn't move per 1.a.
+
+//! 2.a. Dark mode styling
+//! 2.b. Automatic dark mode based on user preferences
 
 /*------------------------------ Constants ------------------------------*/
 
@@ -581,7 +587,7 @@ function gameWin() {
     showModalWindow()
 
     //Allow the user to press spacebar to restart
-    toggleSpacebarRestartListenerOn()
+    // toggleSpacebarRestartListenerOn()
 }
 
 function gameLose() {
@@ -627,7 +633,6 @@ function stopTheSnake() {
     //Pause the timer
     startLoopToggle()
 
-
     //Toggle arrow key/image listeners off
     toggleArrowButtonListenerOff()
     toggleArrowKeyListenerOff()
@@ -654,19 +659,18 @@ function toggleArrowKeyListenerOff() {
 }
 
 function toggleSpacebarRestartListenerOn() {
-    document.addEventListener('keyup', (event) => { // Toggle ON
-        if(event.code === 'Space') {
-            restartGame()
-        }
-    })
+    document.addEventListener('keydown', toggleSpacebarListenerMeat)
 }
 
 function toggleSpacebarRestartListenerOff() { // Toggle OFF
-    document.removeEventListener('keyup', (event) => {
-        if(event.code === 'Space') {
-            restartGame()
-        }
-    })
+    document.removeEventListener('keydown', toggleSpacebarListenerMeat)
+}
+
+function toggleSpacebarListenerMeat(event) {
+    //Named function needed for add/removeEventListener
+    if(event.code === 'Space') {
+        restartGame()
+    }
 }
 
 function handleClick(event) {
@@ -675,26 +679,25 @@ function handleClick(event) {
 
     //Check which element was clicked and change the snakes direction accordingly
     switch (event.target) {
-        case upKeyBtnElement:
+        case upKeyBtnElement && snake.headDirection !== "Down":
             snake.headDirection = "Up"
             break;
 
-        case downKeyBtnElement:
+        case downKeyBtnElement && snake.headDirection !== "Up":
             snake.headDirection = "Down"
             break;
 
-        case leftKeyBtnElement:
+        case leftKeyBtnElement && snake.headDirection !== "Right":
             snake.headDirection = "Left"
             break;
 
-        case rightKeyBtnElement:
+        case rightKeyBtnElement && snake.headDirection !== "Left":
             snake.headDirection = "Right"
             break;
         }
 }
 
 function handleKey(event) {
-
     //If the snake is not moving yet, start it's movement
     initialStartLoop()
 
