@@ -266,11 +266,12 @@ function startLoop() {
 	//Check for an active timer interval
     if (timerIntervalId) {
 	//If interval exists, clear it and reset
-        clearInterval(timerIntervalId);
+        clearInterval(timerIntervalId)
         timerIntervalId = null
+    } else {
+        //Start a new timer interval
+        timerIntervalId = setInterval(everyLoopThisHappens, snake.speed)
     }
-    //Start a new timer interval
-    timerIntervalId = setInterval(everyLoopThisHappens, snake.speed);
 }
 
 //A timer that moves the snake forward and renders its position
@@ -562,7 +563,7 @@ function gameWin() {
     stopTheSnake()
 
     //Set the modal text
-    modalTextElement.innerText = "You win! :)"
+    setModalText("You win! :)")
 
     //Unhide the modal window
     showModalWindow()
@@ -575,7 +576,7 @@ function gameLose() {
     stopTheSnake()
 
     //Set the modal text
-    modalTextElement.innerText = "You lose! :("
+    setModalText("You lose! :(")
 
     //Unhide the modal window
     showModalWindow()
@@ -589,13 +590,18 @@ function hideModalWindow() {
     modalWindowElement.style.display = "none"
 }
 
+function setModalText(text) {
+    modalTextElement.innerText = text
+}
+
 function initialLoopStart() {
     //When the game first loads, start the snake's movement
-    if(!loopOn) {
+    if(!timerIntervalId) {
+        //
         startLoop()
 
-        //Close the modal window
-modalTextElement
+        //Hide the modal window
+        hideModalWindow()
         }
 }
 
@@ -603,8 +609,6 @@ function stopTheSnake() {
     //Pause the timer
     startLoop()
 
-    //Set the loopOn boolean to false
-    loopOn = false
 
     //Toggle arrow key/image listeners off
     toggleArrowButtonListenerOff()
@@ -686,5 +690,10 @@ function toggleDarkMode() {
 
 function restartGame() {
 //!!
+    //
+    init()
+    //Hide the modal Window
+    hideModalWindow()
+
 }
 
