@@ -162,6 +162,15 @@ function init() {
 
     //Render the the snake and the fruit
     renderGameElements()
+
+    //Set
+    setModalText("Welcome to Snake!")
+
+    //Set the retry button text
+    setRestartText("Press the arrow keys to start the game!")
+
+    //Show the modal
+    showModalWindow()
 }
 
 function generateGameboard() {
