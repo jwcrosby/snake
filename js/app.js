@@ -83,7 +83,6 @@ let isWinner // Will be "true" if the player has won the game
 let isLoser // Will be "true" if the player has lost the game
 
 let timerIntervalId // Utilized by the snake movement loop
-let loopOn // Used to verify whether or not the loop is running
 
 /*---------------------- Cached Element References ----------------------*/
 
@@ -153,8 +152,7 @@ function init() {
         orange: [5,10]
     }
 
-    //
-    loopOn = false
+    timerIntervalId = null
 
     //Render the the snake and the fruit
     renderGameElements()
@@ -178,6 +176,12 @@ function generateGameboard() {
 
 function renderGameBoard() {
 
+        //So long as gridContainerElement has a child
+        while (gridContainerElement.firstChild) {
+            //Remove that child
+            gridContainerElement.removeChild(gridContainerElement.firstChild)
+        }
+
     //For each cell on the gameboard
     gameBoard.forEach((element) => {
 
@@ -195,6 +199,14 @@ function renderGameBoard() {
     //Assign the grid parameters in CSS
     gridContainerElement.style.gridTemplateRows = `repeat(${gridRows}, 50px)`
     gridContainerElement.style.gridTemplateColumns = `repeat(${gridColumns}, 50px)`
+}
+
+function clearGameBoardRender() {
+    //So long as gridContainerElement has a child
+    while (gridContainerElement.firstChild) {
+        //Remove that child
+        gridContainerElement.removeChild(gridContainerElement.firstChild)
+    }
 }
 
 function renderGameElements() {
@@ -262,7 +274,7 @@ function renderScore() {
 }
 
 //This function kicks off the timer. Every X seconds, the snake moves.
-function startLoop() {
+function startLoopToggle() {
 	//Check for an active timer interval
     if (timerIntervalId) {
 	//If interval exists, clear it and reset
@@ -567,6 +579,9 @@ function gameWin() {
 
     //Unhide the modal window
     showModalWindow()
+
+    //Allow the user to press spacebar to restart
+    toggleSpacebarRestartListenerOn()
 }
 
 function gameLose() {
@@ -580,6 +595,9 @@ function gameLose() {
 
     //Unhide the modal window
     showModalWindow()
+
+    //Allow the user to press spacebar to restart
+    toggleSpacebarRestartListenerOn()
 }
 
 function showModalWindow() {
@@ -594,11 +612,11 @@ function setModalText(text) {
     modalTextElement.innerText = text
 }
 
-function initialLoopStart() {
+function initialStartLoop() {
     //When the game first loads, start the snake's movement
     if(!timerIntervalId) {
         //
-        startLoop()
+        startLoopToggle()
 
         //Hide the modal window
         hideModalWindow()
@@ -607,7 +625,7 @@ function initialLoopStart() {
 
 function stopTheSnake() {
     //Pause the timer
-    startLoop()
+    startLoopToggle()
 
 
     //Toggle arrow key/image listeners off
@@ -635,9 +653,25 @@ function toggleArrowKeyListenerOff() {
     document.removeEventListener("keydown", handleKey) // Toggle OFF
 }
 
+function toggleSpacebarRestartListenerOn() {
+    document.addEventListener('keyup', (event) => { // Toggle ON
+        if(event.code === 'Space') {
+            restartGame()
+        }
+    })
+}
+
+function toggleSpacebarRestartListenerOff() { // Toggle OFF
+    document.removeEventListener('keyup', (event) => {
+        if(event.code === 'Space') {
+            restartGame()
+        }
+    })
+}
+
 function handleClick(event) {
     //If the snake is not moving yet, start it's movement
-    initialLoopStart()
+    initialStartLoop()
 
     //Check which element was clicked and change the snakes direction accordingly
     switch (event.target) {
@@ -662,7 +696,7 @@ function handleClick(event) {
 function handleKey(event) {
 
     //If the snake is not moving yet, start it's movement
-    initialLoopStart()
+    initialStartLoop()
 
     //Check which key was pressed and change the snakes direction accordingly
     switch (event.key) {
@@ -684,16 +718,20 @@ function handleKey(event) {
     }
 }
 
-function toggleDarkMode() {
-//!!
-}
-
 function restartGame() {
-//!!
-    //
+    //Run init
     init()
     //Hide the modal Window
     hideModalWindow()
 
+    //Restart event listeners on arrow keys
+    toggleArrowButtonListenerOn()
+    toggleArrowKeyListenerOn()
+
+    //Turn off spacebar event listener
+    toggleSpacebarRestartListenerOff()
 }
 
+function toggleDarkMode() {
+    //!!
+    }
