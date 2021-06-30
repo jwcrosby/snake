@@ -184,7 +184,6 @@ footer > #score > #score-number {
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default*/
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -194,6 +193,10 @@ footer > #score > #score-number {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#modal-window {
+    display: none; /* Hidden by default */
 }
 
 .modal-content {
@@ -208,16 +211,20 @@ footer > #score > #score-number {
     width: 30%; /* Could be more or less, depending on screen size */
 }
 
+#modal-text {
+    font-size: 30px; /* Hidden by default */
+}
+
 /* The Close Button */
-.try-again-button {
+#try-again-button {
     /* display: none; */
     color: #aaa;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
 }
 
-.try-again-button:hover,
-.try-again-button:focus {
+#try-again-button:hover,
+#try-again-button:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

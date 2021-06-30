@@ -98,6 +98,9 @@ const rightKeyBtnElement = document.querySelector("#right-arrow-image")
 // const toggleDarkModeBtn = document.querySelector("")
 // const restartGameBtn = document.querySelector("")
 
+const modalWindowElement = document.querySelector("#modal-window")
+const modalTextElement = document.querySelector("#modal-text")
+
 const pointsBoxElement = document.querySelector("#score-number")
 
 /*--------------------------- Event Listeners ---------------------------*/
@@ -552,24 +555,47 @@ function checkForWinner() {
     }
 }
 
-function gameLose() {
-    console.log("You lose! :(")
-
-    //
-    stopTheSnake()
-}
-
 function gameWin() {
     console.log("You win! :)")
 
-    //
+    //Stop the snake's movement
     stopTheSnake()
+
+    //Set the modal text
+    modalTextElement.innerText = "You win! :)"
+
+    //Unhide the modal window
+    showModalWindow()
+}
+
+function gameLose() {
+    console.log("You lose! :(")
+
+    //Stop the snake's movement
+    stopTheSnake()
+
+    //Set the modal text
+    modalTextElement.innerText = "You lose! :("
+
+    //Unhide the modal window
+    showModalWindow()
+}
+
+function showModalWindow() {
+    modalWindowElement.style.display = "block"
+}
+
+function hideModalWindow() {
+    modalWindowElement.style.display = "none"
 }
 
 function initialLoopStart() {
     //When the game first loads, start the snake's movement
     if(!loopOn) {
         startLoop()
+
+        //Close the modal window
+modalTextElement
         }
 }
 
