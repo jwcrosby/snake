@@ -64,36 +64,31 @@ let snake = {
     headDirection: "",
     previousHeadLocations: []
 }
-//Array of objects??
+// Convert to array of objects?
 let fruitLocations = {
     apple: [],
     banana:[],
     orange: []
 }
 
-let gridRows
-let gridColumns
-let gameBoard
+let gridRows // Represents the current number of rows on the gameboard
+let gridColumns // Represents the current number of columns on the gameboard
+let gameBoard // Represents the gameboard as an array of coordinates -> [[1,1],[1,2],[1,3]...]
 
 let numberOfFruitEaten // The players current score
-let newFruitLocation
+let newFruitLocation // Used to store the location of new fruit in the changeFruitLocation function
 
 let pointsNeededToWin
 let isWinner // Will be "true" if the player has won the game
 let isLoser // Will be "true" if the player has lost the game
 
-let timerIntervalId //Utilized by the snake movement loop
-let seconds //
-
-let loopOn
+let timerIntervalId // Utilized by the snake movement loop
+let seconds // Used to log how long the loop has been running 
+let loopOn // Used to verify whether or not the loop is running
 
 /*---------------------- Cached Element References ----------------------*/
 
-// const gameBoardArray = document.querySelector("")
-// const winLoseMessageContainer = document.querySelector("")
-
 const gridContainerElement = document.querySelector("#game-grid") 
-// const gameBoardElement = Array.from(document.querySelector(".cell"))
 
 const arrowBtnContainerElement = document.querySelector("#arrow-button-container")
 const upKeyBtnElement = document.querySelector("#up-arrow-image")
@@ -106,22 +101,13 @@ const rightKeyBtnElement = document.querySelector("#right-arrow-image")
 
 const pointsBoxElement = document.querySelector("#score-number")
 
-// Element.classList.add('this')
-// Element.classList.remove('this')
-
 /*--------------------------- Event Listeners ---------------------------*/
 
-arrowBtnContainerElement.addEventListener("click", () => anyArrowKey())
+// Listens for clicks on the Up, Down, Left, Right arrow image elements
 arrowBtnContainerElement.addEventListener("click", (event) => handleClick(event))
-// upKeyBtnElement.addEventListener("click", (event) => handleClick(event)) //Listens for a click on the Up Key button element
-// downKeyBtnElement.addEventListener("click",(event) => handleClick(event)) //Listens for a click on the Down Key button element
-// leftKeyBtnElement.addEventListener("click", (event) => handleClick(event)) //Listens for a click on the Left Key button element
-// rightKeyBtnElement.addEventListener("click",(event) => handleClick(event)) //Listens for a click on the Right Key button element
 
-// Listens for Up, Down, Left, Right arrows on the keyboard
-document.addEventListener("keydown",(event) => {
-            handleKey(event)
-    })
+// Listens for keydowns on the Up, Down, Left, Right arrows on the keyboard
+document.addEventListener("keydown",(event) => {handleKey(event)})
 
 // toggleDarkModeBtn.addEventListener("click", toggleDarkMode) //Listens for a click on the Dark Mode button element
 // restartGameBtn.addEventListener("click", restartGame) //Listens for a click on the Restart Game button element
@@ -598,7 +584,7 @@ function stopTheSnake() {
     //Set the loopOn boolean to false
     loopOn = false
 
-    //Toggle both event listeners on arrows
+    //!!Toggle both event listeners on arrows
 
 }
 
