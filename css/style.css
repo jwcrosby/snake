@@ -216,15 +216,15 @@ footer > #score > #score-number {
 }
 
 /* The Close Button */
-#try-again-button {
+#try-again-btn {
     /* display: none; */
     color: #aaa;
     font-size: 24px;
     font-weight: bold;
 }
 
-#try-again-button:hover,
-#try-again-button:focus {
+#try-again-btn:hover,
+#try-again-btn:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

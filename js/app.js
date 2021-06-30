@@ -89,17 +89,17 @@ let loopOn // Used to verify whether or not the loop is running
 
 const gridContainerElement = document.querySelector("#game-grid") 
 
+const toggleDarkModeBtn = document.querySelector("#dark-mode-btn")
+
 const arrowBtnContainerElement = document.querySelector("#arrow-button-container")
 const upKeyBtnElement = document.querySelector("#up-arrow-image")
 const downKeyBtnElement = document.querySelector("#down-arrow-image")
 const leftKeyBtnElement = document.querySelector("#left-arrow-image")
 const rightKeyBtnElement = document.querySelector("#right-arrow-image")
 
-// const toggleDarkModeBtn = document.querySelector("")
-// const restartGameBtn = document.querySelector("")
-
 const modalWindowElement = document.querySelector("#modal-window")
 const modalTextElement = document.querySelector("#modal-text")
+const restartGameBtn = document.querySelector("#try-again-btn")
 
 const pointsBoxElement = document.querySelector("#score-number")
 
@@ -111,8 +111,8 @@ arrowBtnContainerElement.addEventListener("click", handleClick)
 // Listens for keydowns on the Up, Down, Left, Right arrows on the keyboard
 document.addEventListener("keydown", handleKey)
 
-// toggleDarkModeBtn.addEventListener("click", toggleDarkMode) //Listens for a click on the Dark Mode button element
-// restartGameBtn.addEventListener("click", restartGame) //Listens for a click on the Restart Game button element
+toggleDarkModeBtn.addEventListener("click", toggleDarkMode) //Listens for a click on the Dark Mode button element
+restartGameBtn.addEventListener("click", restartGame) //Listens for a click on the Restart Game button element
 
 
 /*------------------------------ Functions ------------------------------*/
