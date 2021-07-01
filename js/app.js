@@ -3,13 +3,11 @@
 //! 1.b. Need to prevent the body parts from updating location if the head doesn't move per 1.a.
 
 //! 2.a. Dark mode styling
-//! 2.b. Automatic dark mode based on user preferences
 
 //! 3.a. Figure out why keydown eventlistener works on init for any key
 
 //! 5.a. Controls on mobile?
 
-//! 
 
 //!see if I actually use isWinner/isLoser variables > prob not
 
@@ -28,9 +26,17 @@ const colorScheme = {
     dark: "",
     change: function () {
         //This is a toggle function. Check to see if the colorScheme.dark is equal to "dark"
-        //If not, set it to "dark". If so, set it to blank
-        colorScheme.dark = colorScheme.dark ? "" : "dark"
-
+        if(colorScheme.dark = colorScheme.dark) {
+            //If so, switch it to blank (light mode)
+            colorScheme.dark = ""
+            //Also toggle the dark mode button image
+            toggleDarkModeBtn.src = "images/mooneyecolor.png"
+        } else {
+            //If not, switch it to dark (dark mode)
+            colorScheme.dark = "dark"
+            //Also toggle the dark mode button image
+            toggleDarkModeBtn.src = "images/mooneyecolor.png"
+        }
         //Then set the class based on colorScheme.dark
         //Does this remove other classes?
         document.querySelector("body").setAttribute("class", colorScheme.dark)
@@ -104,7 +110,7 @@ init()
 function init() {
 
     //Check the user's preferred color scheme (light/dark mode)
-    checkUserColorSchemePreference()
+    //checkUserColorSchemePreference()
 
     //Set the initial game board parameters
     gameBoard = []
@@ -116,7 +122,7 @@ function init() {
 
     //Point system
     numberOfFruitEaten = 0
-    pointsNeededToWin = 20
+    pointsNeededToWin = 15
 
     //Render Points
     renderScore()

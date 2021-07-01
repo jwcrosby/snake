@@ -20,12 +20,47 @@ html {
 }
 
 body {
+    --body-bg-color: #eae2b7;
+
+    --header-bg-color: #fcbf49;
+    --header-text-color: #003049;
+
+    --main-bg-color: #d62828;
+
+    --footer-bg-color: #f77f00;
+    --rules-border-color: rgb(46, 45, 45);
+    --score-border-color: rgb(46, 45, 45);
+
+    --game-grid-bg-color: #80cbc4;;
+    --game-grid-border-color: #fff;
+
+    --snake-head-color: black;
+    --snake-body-color: rgb(50, 49, 49);
+
+    --item-apple-color: rgb(233, 89, 89);
+    --item-banana-color: rgb(235, 235, 74);
+    --item-orange-color: rgb(240, 183, 76);
+
+    --modal-content-bg-color: #faf7ec;
+    --modal-content-bg-border-color: ##003049; 
+
+    --try-again-button-color: #d62828;
+    --try-again-border-color: #d62828;
+    --try-again-button-hover-color: #d62828;
+    --try-again-button-hover-bg-color: rgba(0,48,73,0.1);
+
+
     height: 100vh;
-    background-color: #eae2b7
+    overflow: hidden;
+    background-color: var(--body-bg-color);
+}
+
+body.dark {
+    --body-bg: #222e2b;
 }
 
 header {
-    background-color: #fcbf49;
+    background-color: var(--header-bg-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +73,7 @@ header > #title-image {
 }
 
 header > #title {
-    color: #003049;
+    color: var(--header-text-color);
     font-size: 3.2rem;    
     margin: 0 90px 0 0;
     text-align: center;
@@ -53,7 +88,7 @@ header > #dark-mode-btn {
 }
 
 main {
-    background-color: #d62828;
+    background-color: var(--main-bg-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,31 +113,31 @@ main > #game-grid {
     grid-gap: 0vmin;
 } 
 main > #game-grid > .cell {
-    background-color: #80cbc4;
-    border: 1px solid #fff;
+    background-color: var(--game-grid-bg-color);
+    border: 1px solid var(--game-grid-border-color);
 }
 
 main > #game-grid > .item-apple {
-    background-color: rgb(233, 89, 89)
+    background-color: var(--item-apple-color);
 }
 
 main > #game-grid > .item-banana {
-    background-color: rgb(235, 235, 74)
+    background-color: var(--item-banana-color);
 }
 
 main > #game-grid > .item-orange {
-    background-color: rgb(240, 183, 76);
+    background-color: var(--item-orange-color);
 }
 main > #game-grid > .snake-head {
-    background-color: black;
+    background-color: var(--snake-head-color);
 }
 
 main > #game-grid > .snake-body {
-    background-color: rgb(50, 49, 49);
+    background-color: var(--snake-body-color);
 }
 
 footer {
-    background-color: #f77f00;
+    background-color: var(--footer-bg-color);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
@@ -119,7 +154,7 @@ footer > #game-rules {
     justify-content: center;
     text-align: center;
     font-size: 2rem;
-    border:rgb(46, 45, 45) dotted;
+    border:var(--rules-border-color) dotted;
     border-width: 2px;
     margin: 15px;
     padding: 15px;
@@ -171,7 +206,7 @@ footer > #score {
         "scorenumbers";
 
     margin: 15px;
-    border:rgb(46, 45, 45) dotted;
+    border: var(--score-border-color) dotted;
     border-width: 2px;
     border-radius: 15px; 
 }
@@ -219,13 +254,11 @@ footer > #score > #score-number {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #faf7ec;
-    border: 1px solid #888;
+    background-color: var(--modal-content-bg-color);
     margin: 35% auto; /* XX% from the top and centered */
     width: 35%; /* Could be more or less, depending on screen size */
     padding: 20px;
-    border: #003049 solid;
-    border-width: 3.5px;
+    border: var(--modal-content-bg-border-color) solid 3.5px;
 }
 
 #modal-text {
@@ -238,12 +271,12 @@ footer > #score > #score-number {
 /* The Close Button */
 #try-again-btn {
     /* display: none; */
-    color: #d62828;
+    color: var(--try-again-button-color);
     font-size: 2.15rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 5px;
-    border: #d62828 outset;
+    border: var(--try-again-border-color) outset;
     border-width: .5px;
     border-radius: 10px; 
     padding: 10px;;
@@ -251,9 +284,8 @@ footer > #score > #score-number {
 
 #try-again-btn:hover,
 #try-again-btn:focus {
-    color: #d62828;
-    background-color: rgba(0,48,73,0.1);
+    color: var(--try-again-button-hover-color);
+    background-color: var(--try-again-button-hover-bg-color);
     text-decoration: none;
     cursor: pointer;
 }
-
