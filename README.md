@@ -31,4 +31,6 @@
 - [ ] Pause game with Spacebar
 - [ ] Add obstacles 
 
-![LIGHT MODE](/images/readme/fullscreenlight.png/) ![DARK MODE](/images/readme/fullscreendark.png/)
+Light Mode                 |  Dark Mode
+:-------------------------:|:-------------------------:
+![LIGHT MODE](/images/readme/fullscreenlight.png/)  |  ![DARK MODE](/images/readme/fullscreendark.png/)
