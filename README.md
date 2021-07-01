@@ -1,9 +1,7 @@
 ![Unoffical Snake Spinoff Series](/images/READERHeader.png/)
 
 # Unoffical Snake Spinoff Series
-Minecat is a Minesweeper re-creation! Cells on the board can be clicked, which will reveal them. The goal of the game is to reveal every cell on the board, except for those that have mines. When revealed, cells with neighboring mines will be shown with a number on them, corresponding to the number of mines next to that cell. Clicking on a cell that has no adjacency with a bomb will reveal an empty space, and will reveal any empty space around it. This action cascades out until it reaches the edges of the board, any flags, or a numbered cell while revealing a single layer of numbered cells. Flags may be placed and removed with a right click, and are used to mark potential bomb locations.
 
-The number of rows, columns, and bombs can be adjusted by using the bar beneath the play board
 
 # [Play the game here!](https://snakereturns.netlify.app/).
 
@@ -19,7 +17,6 @@ The number of rows, columns, and bombs can be adjusted by using the bar beneath 
 * Icons made by iconixar from www.flaticon.com.
 * Icons made by Pixel perfect from www.flaticon.com.
 * Icons made by Smashicons from www.flaticon.com.
-
 
 
 /* How to play: 
