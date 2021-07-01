@@ -34,7 +34,7 @@ const colorScheme = {
             //LIGHT MODE 
 
             //Also toggle the dark mode button image
-            toggleDarkModeBtn.src = "images/game/mooneyehd.png"
+            toggleDarkModeBtn.src = "images/game/mooneyecolor.png"
             //Also toggle the left header image
             headerImageLeftElement.src = "images/game/snakescreamhd.png"
             //Also toggle the right header image
@@ -55,7 +55,7 @@ const colorScheme = {
             //If not, switch it to dark (dark mode)
             colorScheme.dark = "dark"
             //Also toggle the dark mode button image
-            toggleDarkModeBtn.src = "images/game/mooneyecolor.png"
+            toggleDarkModeBtn.src = "images/game/mooneyehd.png"
             //Also toggle the left header image
             headerImageLeftElement.src = "images/game/snakescreamcolor.png"
             //Also toggle the right header image
@@ -187,10 +187,10 @@ function init() {
     renderGameElements()
 
     //Set
-    setModalText("Welcome to SNEK!")
+    setModalText("THE LEGEND RETURNS!")
 
     //Set the retry button text
-    setRestartText("Press any key to start the game!")
+    setRestartText("press any key to start")
 
     //Show the modal
     showModalWindow()

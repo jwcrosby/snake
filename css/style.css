@@ -22,22 +22,24 @@ html {
 body {
     --body-bg-color: #FBE0B2;
 
-    --header-bg-color: #fcbf49;
-    --header-text-color: #FBE0B2;
+    --header-bg-color: #ebb13d;
+    --header-text-color: #F5EFC9;
     --header-border-color: #003049;
 
-    --main-bg-color: #d62828;
+    --main-bg-color: #8edac4;
 
-    --footer-bg-color: #f77f00;
+    --footer-bg-color: #ebb13d;
+    --footer-border-color: #003049;
+
     --rules-border-color: rgb(46, 45, 45);
     --score-border-color: rgb(46, 45, 45);
 
-    --game-grid-bg-color: #80cbc4;
-    --game-grid-border-color: #fff;
-    --game-grid-cell-border-color: #fff;
+    --game-grid-bg-color: rgb(65, 52, 52);
+    --game-grid-border-color: #aaa7a3;
+    --game-grid-cell-border-color: rgba(255, 255, 255, 0.041);
 
-    --snake-head-color: black;
-    --snake-body-color: rgb(50, 49, 49);
+    --snake-head-color: #1d6452;
+    --snake-body-color: #32A085;
 
     --item-apple-color: rgb(233, 89, 89);
     --item-banana-color: rgb(235, 235, 74);
@@ -120,7 +122,9 @@ header > #title {
     text-align: center;
     font-family: 'Jomhuria', cursive;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    white-space: nowrap;
 }
+
 
 header > #dark-mode-btn {
     position: absolute;
@@ -152,7 +156,8 @@ main > #game-grid {
     /* grid-template-rows: repeat(11, 1fr);
     grid-template-columns: repeat(13, 1fr); */
     grid-gap: 0vmin;
-    border: var(--game-grid-border-color) inset 3px;
+    border: var(--game-grid-border-color) 5px inset;
+    border-radius: 7px; 
 } 
 main > #game-grid > .cell {
     background-color: var(--game-grid-bg-color);
@@ -188,6 +193,8 @@ footer {
     border-radius: 10px; 
     padding: 0px 40px;
     margin: 0px 2.5px;
+    font-family: 'Josefin Sans', sans-serif;
+    border: var(--footer-border-color) inset 3px;
 }
 
 footer > #game-rules {
@@ -197,7 +204,7 @@ footer > #game-rules {
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.1rem;
     border:var(--rules-border-color) dotted;
     border-width: 2px;
     margin: 15px;
@@ -253,6 +260,7 @@ footer > #score {
     border: var(--score-border-color) dotted;
     border-width: 2px;
     border-radius: 15px; 
+    padding: 50px 0px;
 }
 
 footer > #score > #score-title {
@@ -262,8 +270,7 @@ footer > #score > #score-title {
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    margin: 80px 0 -20px 0;
-    padding: 0;
+    margin: 0 10px;
 }
 
 footer > #score > #score-number {
@@ -272,9 +279,8 @@ footer > #score > #score-number {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10rem;
-    margin: -60px 0 0 0;
-    padding: 0;
+    font-size: 12.5rem;
+    margin: 0 10px;
 }
 
 /* The Modal (background) */
@@ -303,6 +309,7 @@ footer > #score > #score-number {
     width: 35%; /* Could be more or less, depending on screen size */
     padding: 20px;
     border: var(--modal-content-bg-border-color) solid 3.5px;
+    font-family: 'Jomhuria', cursive;
 }
 
 #modal-text {
