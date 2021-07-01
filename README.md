@@ -1,6 +1,6 @@
-![Unoffical Snake Spinoff Series](/images/readme/header.png/)
+![SNAKE RETURNS](/images/readme/header.png/)
 
-# Unoffical Snake Spinoff Series
+# SNAKE RETURNS
 
 # [Click here to play!](https://snakereturns.netlify.app/)
 
@@ -30,3 +30,5 @@
 - [ ] Prevent backwards movement (insta-death)
 - [ ] Pause game with Spacebar
 - [ ] Add obstacles 
+
+![LIGHT MODE](/images/readme/fullscreenlight.png/) ![DARK MODE](/images/readme/fullscreendark.png/)
