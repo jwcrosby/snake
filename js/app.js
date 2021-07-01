@@ -46,6 +46,10 @@ itself or with the border of the gameboard. */
 
 //! 3.a. Figure out why keydown eventlistener works on init for any key
 
+//! 4.a. README.md
+
+//! 5.a. Controls on mobile?
+
 /*------------------------------ Constants ------------------------------*/
 
 // const oldGameboard = [
