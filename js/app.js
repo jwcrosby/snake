@@ -138,7 +138,7 @@ function init() {
 
     //Point system
     numberOfFruitEaten = 0
-    pointsNeededToWin = 5
+    pointsNeededToWin = 20
 
     //Render Points
     renderScore()
@@ -593,7 +593,7 @@ function gameWin() {
     setModalText("You win! :)")
 
     //Set the retry button text
-    setRestartText("Press SPACE to try again!")
+    setRestartText("Press SPACE to play again!")
 
     //Unhide the modal window
     showModalWindow()
