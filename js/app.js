@@ -1,42 +1,3 @@
-/*------------------------ Pseudocode ------------------------*/
-// 1. HTML: Create basic elements based on wireframe
-    // 1.1. The main game board is a grid, which lives within a flexbox
-
-// 2. JS: Create objects, variables, constants 
-
-// 3. JS: Store cached elements
-
-// 4. JS: Add event listeners
-
-// 5. JS: Create functions
-
-// 6. CSS: Styling (including light/dark mode)
-
-
-// Established rules:
-// -Single player game
-// -The gameboard is a 13 x 11 grid
-// -On init, the snake occupies 2 squares, facing right, moving left to right
-// -On init, there are 3 food items on the gameboard
-// -On init (or first click?), the snake begins moving forward, starting the game 
-
-/* How to play: 
--The snake will move forward in a straight line.
-
--The player uses left and right turns to manuever the snake towards
-food items on the grid. 
-
--Every time the snake makes contact with a food item, the snack grows in 
-length (occupies an additional square on the grid). The food item is also
-removed from the grid.
-
--Every time the snake makes contact with 3 food items, it will move faster.*/
-
-// How to win: The player wins when they have collected 20 items
-
-/* How to lose: The player loses when the snake makes contact with
-itself or with the border of the gameboard. */
-
 //!! ------------------------------ TO DO ------------------------------*
 //! 1.a. Need to prevent the head from change directions if it is opposite to current direction
 //! 1.b. Need to prevent the body parts from updating location if the head doesn't move per 1.a.
@@ -46,25 +7,23 @@ itself or with the border of the gameboard. */
 
 //! 3.a. Figure out why keydown eventlistener works on init for any key
 
-//! 4.a. README.md
-
 //! 5.a. Controls on mobile?
+
+//! 
+
+//!see if I actually use isWinner/isLoser variables > prob not
+
+//!turn youWon function into > levelUp. Create a Level variable. Use a switch to determine whether you raise the level and reset the init or end game
+
+//!3-4 levels
+
+//!change styling on level up 
+
+//!Prevent backwards movement
+
 
 /*------------------------------ Constants ------------------------------*/
 
-// const oldGameboard = [
-//     [1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7], [1,8], [1,9], [1,10], [1,11], [1,12], [1,13],
-//     [2,1], [2,2], [2,3], [2,4], [2,5], [2,6], [2,7], [2,8], [2,9], [2,10], [2,11], [2,12], [2,13],
-//     [3,1], [3,2], [3,3], [3,4], [3,5], [3,6], [3,7], [3,8], [3,9], [3,10], [3,11], [3,12], [3,13],
-//     [4,1], [4,2], [4,3], [4,4], [4,5], [4,6], [4,7], [4,8], [4,9], [4,10], [4,11], [4,12], [4,13],
-//     [5,1], [5,2], [5,3], [5,4], [5,5], [5,6], [5,7], [5,8], [5,9], [5,10], [5,11], [5,12], [5,13],
-//     [6,1], [6,2], [6,3], [6,4], [6,5], [6,6], [6,7], [6,8], [6,9], [6,10], [6,11], [6,12], [6,13],
-//     [7,1], [7,2], [7,3], [7,4], [7,5], [7,6], [7,7], [7,8], [7,9], [7,10], [7,11], [7,12], [7,13],
-//     [8,1], [8,2], [8,3], [8,4], [8,5], [8,6], [8,7], [8,8], [8,9], [8,10], [8,11], [8,12], [8,13],
-//     [9,1], [9,2], [9,3], [9,4], [9,5], [9,6], [9,7], [9,8], [9,9], [9,10], [9,11], [9,12], [9,13],
-//     [10,1],[10,2],[10,3],[10,4],[10,5],[10,6],[10,7],[10,8],[10,9],[10,10],[10,11],[10,12],[10,13],
-//     [11,1],[11,2],[11,3],[11,4],[11,5],[11,6],[11,7],[11,8],[11,9],[11,10],[11,11],[11,12],[11,13]
-// ]
 
 /*------------------------------ Variables ------------------------------*/
 
@@ -762,4 +721,5 @@ function restartGame() {
 
 function toggleDarkMode() {
     //!!
+    console.log("Toggle Dark/Light")
     }

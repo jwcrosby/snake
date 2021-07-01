@@ -48,6 +48,7 @@ header > #dark-mode-btn {
     top: 12px;
     right: 10px;
     width: 45px;
+    z-index: 1;
 }
 
 main {
@@ -252,3 +253,4 @@ footer > #score > #score-number {
     text-decoration: none;
     cursor: pointer;
 }
+
