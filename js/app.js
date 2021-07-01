@@ -159,14 +159,14 @@ function init() {
 
     //Point system
     numberOfFruitEaten = 0
-    pointsNeededToWin = 15
+    pointsNeededToWin = 20
 
     //Render Points
     renderScore()
 
     //Set the initial snake parameters
     snake = {
-        speed: 150,
+        speed: 125,
         size: 2,
         headLocation: [9,6],
         bodyLocations: [[9,5]],
@@ -190,7 +190,7 @@ function init() {
     setModalText("THE LEGEND RETURNS!")
 
     //Set the retry button text
-    setRestartText("press any key to start")
+    setRestartText("PRESS ANY KEY TO START")
 
     //Show the modal
     showModalWindow()
@@ -611,10 +611,10 @@ function gameWin() {
     stopTheSnake()
 
     //Set the modal text
-    setModalText("You win! :)")
+    setModalText("YOU WIN!")
 
     //Set the retry button text
-    setRestartText("Press SPACE to play again!")
+    setRestartText("PRESS SPACE TO PLAY AGAIN!")
 
     //Unhide the modal window
     showModalWindow()
@@ -628,10 +628,10 @@ function gameLose() {
     stopTheSnake()
 
     //Set the modal text
-    setModalText("You lose! :(")
+    setModalText("YOU LOSE")
 
     //Set the retry button text
-    setRestartText("Press SPACE to try again!")
+    setRestartText("PRESS SPACE TO TRY AGAIN!")
 
     //Unhide the modal window
     showModalWindow()

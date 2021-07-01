@@ -20,7 +20,7 @@ html {
 }
 
 body {
-    --body-bg-color: #FBE0B2;
+    --body-bg-color: #dbcaac;
 
     --header-bg-color: #ebb13d;
     --header-text-color: #F5EFC9;
@@ -29,6 +29,7 @@ body {
     --main-bg-color: #8edac4;
 
     --footer-bg-color: #ebb13d;
+    --footer-text-color: black;
     --footer-border-color: #003049;
 
     --rules-border-color: rgb(46, 45, 45);
@@ -39,19 +40,20 @@ body {
     --game-grid-cell-border-color: rgba(255, 255, 255, 0.041);
 
     --snake-head-color: #1d6452;
-    --snake-body-color: #32A085;
+    --snake-body-color: #228f74;
 
     --item-apple-color: rgb(233, 89, 89);
     --item-banana-color: rgb(235, 235, 74);
     --item-orange-color: rgb(240, 183, 76);
 
-    --modal-content-bg-color: #faf7ec;
-    --modal-content-bg-border-color: ##003049; 
+    --modal-content-bg-color: #f7f4e0;
+    --modal-content-border-color: #003049; 
 
-    --try-again-button-color: #d62828;
-    --try-again-border-color: #d62828;
-    --try-again-button-hover-color: #d62828;
-    --try-again-button-hover-bg-color: rgba(0,48,73,0.1);
+    --try-again-button-color: #f7f4e0;
+    --try-again-button-bg-color: #da4635;
+    --try-again-border-color: #E64C3C;
+    --try-again-button-hover-color: #e7e4d1;
+    --try-again-button-hover-bg-color: #da4635;
 
     height: 100vh;
     overflow: hidden;
@@ -60,36 +62,40 @@ body {
 
 body.dark {
     
-    --body-bg-color: #000000;
+    --body-bg-color: #FBE0B2;
 
-    --header-bg-color: #4d194d;
-    --header-text-color: #FBE0B2;
-    --header-border-color: rgb(0, 0, 0);
+    --header-bg-color: #003049;
+    --header-text-color: #F5EFC9;
+    --header-border-color: #ebb13d;
 
-    --main-bg-color: #727272;
+    --main-bg-color: #2b2b2b;
 
-    --footer-bg-color: #006466;
-    --rules-border-color: rgb(46, 45, 45);
-    --score-border-color: rgb(46, 45, 45);
+    --footer-bg-color: #003049;
+    --footer-text-color: #F5EFC9;
+    --footer-border-color: #ebb13d;
 
-    --game-grid-bg-color: #80cbc4;
-    --game-grid-border-color: #fff;
-    --game-grid-cell-border-color: #fff;
+    --rules-border-color: #f5efc969;
+    --score-border-color: #f5efc969;
 
-    --snake-head-color: rgb(22, 223, 4);
-    --snake-body-color: rgb(105, 236, 93);
+    --game-grid-bg-color: rgb(65, 52, 52);
+    --game-grid-border-color: #aaa7a3;
+    --game-grid-cell-border-color: rgba(255, 255, 255, 0.041);
 
-    --item-apple-color: rgb(238, 41, 41);
-    --item-banana-color: rgb(234, 250, 4);
-    --item-orange-color: rgb(255, 145, 0);
+    --snake-head-color: #60A917;
+    --snake-body-color: #56c248;
+
+    --item-apple-color: rgb(209, 5, 5);
+    --item-banana-color: rgb(245, 245, 7);
+    --item-orange-color: rgb(238, 157, 5);
 
     --modal-content-bg-color: #faf7ec;
-    --modal-content-bg-border-color: ##003049; 
+    --modal-content-border-color: #003049; 
 
     --try-again-button-color: #d62828;
     --try-again-border-color: #d62828;
     --try-again-button-hover-color: #d62828;
     --try-again-button-hover-bg-color: rgba(0,48,73,0.1);
+
 }
 
 header {
@@ -194,7 +200,8 @@ footer {
     padding: 0px 40px;
     margin: 0px 2.5px;
     font-family: 'Josefin Sans', sans-serif;
-    border: var(--footer-border-color) inset 3px;
+    border: var(--footer-border-color) inset 4px;
+    color: var(--footer-text-color);
 }
 
 footer > #game-rules {
@@ -306,31 +313,33 @@ footer > #score > #score-number {
     flex-direction: column;
     background-color: var(--modal-content-bg-color);
     margin: 35% auto; /* XX% from the top and centered */
-    width: 35%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
     padding: 20px;
-    border: var(--modal-content-bg-border-color) solid 3.5px;
+    border: var(--modal-content-border-color) solid 4px;
+    border-radius: 10px; 
     font-family: 'Jomhuria', cursive;
 }
 
 #modal-text {
     color: #003049;
-    font-size: 3rem;
+    font-size: 7rem;
     text-align: center;
-    margin-top: 25px;
+    margin: 0px 0 0 0;
 }
 
 /* The Close Button */
 #try-again-btn {
     /* display: none; */
     color: var(--try-again-button-color);
-    font-size: 2.15rem;
+    background-color: var(--try-again-button-bg-color);
+    font-size: 3.5rem;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 5px;
     border: var(--try-again-border-color) outset;
-    border-width: .5px;
+    border-width: 4px;
     border-radius: 10px; 
-    padding: 10px;;
+    padding: 10px 10px 5px 10px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #try-again-btn:hover,
