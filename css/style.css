@@ -217,7 +217,7 @@ footer > #score > #score-number {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #faf6e7;
+    background-color: #faf7ec;
     border: 1px solid #888;
     margin: 35% auto; /* XX% from the top and centered */
     width: 35%; /* Could be more or less, depending on screen size */
