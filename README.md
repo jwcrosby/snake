@@ -9,6 +9,8 @@
 * If the snake gets enough items, the player wins!
 * If the snake makes contact with it's tail, that's game over!
 
+## Color Schemes
+
 Light Mode                 |  Dark Mode
 :-------------------------:|:-------------------------:
 ![LIGHT MODE](/images/readme/fullscreenlight.png/)  |  ![DARK MODE](/images/readme/fullscreendark.png/)
