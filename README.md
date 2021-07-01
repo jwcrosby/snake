@@ -9,12 +9,6 @@
 * If the snake gets enough items, the player wins!
 * If the snake makes contact with it's tail, that's game over!
 
-## Color Schemes
-
-Light Mode                 |  Dark Mode
-:-------------------------:|:-------------------------:
-![LIGHT MODE](/images/readme/fullscreenlight.png/)  |  ![DARK MODE](/images/readme/fullscreendark.png/)
-
 ## Languages Used
 
 * HTML
@@ -26,6 +20,13 @@ Light Mode                 |  Dark Mode
 * Icons made by iconixar from www.flaticon.com.
 * Icons made by Pixel perfect from www.flaticon.com.
 * Icons made by Smashicons from www.flaticon.com.
+
+## Color Schemes
+
+Light Mode                 |  Dark Mode
+:-------------------------:|:-------------------------:
+![LIGHT MODE](/images/readme/fullscreenlight.png/)  |  ![DARK MODE](/images/readme/fullscreendark.png/)
+
 
 ## Future Enhancements
 
