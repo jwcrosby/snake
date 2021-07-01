@@ -1,7 +1,5 @@
 ![SNAKE RETURNS](/images/readme/header.png/)
 
-# SNAKE RETURNS
-
 # [Click here to play!](https://snakereturns.netlify.app/)
 
 ## How to Play
@@ -10,6 +8,10 @@
 * Every time the snake makes contact with an item, it's tail grows!
 * If the snake gets enough items, the player wins!
 * If the snake makes contact with it's tail, that's game over!
+
+Light Mode                 |  Dark Mode
+:-------------------------:|:-------------------------:
+![LIGHT MODE](/images/readme/fullscreenlight.png/)  |  ![DARK MODE](/images/readme/fullscreendark.png/)
 
 ## Languages Used
 
@@ -25,12 +27,8 @@
 
 ## Future Enhancements
 
-- [x] Enhanced Dark Mode
+- [x] Dark Mode
 - [ ] Multiple scaled levels
 - [ ] Prevent backwards movement (insta-death)
 - [ ] Pause game with Spacebar
 - [ ] Add obstacles 
-
-Light Mode                 |  Dark Mode
-:-------------------------:|:-------------------------:
-![LIGHT MODE](/images/readme/fullscreenlight.png/)  |  ![DARK MODE](/images/readme/fullscreendark.png/)
