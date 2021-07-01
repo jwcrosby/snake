@@ -45,8 +45,9 @@ header > #title {
 
 header > #dark-mode-btn {
     position: absolute;
-    top: 10px;
+    top: 12px;
     right: 10px;
+    width: 40px;
 }
 
 main {
@@ -204,7 +205,6 @@ footer > #score > #score-number {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 

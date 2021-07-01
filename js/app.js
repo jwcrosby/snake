@@ -44,7 +44,7 @@ itself or with the border of the gameboard. */
 //! 2.a. Dark mode styling
 //! 2.b. Automatic dark mode based on user preferences
 
-//! 3.a. Figure out why spacebar eventlistener works on init
+//! 3.a. Figure out why keydown eventlistener works on init for any key
 
 /*------------------------------ Constants ------------------------------*/
 
