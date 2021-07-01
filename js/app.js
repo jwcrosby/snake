@@ -27,15 +27,49 @@ const colorScheme = {
     change: function () {
         //This is a toggle function. Check to see if the colorScheme.dark is equal to "dark"
         if(colorScheme.dark = colorScheme.dark) {
+            //LIGHT MODE 
             //If so, switch it to blank (light mode)
             colorScheme.dark = ""
+
+            //LIGHT MODE 
+
             //Also toggle the dark mode button image
             toggleDarkModeBtn.src = "images/game/mooneyecolor.png"
+            //Also toggle the left header image
+            headerImageLeftElement.src = "images/game/snakescreamcolor.png"
+            //Also toggle the right header image
+            headerImageRightElement.src = "images/game/snakeskullcolor.png"
+
+            //Also toggle the up arrow image
+            upKeyBtnElement.src = "images/game/arrowupcolor.png"
+            //Also toggle the down arrow image
+            downKeyBtnElement.src = "images/game/arrowdowncolor.png"
+            //Also toggle the left arrow image
+            leftKeyBtnElement.src = "images/game/arrowleftcolor.png"
+            //Also toggle the right arrow image
+            rightKeyBtnElement.src = "images/game/arrowrightcolor.png"
+
         } else {
+
+            //DARK MODE 
             //If not, switch it to dark (dark mode)
             colorScheme.dark = "dark"
             //Also toggle the dark mode button image
             toggleDarkModeBtn.src = "images/game/mooneyehd.png"
+            //Also toggle the left header image
+            headerImageLeftElement.src = "images/game/snakescreamhd.png"
+            //Also toggle the right header image
+            headerImageRightElement.src = "images/game/snakeskullhd.png"
+
+            //Also toggle the up arrow image
+            upKeyBtnElement.src = "images/game/arrowuphd.png"
+            //Also toggle the down arrow image
+            downKeyBtnElement.src = "images/game/arrowdownhd.png"
+            //Also toggle the left arrow image
+            leftKeyBtnElement.src = "images/game/arrowlefthd.png"
+            //Also toggle the right arrow image
+            rightKeyBtnElement.src = "images/game/arrowrighthd.png"
+            
         }
         //Then set the class based on colorScheme.dark
         //Does this remove other classes?
@@ -74,6 +108,9 @@ let isLoser // Will be "true" if the player has lost the game
 let timerIntervalId // Utilized by the snake movement loop
 
 /*---------------------- Cached Element References ----------------------*/
+
+const headerImageLeftElement = document.querySelector("#title-image-left")
+const headerImageRightElement = document.querySelector("#title-image-right")
 
 const gridContainerElement = document.querySelector("#game-grid") 
 

@@ -101,15 +101,21 @@ header {
     border: var(--header-border-color) inset 7px;
 }
 
-header > #title-image {
+header > #title-image-left {
     max-height: 180px;
-    padding: 15px 0 10px 90px;
+    margin: 0px 20px;
+    padding: 20px 55px;
 }
 
+header > #title-image-right {
+    max-height: 180px;
+    margin: 0px 20px;
+    padding: 20px 55px;
+}
 header > #title {
     color: var(--header-text-color);
     font-size: 3.2rem;    
-    margin: 0 90px 0 0;
+    margin: 20px;
     text-align: center;
 }
 
