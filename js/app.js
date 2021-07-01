@@ -30,12 +30,12 @@ const colorScheme = {
             //If so, switch it to blank (light mode)
             colorScheme.dark = ""
             //Also toggle the dark mode button image
-            toggleDarkModeBtn.src = "images/mooneyecolor.png"
+            toggleDarkModeBtn.src = "images/game/mooneyecolor.png"
         } else {
             //If not, switch it to dark (dark mode)
             colorScheme.dark = "dark"
             //Also toggle the dark mode button image
-            toggleDarkModeBtn.src = "images/mooneyecolor.png"
+            toggleDarkModeBtn.src = "images/game/mooneyehd.png"
         }
         //Then set the class based on colorScheme.dark
         //Does this remove other classes?
@@ -110,7 +110,7 @@ init()
 function init() {
 
     //Check the user's preferred color scheme (light/dark mode)
-    //checkUserColorSchemePreference()
+    checkUserColorSchemePreference()
 
     //Set the initial game board parameters
     gameBoard = []

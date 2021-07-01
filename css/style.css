@@ -24,6 +24,7 @@ body {
 
     --header-bg-color: #fcbf49;
     --header-text-color: #003049;
+    --header-border-color: #003049;
 
     --main-bg-color: #d62828;
 
@@ -31,8 +32,9 @@ body {
     --rules-border-color: rgb(46, 45, 45);
     --score-border-color: rgb(46, 45, 45);
 
-    --game-grid-bg-color: #80cbc4;;
+    --game-grid-bg-color: #80cbc4;
     --game-grid-border-color: #fff;
+    --game-grid-cell-border-color: #fff;
 
     --snake-head-color: black;
     --snake-body-color: rgb(50, 49, 49);
@@ -49,14 +51,43 @@ body {
     --try-again-button-hover-color: #d62828;
     --try-again-button-hover-bg-color: rgba(0,48,73,0.1);
 
-
     height: 100vh;
     overflow: hidden;
     background-color: var(--body-bg-color);
 }
 
 body.dark {
-    --body-bg: #222e2b;
+    
+    --body-bg-color: #000000;
+
+    --header-bg-color: #4d194d;
+    --header-text-color: #08efff;
+    --header-border-color: rgb(0, 0, 0);
+
+    --main-bg-color: #727272;
+
+    --footer-bg-color: #006466;
+    --rules-border-color: rgb(46, 45, 45);
+    --score-border-color: rgb(46, 45, 45);
+
+    --game-grid-bg-color: #80cbc4;
+    --game-grid-border-color: #fff;
+    --game-grid-cell-border-color: #fff;
+
+    --snake-head-color: rgb(22, 223, 4);
+    --snake-body-color: rgb(105, 236, 93);
+
+    --item-apple-color: rgb(238, 41, 41);
+    --item-banana-color: rgb(234, 250, 4);
+    --item-orange-color: rgb(255, 145, 0);
+
+    --modal-content-bg-color: #faf7ec;
+    --modal-content-bg-border-color: ##003049; 
+
+    --try-again-button-color: #d62828;
+    --try-again-border-color: #d62828;
+    --try-again-button-hover-color: #d62828;
+    --try-again-button-hover-bg-color: rgba(0,48,73,0.1);
 }
 
 header {
@@ -65,6 +96,9 @@ header {
     align-items: center;
     justify-content: center;
     position: relative;
+    border-radius: 10px; 
+    margin: 0px 2.5px;
+    border: var(--header-border-color) inset 7px;
 }
 
 header > #title-image {
@@ -92,18 +126,16 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px; 
+    margin: 5px 2.5px;
+    padding: 1px;
 }
 
 main > #game-grid-container {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 10px; 
 }
 
 main > #game-grid {
@@ -111,10 +143,11 @@ main > #game-grid {
     /* grid-template-rows: repeat(11, 1fr);
     grid-template-columns: repeat(13, 1fr); */
     grid-gap: 0vmin;
+    border: var(--game-grid-border-color) inset 3px;
 } 
 main > #game-grid > .cell {
     background-color: var(--game-grid-bg-color);
-    border: 1px solid var(--game-grid-border-color);
+    border: var(--game-grid-cell-border-color) 1px solid;
 }
 
 main > #game-grid > .item-apple {
@@ -143,7 +176,9 @@ footer {
     grid-template-rows: auto;
     grid-template-areas: 
         "rules arrows score";
+    border-radius: 10px; 
     padding: 0px 40px;
+    margin: 0px 2.5px;
 }
 
 footer > #game-rules {
