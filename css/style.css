@@ -224,6 +224,8 @@ footer > #score > #score-number {
     margin: 35% auto; /* XX% from the top and centered */
     width: 35%; /* Could be more or less, depending on screen size */
     padding: 20px;
+    border: #003049 solid;
+    border-width: 3.5px;
 }
 
 #modal-text {
