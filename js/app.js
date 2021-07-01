@@ -1,24 +1,18 @@
 //!! ------------------------------ TO DO ------------------------------*
 //! 1.a. Need to prevent the head from change directions if it is opposite to current direction
-//! 1.b. Need to prevent the body parts from updating location if the head doesn't move per 1.a.
+    //! 1.b. Need to prevent the body parts from updating location if the head doesn't move per 1.a.
 
 //! 2.a. Dark mode styling
 
 //! 3.a. Figure out why keydown eventlistener works on init for any key
 
+//! 4.a. Responsive design needed
+
 //! 5.a. Controls on mobile?
 
-
-//!see if I actually use isWinner/isLoser variables > prob not
-
-//!turn youWon function into > levelUp. Create a Level variable. Use a switch to determine whether you raise the level and reset the init or end game
-
-//!3-4 levels
-
-//!change styling on level up 
-
-//!Prevent backwards movement
-
+//! 6.a. Turn youWon function into > levelUp. 
+    //! 6.b. Create a Level variable.
+    //! 6.c. Use a switch to determine whether you raise the level and reset the init or end game.
 
 /*------------------------------ Constants ------------------------------*/
 
@@ -326,29 +320,28 @@ function startLoopToggle() {
 
 //A timer that moves the snake forward and renders its position
 function everyLoopThisHappens() {
-    if(!isWinner && !isLoser){
 
-        //Add current location to list of previous locations
-        logPreviousLocations()
+    //Add current location to list of previous locations
+    logPreviousLocations()
 
-        //Move the snake forward
-        moveSnakeForward()
+    //Move the snake forward
+    moveSnakeForward()
 
-        //Update the location of the snake's body
-        updateBodyLocations()
+    //Update the location of the snake's body
+    updateBodyLocations()
 
-        //Render the snakes current position
-        renderGameElements()
+    //Render the snakes current position
+    renderGameElements()
 
-        //Determine if the snake hit item
-        checkForItemCollision()
+    //Determine if the snake hit item
+    checkForItemCollision()
 
-        //Determine if the snake hit itself
-        checkForBodyCollision()
+    //Determine if the snake hit itself
+    checkForBodyCollision()
 
-        //Check to see if the player has enough points to win the level
-        checkForWinner()
-    }
+    //Check to see if the player has enough points to win the level
+    checkForWinner()
+
 }
 
 function logPreviousLocations() {

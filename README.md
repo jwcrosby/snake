@@ -25,7 +25,7 @@
 
 ## Future Enhancements
 
-- [ ] Enhanced Dark Mode
+- [x] Enhanced Dark Mode
 - [ ] Multiple scaled levels
 - [ ] Prevent backwards movement (insta-death)
 - [ ] Pause game with Spacebar
