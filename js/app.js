@@ -149,7 +149,7 @@ function init() {
         size: 2,
         headLocation: [9,6],
         bodyLocations: [[9,5]],
-        headDirection: "",
+        headDirection: "Right",
         previousHeadLocations: []
     }
 
@@ -741,6 +741,7 @@ function handleKey(event) {
 function restartGame() {
     //Run init
     init()
+
     //Hide the modal Window
     hideModalWindow()
 
@@ -750,6 +751,9 @@ function restartGame() {
 
     //Turn off spacebar event listener
     toggleSpacebarRestartListenerOff()
+
+    //Start the movement loop
+    startLoopToggle()
 }
 
 function toggleDarkMode() {

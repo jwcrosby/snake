@@ -104,7 +104,7 @@ footer {
     grid-template-rows: auto;
     grid-template-areas: 
         "rules arrows score";
-    padding: 0px 90px;
+    padding: 0px 40px;
 }
 
 footer > #game-rules {
@@ -113,8 +113,13 @@ footer > #game-rules {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    text-align: center;
     font-size: 2rem;
+    border:rgb(46, 45, 45) inset;
+    border-width: 3px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 footer > #arrow-button-container {
@@ -127,7 +132,8 @@ footer > #arrow-button-container {
         "notl up notr"
         "left nomid right"
         "nobl down nobr";
-    margin: 20px;
+        
+    margin: 15px 40px;
 }
 
 footer > #arrow-button-container > img {
@@ -160,6 +166,10 @@ footer > #score {
         "scorewords"
         "scorenumbers";
 
+    margin: 15px;
+    border:rgb(46, 45, 45) outset;
+    border-width: 3px;
+    border-radius: 10px; 
 }
 
 footer > #score > #score-title {
@@ -222,16 +232,21 @@ footer > #score > #score-number {
 /* The Close Button */
 #try-again-btn {
     /* display: none; */
-    color: rgb(207, 73, 73);
+    color: rgb(207, 60, 60);
     font-size: 2.25rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 5px;
+    border: rgb(207, 60, 60) outset;
+    border-width: .5px;
+    border-radius: 10px; 
+    padding: 5px;;
 }
 
 #try-again-btn:hover,
 #try-again-btn:focus {
     color: rgb(204, 14, 14);
+    background-color: rgba(0,0,0,0.05);
     text-decoration: none;
     cursor: pointer;
 }
