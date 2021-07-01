@@ -166,10 +166,10 @@ function init() {
     renderGameElements()
 
     //Set
-    setModalText("Welcome to Snake!")
+    setModalText("Welcome to SNEK!")
 
     //Set the retry button text
-    setRestartText("Press the arrow keys to start the game!")
+    setRestartText("Press any key to start the game!")
 
     //Show the modal
     showModalWindow()
@@ -593,7 +593,7 @@ function gameWin() {
     setModalText("You win! :)")
 
     //Set the retry button text
-    setRestartText("Click here or press SPACE to try again!")
+    setRestartText("Press SPACE to try again!")
 
     //Unhide the modal window
     showModalWindow()
@@ -610,7 +610,7 @@ function gameLose() {
     setModalText("You lose! :(")
 
     //Set the retry button text
-    setRestartText("Click here or press SPACE to try again!")
+    setRestartText("Press SPACE to try again!")
 
     //Unhide the modal window
     showModalWindow()

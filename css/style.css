@@ -38,8 +38,9 @@ header > #title-image {
 
 header > #title {
     color: #003049;
-    font-size: 3rem;    
-    padding: 0 90px 0 0;
+    font-size: 3.2rem;    
+    margin: 0 90px 0 0;
+    text-align: center;
 }
 
 header > #dark-mode-btn {
@@ -115,11 +116,11 @@ footer > #game-rules {
     justify-content: center;
     text-align: center;
     font-size: 2rem;
-    border:rgb(46, 45, 45) inset;
-    border-width: 3px;
+    border:rgb(46, 45, 45) dotted;
+    border-width: 2px;
     margin: 15px;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 footer > #arrow-button-container {
@@ -167,9 +168,9 @@ footer > #score {
         "scorenumbers";
 
     margin: 15px;
-    border:rgb(46, 45, 45) outset;
-    border-width: 3px;
-    border-radius: 10px; 
+    border:rgb(46, 45, 45) dotted;
+    border-width: 2px;
+    border-radius: 15px; 
 }
 
 footer > #score > #score-title {
@@ -216,14 +217,15 @@ footer > #score > #score-number {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #f0f0f0;
+    background-color: #eeead6;
     border: 1px solid #888;
-    margin: 30% auto; /* XX% from the top and centered */
+    margin: 35% auto; /* XX% from the top and centered */
     width: 40%; /* Could be more or less, depending on screen size */
     padding: 20px;
 }
 
 #modal-text {
+    color: #003049;
     font-size: 3rem;
     text-align: center;
     margin-top: 25px;
@@ -232,21 +234,21 @@ footer > #score > #score-number {
 /* The Close Button */
 #try-again-btn {
     /* display: none; */
-    color: rgb(207, 60, 60);
-    font-size: 2.25rem;
+    color: #d62828;
+    font-size: 2.15rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 5px;
-    border: rgb(207, 60, 60) outset;
+    border: #d62828 outset;
     border-width: .5px;
     border-radius: 10px; 
-    padding: 5px;;
+    padding: 10px;;
 }
 
 #try-again-btn:hover,
 #try-again-btn:focus {
-    color: rgb(204, 14, 14);
-    background-color: rgba(0,0,0,0.05);
+    color: #d62828;
+    background-color: rgba(0,48,73,0.3);
     text-decoration: none;
     cursor: pointer;
 }
