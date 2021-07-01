@@ -20,10 +20,10 @@ html {
 }
 
 body {
-    --body-bg-color: #eae2b7;
+    --body-bg-color: #FBE0B2;
 
     --header-bg-color: #fcbf49;
-    --header-text-color: #003049;
+    --header-text-color: #FBE0B2;
     --header-border-color: #003049;
 
     --main-bg-color: #d62828;
@@ -61,7 +61,7 @@ body.dark {
     --body-bg-color: #000000;
 
     --header-bg-color: #4d194d;
-    --header-text-color: #08efff;
+    --header-text-color: #FBE0B2;
     --header-border-color: rgb(0, 0, 0);
 
     --main-bg-color: #727272;
@@ -103,20 +103,23 @@ header {
 
 header > #title-image-left {
     max-height: 180px;
-    margin: 0px 20px;
-    padding: 20px 55px;
+    margin: 0px 0px 0px 50px;
+    padding: 10px 0px;
 }
 
 header > #title-image-right {
     max-height: 180px;
-    margin: 0px 20px;
-    padding: 20px 55px;
+    margin: 0px 50px 0px 0px;
+    padding: 10px 0px;
 }
 header > #title {
     color: var(--header-text-color);
-    font-size: 3.2rem;    
-    margin: 20px;
+    font-size: 15rem;    
+    margin: 5px 20px;
+    padding-top: 25px;
     text-align: center;
+    font-family: 'Jomhuria', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 header > #dark-mode-btn {

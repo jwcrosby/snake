@@ -34,27 +34,6 @@ const colorScheme = {
             //LIGHT MODE 
 
             //Also toggle the dark mode button image
-            toggleDarkModeBtn.src = "images/game/mooneyecolor.png"
-            //Also toggle the left header image
-            headerImageLeftElement.src = "images/game/snakescreamcolor.png"
-            //Also toggle the right header image
-            headerImageRightElement.src = "images/game/snakeskullcolor.png"
-
-            //Also toggle the up arrow image
-            upKeyBtnElement.src = "images/game/arrowupcolor.png"
-            //Also toggle the down arrow image
-            downKeyBtnElement.src = "images/game/arrowdowncolor.png"
-            //Also toggle the left arrow image
-            leftKeyBtnElement.src = "images/game/arrowleftcolor.png"
-            //Also toggle the right arrow image
-            rightKeyBtnElement.src = "images/game/arrowrightcolor.png"
-
-        } else {
-
-            //DARK MODE 
-            //If not, switch it to dark (dark mode)
-            colorScheme.dark = "dark"
-            //Also toggle the dark mode button image
             toggleDarkModeBtn.src = "images/game/mooneyehd.png"
             //Also toggle the left header image
             headerImageLeftElement.src = "images/game/snakescreamhd.png"
@@ -69,6 +48,27 @@ const colorScheme = {
             leftKeyBtnElement.src = "images/game/arrowlefthd.png"
             //Also toggle the right arrow image
             rightKeyBtnElement.src = "images/game/arrowrighthd.png"
+
+        } else {
+
+            //DARK MODE 
+            //If not, switch it to dark (dark mode)
+            colorScheme.dark = "dark"
+            //Also toggle the dark mode button image
+            toggleDarkModeBtn.src = "images/game/mooneyecolor.png"
+            //Also toggle the left header image
+            headerImageLeftElement.src = "images/game/snakescreamcolor.png"
+            //Also toggle the right header image
+            headerImageRightElement.src = "images/game/snakeskullcolor.png"
+
+            //Also toggle the up arrow image
+            upKeyBtnElement.src = "images/game/arrowupcolor.png"
+            //Also toggle the down arrow image
+            downKeyBtnElement.src = "images/game/arrowdowncolor.png"
+            //Also toggle the left arrow image
+            leftKeyBtnElement.src = "images/game/arrowleftcolor.png"
+            //Also toggle the right arrow image
+            rightKeyBtnElement.src = "images/game/arrowrightcolor.png"
             
         }
         //Then set the class based on colorScheme.dark
@@ -147,7 +147,7 @@ init()
 function init() {
 
     //Check the user's preferred color scheme (light/dark mode)
-    checkUserColorSchemePreference()
+    //checkUserColorSchemePreference()
 
     //Set the initial game board parameters
     gameBoard = []
