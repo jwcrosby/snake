@@ -27,3 +27,4 @@
 
 - [ ] Enhanced Dark Mode
 - [ ] Multiple scaled levels
+- [ ] Prevent backwards movement (insta-death)

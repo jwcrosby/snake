@@ -24,6 +24,18 @@
 
 /*------------------------------ Constants ------------------------------*/
 
+const colorScheme = {
+    dark: "",
+    change: function () {
+        //This is a toggle function. Check to see if the colorScheme.dark is equal to "dark"
+        //If not, set it to "dark". If so, set it to blank
+        colorScheme.dark = colorScheme.dark ? "" : "dark"
+
+        //Then set the class based on colorScheme.dark
+        //Does this remove other classes?
+        document.querySelector("body").setAttribute("class", colorScheme.dark)
+    }
+}
 
 /*------------------------------ Variables ------------------------------*/
 
@@ -81,7 +93,7 @@ arrowBtnContainerElement.addEventListener("click", handleClick)
 // Listens for keydowns on the Up, Down, Left, Right arrows on the keyboard
 document.addEventListener("keydown", handleKey)
 
-toggleDarkModeBtn.addEventListener("click", toggleDarkMode) //Listens for a click on the Dark Mode button element
+toggleDarkModeBtn.addEventListener("click", colorScheme.change) //Listens for a click on the Dark Mode button element
 restartGameBtn.addEventListener("click", restartGame) //Listens for a click on the Restart Game button element
 
 
@@ -90,6 +102,9 @@ restartGameBtn.addEventListener("click", restartGame) //Listens for a click on t
 init()
 
 function init() {
+
+    //Check the user's preferred color scheme (light/dark mode)
+    checkUserColorSchemePreference()
 
     //Set the initial game board parameters
     gameBoard = []
@@ -719,7 +734,12 @@ function restartGame() {
     startLoopToggle()
 }
 
-function toggleDarkMode() {
-    //!!
-    console.log("Toggle Dark/Light")
+function checkUserColorSchemePreference() {
+    /* Checks if the user's browser preferences call for dark mode 
+    AND that the colorScheme is not already dark. Should run on init. */
+    if (window.matchMedia("(prefers-color-scheme:dark)").matches && !colorScheme.dark) {
+        
+        //If prefered, change the colorScheme.
+        colorScheme.change()
     }
+}
