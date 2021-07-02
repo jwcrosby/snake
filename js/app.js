@@ -2,7 +2,10 @@
 //! 1.a. Need to prevent the head from change directions if it is opposite to current direction
     //! 1.b. Need to prevent the body parts from updating location if the head doesn't move per 1.a.
 
-//! 2.a. Dark mode styling
+//! 9.a. Convert fruit object to an array (of objects?) to allow for scaling
+    //! 9.b. Allows for more fruit on the page at once in later levels
+    //! 9.c. Randomize styling on render
+    //! 9.d. Allows for random fruit spawn on load
 
 //! 3.a. Figure out why keydown eventlistener works on init for any key
 
