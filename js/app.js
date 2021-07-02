@@ -706,7 +706,7 @@ function toggleSpacebarListenerMeat(event) {
 
 function handleClick(event) {
     //If the snake is not moving yet, start it's movement
-    //initialStartLoop()
+    initialStartLoop()
 
     //Check which element was clicked and change the snakes direction accordingly
     switch (event.target) {
@@ -730,7 +730,7 @@ function handleClick(event) {
 
 function handleKey(event) {
     //If the snake is not moving yet, start it's movement
-    //initialStartLoop()
+    initialStartLoop()
 
     //Check which key was pressed and change the snakes direction accordingly
     switch (event.key) {
