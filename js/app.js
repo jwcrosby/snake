@@ -16,7 +16,7 @@
 
 //! 7.a. Pause on Spacebar
 
-//! 8.a. Fix modal window placement
+//! 8.a. Fix modal window placement so dark mode button isn't un-clickable on load
 
 /*------------------------------ Constants ------------------------------*/
 
