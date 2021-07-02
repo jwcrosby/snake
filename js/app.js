@@ -710,19 +710,19 @@ function handleClick(event) {
 
     //Check which element was clicked and change the snakes direction accordingly
     switch (event.target) {
-        case upKeyBtnElement && snake.headDirection !== "Down":
+        case upKeyBtnElement:
             snake.headDirection = "Up"
             break;
 
-        case downKeyBtnElement && snake.headDirection !== "Up":
+        case downKeyBtnElement:
             snake.headDirection = "Down"
             break;
 
-        case leftKeyBtnElement && snake.headDirection !== "Right":
+        case leftKeyBtnElement:
             snake.headDirection = "Left"
             break;
 
-        case rightKeyBtnElement && snake.headDirection !== "Left":
+        case rightKeyBtnElement:
             snake.headDirection = "Right"
             break;
         }

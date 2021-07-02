@@ -91,10 +91,11 @@ body.dark {
     --modal-content-bg-color: #faf7ec;
     --modal-content-border-color: #003049; 
 
-    --try-again-button-color: #d62828;
-    --try-again-border-color: #d62828;
-    --try-again-button-hover-color: #d62828;
-    --try-again-button-hover-bg-color: rgba(0,48,73,0.1);
+    --try-again-button-color: #f7f4e0;
+    --try-again-button-bg-color: #da4635;
+    --try-again-border-color: #E64C3C;
+    --try-again-button-hover-color: #e7e4d1;
+    --try-again-button-hover-bg-color: #da4635;
 
 }
 
