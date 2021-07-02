@@ -14,6 +14,10 @@
     //! 6.b. Create a Level variable.
     //! 6.c. Use a switch to determine whether you raise the level and reset the init or end game.
 
+//! 7.a. Pause on Spacebar
+
+//! 8.a. Fix modal window placement
+
 /*------------------------------ Constants ------------------------------*/
 
 const colorScheme = {
@@ -25,45 +29,14 @@ const colorScheme = {
             //If so, switch it to blank (light mode)
             colorScheme.dark = ""
 
-            //LIGHT MODE 
-
-            //Also toggle the dark mode button image
-            toggleDarkModeBtn.src = "images/game/mooneyecolor.png"
-            //Also toggle the left header image
-            headerImageLeftElement.src = "images/game/snakescreamhd.png"
-            //Also toggle the right header image
-            headerImageRightElement.src = "images/game/snakeskullhd.png"
-
-            //Also toggle the up arrow image
-            upKeyBtnElement.src = "images/game/arrowuphd.png"
-            //Also toggle the down arrow image
-            downKeyBtnElement.src = "images/game/arrowdownhd.png"
-            //Also toggle the left arrow image
-            leftKeyBtnElement.src = "images/game/arrowlefthd.png"
-            //Also toggle the right arrow image
-            rightKeyBtnElement.src = "images/game/arrowrighthd.png"
-
+            //And update images on the page
+            setLightModeImages()
         } else {
-
             //DARK MODE 
             //If not, switch it to dark (dark mode)
             colorScheme.dark = "dark"
-            //Also toggle the dark mode button image
-            toggleDarkModeBtn.src = "images/game/mooneyehd.png"
-            //Also toggle the left header image
-            headerImageLeftElement.src = "images/game/snakescreamcolor.png"
-            //Also toggle the right header image
-            headerImageRightElement.src = "images/game/snakeskullcolor.png"
-
-            //Also toggle the up arrow image
-            upKeyBtnElement.src = "images/game/arrowupcolor.png"
-            //Also toggle the down arrow image
-            downKeyBtnElement.src = "images/game/arrowdowncolor.png"
-            //Also toggle the left arrow image
-            leftKeyBtnElement.src = "images/game/arrowleftcolor.png"
-            //Also toggle the right arrow image
-            rightKeyBtnElement.src = "images/game/arrowrightcolor.png"
-            
+            //And update images on the page
+            setDarkModeImages()
         }
         //Then set the class based on colorScheme.dark
         //Does this remove other classes?
@@ -124,12 +97,8 @@ const pointsBoxElement = document.querySelector("#score-number")
 
 /*--------------------------- Event Listeners ---------------------------*/
 
-// Listens for clicks on the Up, Down, Left, Right arrow image elements
-arrowBtnContainerElement.addEventListener("click", handleClick)
-
-// Listens for keydowns on the Up, Down, Left, Right arrows on the keyboard
-document.addEventListener("keydown", handleKey)
-
+arrowBtnContainerElement.addEventListener("click", handleClick) //Listens for clicks on the Up, Down, Left, Right arrow image elements
+document.addEventListener("keydown", handleKey) //Listens for keydowns on the Up, Down, Left, Right arrows on the keyboard
 toggleDarkModeBtn.addEventListener("click", colorScheme.change) //Listens for a click on the Dark Mode button element
 restartGameBtn.addEventListener("click", restartGame) //Listens for a click on the Restart Game button element
 
@@ -778,4 +747,40 @@ function checkUserColorSchemePreference() {
         //If prefered, change the colorScheme.
         colorScheme.change()
     }
+}
+
+function setLightModeImages() {
+    //Also toggle the dark mode button image
+    toggleDarkModeBtn.src = "images/game/mooneyecolor.png"
+    //Also toggle the left header image
+    headerImageLeftElement.src = "images/game/snakescreamhd.png"
+    //Also toggle the right header image
+    headerImageRightElement.src = "images/game/snakeskullhd.png"
+
+    //Also toggle the up arrow image
+    upKeyBtnElement.src = "images/game/arrowuphd.png"
+    //Also toggle the down arrow image
+    downKeyBtnElement.src = "images/game/arrowdownhd.png"
+    //Also toggle the left arrow image
+    leftKeyBtnElement.src = "images/game/arrowlefthd.png"
+    //Also toggle the right arrow image
+    rightKeyBtnElement.src = "images/game/arrowrighthd.png"
+}
+
+function setDarkModeImages() {
+    //Also toggle the dark mode button image
+    toggleDarkModeBtn.src = "images/game/mooneyehd.png"
+    //Also toggle the left header image
+    headerImageLeftElement.src = "images/game/snakescreamcolor.png"
+    //Also toggle the right header image
+    headerImageRightElement.src = "images/game/snakeskullcolor.png"
+
+    //Also toggle the up arrow image
+    upKeyBtnElement.src = "images/game/arrowupcolor.png"
+    //Also toggle the down arrow image
+    downKeyBtnElement.src = "images/game/arrowdowncolor.png"
+    //Also toggle the left arrow image
+    leftKeyBtnElement.src = "images/game/arrowleftcolor.png"
+    //Also toggle the right arrow image
+    rightKeyBtnElement.src = "images/game/arrowrightcolor.png"
 }
