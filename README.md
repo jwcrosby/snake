@@ -36,6 +36,6 @@ Light Mode                 |  Dark Mode
 
 - [x] Dark Mode
 - [ ] Multiple scaled levels (get it?)
-- [ ] Pause game with spacebar
 - [ ] Prevent backwards movement (insta-death)
+- [ ] Pause game with spacebar
 - [ ] Add randomized obstacles
