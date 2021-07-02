@@ -35,7 +35,7 @@ Light Mode                 |  Dark Mode
 ## Future Enhancements
 
 - [x] Dark Mode
-- [ ] Multiple scaled levels
-- [ ] Prevent backwards movement (insta-death)
+- [ ] Multiple scaled levels (get it?)
 - [ ] Pause game with spacebar
-- [ ] Add randomized obstacles to map
+- [ ] Prevent backwards movement (insta-death)
+- [ ] Add randomized obstacles
