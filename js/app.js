@@ -213,6 +213,113 @@ function clearGameBoardRender() {
     }
 }
 
+function renderScore() {
+    //Render the current number of points of the pointsBox Element
+    pointsBoxElement.innerHTML = numberOfFruitEaten
+}
+
+//This function kicks off the timer. Every X seconds, the snake moves.
+function startLoopToggle() {
+	//Check for an active timer interval
+    if (timerIntervalId) {
+	//If interval exists, clear it and reset
+        clearInterval(timerIntervalId)
+        timerIntervalId = null
+    } else {
+        //Start a new timer interval
+        timerIntervalId = setInterval(everyLoopThisHappens, snake.speed)
+    }
+}
+
+//A timer that moves the snake forward and renders its position
+function everyLoopThisHappens() {
+
+    //Add current location to list of previous locations
+    logPreviousLocations()
+
+    //Move the snake forward
+    moveSnakeForward()
+
+    //Update the location of the snake's body
+    updateBodyLocations()
+
+    //Render the snakes current position
+    renderGameElements()
+
+    //Determine if the snake hit item
+    checkForItemCollision()
+
+    //Determine if the snake hit itself
+    checkForBodyCollision()
+
+    //Check to see if the player has enough points to win the level
+    checkForWinner()
+
+}
+
+function logPreviousLocations() {
+    //Log every movements that the snake takes
+    snake.previousHeadLocations.unshift(snake.headLocation)
+}
+
+function moveSnakeForward() {
+    // Above: [X - 1, Y]
+    // Below: [X + 1, Y]
+    // Left: [X, Y - 1]
+    // Right: [X, Y + 1]
+        switch (snake.headDirection) {
+
+        case "Up":
+            //Check if the grid cell above the snake's head has an index off the board
+            if(snake.headLocation[0] - 1 <= 0) {
+                //If so, move the snake head to the bottom of the board
+                snake.headLocation = [gridRows, snake.headLocation[1]]
+            } else {
+                //Otherwise, move the head to the cell directly above the current head location
+                snake.headLocation = [snake.headLocation[0] - 1, snake.headLocation[1]]
+            }
+            break;
+
+        case "Down":
+            //Check if the grid cell below the snake's head has an index off the board
+            if(snake.headLocation[0] + 1 > gridRows) {
+                //If so, move the snake head to the top of the board
+                snake.headLocation = [1, snake.headLocation[1]]
+            } else {
+                //Otherwise, move the head to the cell directly below the current head location
+                snake.headLocation = [snake.headLocation[0] + 1, snake.headLocation[1]]
+            }
+            break;
+
+        case "Left":
+            //Check if the grid cell above the snake's head has an index off the board
+            if(snake.headLocation[1] - 1 <= 0) {
+                //If so, move the snake head to the right of the board
+                snake.headLocation = [snake.headLocation[0], gridColumns]
+            } else {
+                //Otherwise, move the head to the cell directly left the current head location
+                snake.headLocation = [snake.headLocation[0], snake.headLocation[1] - 1]
+            }
+            break;
+
+        case "Right":
+            //Check if the grid cell above the snake's head has an index off the board
+            if(snake.headLocation[1] + 1 > gridColumns) {
+                //If so, move the snake head to the left of the board
+                snake.headLocation = [snake.headLocation[0], 1]
+            } else {
+                //Otherwise, move the head to the cell directly right the current head location
+                snake.headLocation = [snake.headLocation[0], snake.headLocation[1] + 1]
+            }
+            break;
+        }
+    }
+
+function updateBodyLocations() {
+    //Cut off a portion of the snake's previous movements based on the snake's size
+    snake.bodyLocations = snake.previousHeadLocations.slice(0, snake.size - 1)
+}
+
 function renderGameElements() {
 
     //Loop through every row/column combination on the gameBoard grid
@@ -271,113 +378,6 @@ function renderGameElements() {
         }
     })
 }
-
-function renderScore() {
-    //Render the current number of points of the pointsBox Element
-    pointsBoxElement.innerHTML = numberOfFruitEaten
-}
-
-//This function kicks off the timer. Every X seconds, the snake moves.
-function startLoopToggle() {
-	//Check for an active timer interval
-    if (timerIntervalId) {
-	//If interval exists, clear it and reset
-        clearInterval(timerIntervalId)
-        timerIntervalId = null
-    } else {
-        //Start a new timer interval
-        timerIntervalId = setInterval(everyLoopThisHappens, snake.speed)
-    }
-}
-
-//A timer that moves the snake forward and renders its position
-function everyLoopThisHappens() {
-
-    //Add current location to list of previous locations
-    logPreviousLocations()
-
-    //Move the snake forward
-    moveSnakeForward()
-
-    //Update the location of the snake's body
-    updateBodyLocations()
-
-    //Render the snakes current position
-    renderGameElements()
-
-    //Determine if the snake hit item
-    checkForItemCollision()
-
-    //Determine if the snake hit itself
-    checkForBodyCollision()
-
-    //Check to see if the player has enough points to win the level
-    checkForWinner()
-
-}
-
-function logPreviousLocations() {
-    //Log every movements that the snake takes
-    snake.previousHeadLocations.unshift(snake.headLocation)
-}
-
-function updateBodyLocations() {
-    //Cut off a portion of the snake's previous movements based on the snake's size
-    snake.bodyLocations = snake.previousHeadLocations.slice(0, snake.size - 1)
-}
-
-function moveSnakeForward() {
-    // Above: [X - 1, Y]
-    // Below: [X + 1, Y]
-    // Left: [X, Y - 1]
-    // Right: [X, Y + 1]
-        switch (snake.headDirection) {
-
-        case "Up":
-            //Check if the grid cell above the snake's head has an index off the board
-            if(snake.headLocation[0] - 1 <= 0) {
-                //If so, move the snake head to the bottom of the board
-                snake.headLocation = [gridRows, snake.headLocation[1]]
-            } else {
-                //Otherwise, move the head to the cell directly above the current head location
-                snake.headLocation = [snake.headLocation[0] - 1, snake.headLocation[1]]
-            }
-            break;
-
-        case "Down":
-            //Check if the grid cell below the snake's head has an index off the board
-            if(snake.headLocation[0] + 1 > gridRows) {
-                //If so, move the snake head to the top of the board
-                snake.headLocation = [1, snake.headLocation[1]]
-            } else {
-                //Otherwise, move the head to the cell directly below the current head location
-                snake.headLocation = [snake.headLocation[0] + 1, snake.headLocation[1]]
-            }
-            break;
-
-        case "Left":
-            //Check if the grid cell above the snake's head has an index off the board
-            if(snake.headLocation[1] - 1 <= 0) {
-                //If so, move the snake head to the right of the board
-                snake.headLocation = [snake.headLocation[0], gridColumns]
-            } else {
-                //Otherwise, move the head to the cell directly left the current head location
-                snake.headLocation = [snake.headLocation[0], snake.headLocation[1] - 1]
-            }
-            break;
-
-        case "Right":
-            //Check if the grid cell above the snake's head has an index off the board
-            if(snake.headLocation[1] + 1 > gridColumns) {
-                //If so, move the snake head to the left of the board
-                snake.headLocation = [snake.headLocation[0], 1]
-            } else {
-                //Otherwise, move the head to the cell directly right the current head location
-                snake.headLocation = [snake.headLocation[0], snake.headLocation[1] + 1]
-            }
-            break;
-        }
-    }
 
 function checkForItemCollision() {
     //Check if you hit the apple 
