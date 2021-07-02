@@ -19,7 +19,7 @@
 
 //! 7.a. Pause on Spacebar
 
-//! 8.a. Fix modal window placement so dark mode button and arrow keys aren't un-clickable on load
+//! 8.a. Fix modal window placement so dark mode button and arrow keys aren't un-clickable on load and win/lose
 
 /*------------------------------ Constants ------------------------------*/
 
