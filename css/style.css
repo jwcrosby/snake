@@ -417,12 +417,13 @@ footer > #score > #score-number {
     
     header > #title-image-right {
         max-height: 125px;
+        display: none;
     }
 
     header > #title {
-        font-size: 12.5rem;    
+        font-size: 14rem;    
         margin: 5px 10px -5px 10px;
-        padding: 5px 0 -20px 0;
+        padding: 2px 0 -20px 0;
     }
 
     header > #dark-mode-btn {
@@ -443,12 +444,17 @@ footer > #score > #score-number {
     }
 
     footer > #game-rules {
-        height: 26vw; 
+        height: 26vw;
+        font-size: 1.6rem;
     }
 
     footer > #arrow-button-container {
         height: 26vw; 
         margin: 8px 0px;
+        grid-template-areas: 
+        "notl up notr"
+        "left down right"
+        "nobl nomid nobr";
     }
 
     footer > #arrow-button-container > img {
@@ -506,7 +512,7 @@ footer > #score > #score-number {
 
     footer {
         margin: 0px 0px 55px 0px;
-        padding: 0px 5px;
+        padding: 0px 2px;
         border: var(--footer-border-color) inset 5px;
         height: 29vh
     }
@@ -522,11 +528,10 @@ footer > #score > #score-number {
         "notl up notr"
         "left down right"
         "nobl nomid nobr";
-        
     }
 
     footer > #arrow-button-container > img {
-        max-height: 82px;
+        max-height: 84px;
         margin: 3px;
     }
 
