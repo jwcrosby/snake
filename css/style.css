@@ -437,17 +437,17 @@ footer > #score > #score-number {
     }
     
     footer {
-        height: 30vw; 
+        height: 32vw; 
         margin: 0px 0px 55px 0px;
         padding: 0px 5px;
     }
 
     footer > #game-rules {
-        height: 30vw; 
+        height: 26vw; 
     }
 
     footer > #arrow-button-container {
-        height: 30vw; 
+        height: 26vw; 
         margin: 8px 0px;
     }
 
@@ -456,7 +456,7 @@ footer > #score > #score-number {
     }
 
     footer > #score {
-        height: 30vw; 
+        height: 26vw; 
         padding: 20px 0px;
     }
     
@@ -474,6 +474,7 @@ footer > #score > #score-number {
 @media only screen and (max-width: 570px)  {
 
     header {
+        height: 30vw; 
         margin: 0px 0px;
     }
 
