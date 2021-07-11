@@ -222,15 +222,15 @@ function renderScore() {
 
 //This function kicks off the timer. Every X seconds, the snake moves.
 function startLoopToggle() {
-	// //Check for an active timer interval
-    // if (timerIntervalId) {
-	// //If interval exists, clear it and reset
-    //     clearInterval(timerIntervalId)
-    //     timerIntervalId = null
-    // } else {
-    //     //Start a new timer interval
-    //     timerIntervalId = setInterval(everyLoopThisHappens, snake.speed)
-    // }
+	//Check for an active timer interval
+    if (timerIntervalId) {
+	//If interval exists, clear it and reset
+        clearInterval(timerIntervalId)
+        timerIntervalId = null
+    } else {
+        //Start a new timer interval
+        timerIntervalId = setInterval(everyLoopThisHappens, snake.speed)
+    }
 }
 
 //A timer that moves the snake forward and renders its position
