@@ -534,7 +534,7 @@ footer > #score > #score-number {
     }
 
     footer > #arrow-button-container {
-        margin: 10px 0px;
+        margin: 6px 0px;
         grid-template-areas: 
         "notl up notr"
         "left down right"
@@ -542,7 +542,7 @@ footer > #score > #score-number {
     }
 
     footer > #arrow-button-container > img {
-        max-height: 84px;
+        max-height: 90px;
         margin: 3px;
     }
 
