@@ -473,7 +473,7 @@ footer > #score > #score-number {
     }
 
     header > #title {
-        font-size: 9rem;    
+        font-size: 7rem;    
         margin: 0px 0px 0px 0px;
         padding: 13px 0px 0px 0px;
     }
@@ -506,7 +506,7 @@ footer > #score > #score-number {
     }
 
     footer > #arrow-button-container > img {
-        max-height: 100px;
+        max-height: 80px;
         margin: 3px;
     }
 
