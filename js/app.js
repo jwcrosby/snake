@@ -125,7 +125,7 @@ function init() {
 
     //Point system
     numberOfFruitEaten = 0
-    pointsNeededToWin = 20
+    pointsNeededToWin = 25
 
     //Render Points
     renderScore()
