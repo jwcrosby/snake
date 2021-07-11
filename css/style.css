@@ -430,6 +430,11 @@ footer > #score > #score-number {
         right: 4px;
         width: 35px;
     }
+
+    main > #game-grid {
+        height: 70vw; 
+        width: 80vw; 
+    }
     
     footer {
         margin: 0px 0px 55px 0px;
@@ -487,8 +492,6 @@ footer > #score > #score-number {
 
     main > #game-grid {
         border: var(--footer-border-color) 5px inset;
-        height: 330px;
-        width: 390px;
         height: 82vw; 
         width: 100vw; 
     }
