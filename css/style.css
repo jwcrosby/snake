@@ -434,7 +434,7 @@ footer > #score > #score-number {
     header > #title {
         font-size: 15rem;    
         margin: 5px 8px 0 8px;
-        padding: 2px 0 0 0;
+        padding: 5px 0 0 0;
         white-space: normal;
     }
 
@@ -510,7 +510,7 @@ footer > #score > #score-number {
     header > #title {
         font-size: 8rem;    
         margin: 5px 5px 0px 5px;
-        padding: 2px 0 0px 0px;
+        padding: 3px 0 0px 0px;
         white-space: normal;
     }
 
