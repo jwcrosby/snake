@@ -432,11 +432,12 @@ footer > #score > #score-number {
     }
 
     main > #game-grid {
-        height: 70vw; 
+        height: 65vw; 
         width: 80vw; 
     }
     
     footer {
+        height: 25vw; 
         margin: 0px 0px 55px 0px;
         padding: 0px 5px;
     }
