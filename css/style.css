@@ -126,11 +126,12 @@ header > #title-image-right {
 
 header > #title {
     color: var(--header-text-color);
-    font-size: 17rem;    
+    font-size: 20rem;    
     margin: 5px 20px;
     padding-top: 25px;
     text-align: center;
     font-family: 'Jomhuria', cursive;
+    line-height: 0.48;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     white-space: nowrap;
 }
@@ -378,25 +379,32 @@ footer > #score > #score-number {
     }
 
     footer {
-        height: 25vh;
+        height: 31vh;
         padding: 0px 20px;
     }
 
     footer > #game-rules {
         height: 25vh;
+        padding: 2px;
+        font-size: 1.9rem;
     }
 
     footer > #arrow-button-container {
-        height: 25vh;
+        height: 27vh;
+        grid-template-areas: 
+        "notl up notr"
+        "left down right"
+        "nobl nomid nobr";
     }
 
     footer > #arrow-button-container > img {
-        max-height: 75px;
+        max-height: 100px;
         margin: 2px;
     }
 
     footer > #score {
-        height: 25vh;
+        height: 27vh;
+        font-size: 1.6rem;
     }
 
     footer > #score > #score-title {
@@ -412,18 +420,22 @@ footer > #score > #score-number {
 @media only screen and (max-width: 768px)  {
 
     header > #title-image-left {
-        max-height: 125px;
+        max-height: 140px;
+        margin: 0px 0px 0px 10px;
+        padding: 7px 0px;
     }
     
     header > #title-image-right {
-        max-height: 125px;
-        display: none;
+        max-height: 140px;
+        margin: 0px 10px 0px 0px;
+        padding: 7px 0px;
     }
 
     header > #title {
-        font-size: 14rem;    
+        font-size: 15rem;    
         margin: 5px 10px -5px 10px;
         padding: 2px 0 -20px 0;
+        white-space: normal;
     }
 
     header > #dark-mode-btn {
@@ -444,7 +456,7 @@ footer > #score > #score-number {
     }
 
     footer > #game-rules {
-        height: 26vw;
+        height: 25vw;
         font-size: 1.6rem;
     }
 
@@ -458,22 +470,21 @@ footer > #score > #score-number {
     }
 
     footer > #arrow-button-container > img {
-        max-height: 85px;
+        max-height: 87px;
     }
 
     footer > #score {
         height: 26vw; 
-        padding: 20px 0px;
+        padding: 20px 0px 20px 0px;
     }
     
     footer > #score > #score-title {
         font-size: 3rem;
-        margin: 0 0px;
     }
     
-    footer > #score > #score-number {
-        margin: 0 0px;
-    }
+    #modal-text { font-size: 6rem;}
+
+    #try-again-btn { font-size: 3rem;}
 }
 
 /* iphone styling */
