@@ -126,7 +126,7 @@ header > #title-image-right {
 
 header > #title {
     color: var(--header-text-color);
-    font-size: 15rem;    
+    font-size: 17rem;    
     margin: 5px 20px;
     padding-top: 25px;
     text-align: center;
@@ -137,8 +137,8 @@ header > #title {
 
 header > #dark-mode-btn {
     position: absolute;
-    top: 12px;
-    right: 10px;
+    top: 7px;
+    right: 5px;
     width: 45px;
     z-index: 2;
 }
@@ -168,8 +168,8 @@ main > #game-grid {
     border-radius: 7px; 
     height: 550px;
     width: 650px;
-    /* height: clamp(300px, 60vw, 1200px); */
-    /* width: clamp(300px, 60vw, 1200px); */
+    height: clamp(400px, 40vw, 1200px); 
+    width: clamp(400px, 50vw, 1200px); 
 } 
 main > #game-grid > .cell {
     background-color: var(--game-grid-bg-color);
@@ -240,7 +240,7 @@ footer > #arrow-button-container {
 }
 
 footer > #arrow-button-container > img {
-    max-height: 95px;
+    max-height: 85px;
 }
 
 footer > #arrow-button-container > #up-arrow-image {
@@ -356,6 +356,56 @@ footer > #score > #score-number {
     cursor: pointer;
 }
 
+/* small screen styling */
+@media only screen and (max-width: 1024px)  {
+
+    header > #title-image-left {
+        max-height: 140px;
+        margin: 0px 0px 0px 10px;
+        padding: 7px 0px;
+    }
+    
+    header > #title-image-right {
+        max-height: 140px;
+        margin: 0px 10px 0px 0px;
+        padding: 7px 0px;
+    }
+
+    header > #title {
+        font-size: 14rem;  
+        padding-top: 25px;
+        margin: 5px 6px;
+    }
+
+    footer {
+        padding: 0px 20px;
+    }
+
+    footer > #game-rules {
+        height: 25vh;
+    }
+
+    footer > #arrow-button-container {
+        height: 25vh;
+    }
+
+    footer > #arrow-button-container > img {
+        max-height: 75px;
+        margin: 2px;
+    }
+
+    footer > #score {
+        height: 25vh;
+    }
+
+    footer > #score > #score-title {
+        padding: 1px 1px 1px 1px;
+    }
+
+    footer > #score > #score-number {
+        padding-top: 10px;
+    }
+}
 
 /* ipad/table styling */
 @media only screen and (max-width: 768px)  {
@@ -371,7 +421,7 @@ footer > #score > #score-number {
     header > #title {
         font-size: 12.5rem;    
         margin: 5px 10px -5px 10px;
-        padding: 15px 0 0px 0;
+        padding: 5px 0 -20px 0;
     }
 
     header > #dark-mode-btn {
@@ -408,7 +458,7 @@ footer > #score > #score-number {
 }
 
 /* iphone styling */
-@media only screen and (max-width: 480px)  {
+@media only screen and (max-width: 570px)  {
 
     header {
         margin: 0px 0px;
