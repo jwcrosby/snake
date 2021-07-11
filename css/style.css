@@ -474,7 +474,7 @@ footer > #score > #score-number {
     }
 
     header > #title {
-        font-size: 7rem;    
+        font-size: 7.5rem;    
         margin: 0px 0px 0px 0px;
         padding: 13px 0px 0px 0px;
     }
@@ -489,7 +489,7 @@ footer > #score > #score-number {
         border: var(--footer-border-color) 5px inset;
         height: 330px;
         width: 390px;
-        height: 72vw; 
+        height: 77vw; 
         width: 100vw; 
     }
 
