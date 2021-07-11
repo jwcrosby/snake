@@ -492,7 +492,7 @@ footer > #score > #score-number {
 
     header {
         height: 30vw; 
-        margin: 0px 0px;
+        margin: 2px 0 0 0;
     }
 
     header > #title-image-left {
@@ -525,7 +525,7 @@ footer > #score > #score-number {
         margin: 0px 0px 55px 0px;
         padding: 0px 2px;
         border: var(--footer-border-color) inset 5px;
-        height: 29vh
+        height: 28vh
     }
 
     footer > #game-rules {
