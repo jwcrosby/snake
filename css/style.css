@@ -274,7 +274,7 @@ footer > #score {
     border: var(--score-border-color) dotted;
     border-width: 2px;
     border-radius: 15px; 
-    padding: 50px 0px;
+    padding: 40px 0px 50px 0px;
 }
 
 footer > #score > #score-title {
@@ -385,7 +385,7 @@ footer > #score > #score-number {
 
     footer > #game-rules {
         height: 25vh;
-        padding: 2px;
+        padding: 6px;
         font-size: 1.9rem;
     }
 
@@ -471,7 +471,7 @@ footer > #score > #score-number {
 
     footer > #arrow-button-container > img {
         max-height: 90px;
-        padding: 4px 0px 0px 0px;
+        padding: 2px 0px 0px 0px;
     }
 
     footer > #score {
