@@ -606,7 +606,7 @@ function gameLose() {
 }
 
 function showModalWindow() {
-    modalWindowElement.style.display = "block"
+    modalWindowElement.style.display = "flex"
 }
 
 function hideModalWindow() {
