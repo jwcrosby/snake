@@ -421,20 +421,20 @@ footer > #score > #score-number {
 
     header > #title-image-left {
         max-height: 140px;
-        margin: 0px 0px 0px 10px;
+        margin: 0px 0px 0px 15px;
         padding: 7px 0px;
     }
     
     header > #title-image-right {
         max-height: 140px;
-        margin: 0px 10px 0px 0px;
+        margin: 0px 15px 0px 0px;
         padding: 7px 0px;
     }
 
     header > #title {
         font-size: 15rem;    
-        margin: 5px 10px -5px 10px;
-        padding: 2px 0 -20px 0;
+        margin: 5px 8px 0 8px;
+        padding: 2px 0 0 0;
         white-space: normal;
     }
 
@@ -496,19 +496,19 @@ footer > #score > #score-number {
     }
 
     header > #title-image-left {
-        max-height: 90px;
+        max-height: 70px;
         margin: 0px 0px 0px 20px;
         padding: 2px 0px;
     }
     
     header > #title-image-right {
-        max-height: 90px;
+        max-height: 70px;
         margin: 0px 20px 0px 0px;
         padding: 2px 0px;
     }
 
     header > #title {
-        font-size: 10rem;    
+        font-size: 8rem;    
         margin: 5px 5px 0px 5px;
         padding: 2px 0 0px 0px;
         white-space: normal;
