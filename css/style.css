@@ -470,7 +470,8 @@ footer > #score > #score-number {
     }
 
     footer > #arrow-button-container > img {
-        max-height: 87px;
+        max-height: 88px;
+        padding: 4px 0px 0px 0px;
     }
 
     footer > #score {
