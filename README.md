@@ -29,7 +29,7 @@ In the not-so-distant future, an elderly and weary Snake lives a solitary life o
 
 Light Mode                 |  Dark Mode
 :-------------------------:|:-------------------------:
-![LIGHT MODE](/images/readme/fullscreenlight.png/)  |  ![DARK MODE](/images/readme/fullscreendark.png/)
+![LIGHT MODE](/images/readme/desktop.png/)  |  ![DARK MODE](/images/readme/desktopdark.png/)
 
 
 ## Future Enhancements
