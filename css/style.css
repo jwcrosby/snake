@@ -489,7 +489,7 @@ footer > #score > #score-number {
         border: var(--footer-border-color) 5px inset;
         height: 330px;
         width: 390px;
-        height: clamp(400px, 40vw, 1200px); 
+        height: clamp(400px, 35vw, 1200px); 
         width: 100vw; 
     }
 
