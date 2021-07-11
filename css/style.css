@@ -482,9 +482,9 @@ footer > #score > #score-number {
         font-size: 3rem;
     }
     
-    #modal-text { font-size: 6rem;}
+    #modal-text { font-size: 6rem; }
 
-    #try-again-btn { font-size: 3rem;}
+    #try-again-btn { font-size: 3rem; }
 }
 
 /* iphone styling */
@@ -492,21 +492,26 @@ footer > #score > #score-number {
 
     header {
         height: 30vw; 
-        margin: 5px 0 0 0;
+        margin: 3px 0 0 0;
     }
 
     header > #title-image-left {
-        display: none;
+        max-height: 90px;
+        margin: 0px 0px 0px 20px;
+        padding: 2px 0px;
     }
     
     header > #title-image-right {
-        display: none;
+        max-height: 90px;
+        margin: 0px 20px 0px 0px;
+        padding: 2px 0px;
     }
 
     header > #title {
-        font-size: 7.5rem;    
-        margin: 0px 0px 0px 0px;
-        padding: 13px 0px 0px 0px;
+        font-size: 10rem;    
+        margin: 5px 5px 0px 5px;
+        padding: 2px 0 0px 0px;
+        white-space: normal;
     }
 
     header > #dark-mode-btn {
