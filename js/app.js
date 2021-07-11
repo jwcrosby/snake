@@ -9,7 +9,7 @@
 
 //! 3.a. Figure out why keydown eventlistener works on init for any key
 
-//! 4.a. Responsive design needed
+// // ! 4.a. Responsive design needed
 
 //! 5.a. Controls on mobile?
 
@@ -19,7 +19,9 @@
 
 //! 7.a. Pause on Spacebar
 
-//! 8.a. Fix modal window placement so dark mode button and arrow keys aren't un-clickable on load and win/lose
+// // ! 8.a. Fix modal window placement so dark mode button and arrow keys aren't un-clickable on load and win/lose
+
+//! 9.a. Refactor CSS
 
 /*------------------------------ Constants ------------------------------*/
 
@@ -201,8 +203,8 @@ function renderGameBoard() {
     });
 
     //Assign the grid parameters in CSS
-    gridContainerElement.style.gridTemplateRows = `repeat(${gridRows}, 50px)`
-    gridContainerElement.style.gridTemplateColumns = `repeat(${gridColumns}, 50px)`
+    gridContainerElement.style.gridTemplateRows = `repeat(${gridRows}, 1fr)`
+    gridContainerElement.style.gridTemplateColumns = `repeat(${gridColumns}, 1fr)`
 }
 
 function clearGameBoardRender() {
