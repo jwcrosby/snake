@@ -36,9 +36,9 @@ Light Mode                 |  Dark Mode
 
 |  Device                  |  Light Mode                   |  Dark Mode                     | 
 |:-------------------------:|:-------------------------:|:-------------------------:|
-| Desktop |  ![DESKTOP LIGHT MODE](/images/readme/desktop.jpg/)  |  ![DESKTOP DARK MODE](/images/readme/desktopdark.jpg/)  
+| Desktop |  ![DESKTOP LIGHT MODE](/images/readme/desktop.png/)  |  ![DESKTOP DARK MODE](/images/readme/desktopdark.png/)  
 | iPhone | ![IPHONE LIGHT MODE](/images/readme/iphone.jpg/)  |  ![IPHONE DARK MODE](/images/readme/iphonedark.jpg/)  
-| iPad | ![IPAD LIGHT MODE](/images/readme/ipad.jpg/)  |  ![IPAD DARK MODE](/images/readme/ipaddark.jpg/)  
+| iPad | ![IPAD LIGHT MODE](/images/readme/ipad.jpeg/)  |  ![IPAD DARK MODE](/images/readme/ipaddark.jpg/)  
 
 ## Future Enhancements
 
