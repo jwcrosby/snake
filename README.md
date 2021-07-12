@@ -36,8 +36,8 @@ Light Mode                 |  Dark Mode
 
 |                           |  iPhone                   |  iPad                     | 
 |:-------------------------:|:-------------------------:|:-------------------------:|
-| Light Mode |  ![IPHONE LIGHT MODE](/images/readme/iphone.jpg/)  |  ![IPAD DARK MODE](/images/readme/ipad.jpg/)  |
-| Dark Mode | ![IPHONE LIGHT MODE](/images/readme/iphonedark.jpg/)  |  ![IPAD DARK MODE](/images/readme/ipaddark.jpg/)  |
+| Light Mode |  ![IPHONE LIGHT MODE](/images/readme/iphone.jpg/)  |  ![IPAD LIGHT MODE](/images/readme/ipad.jpeg/)  |
+| Dark Mode | ![IPAD DARK MODE](/images/readme/iphonedark.jpg/)  |  ![IPAD DARK MODE](/images/readme/ipaddark.jpg/)  |
 
 
 ## Future Enhancements
