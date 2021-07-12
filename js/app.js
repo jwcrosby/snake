@@ -158,7 +158,7 @@ function init() {
     setModalText("THE LEGEND RETURNS!")
 
     //Set the retry button text
-    setRestartText("PRESS ANY KEY TO START")
+    setRestartText("START")
 
     //Show the modal
     showModalWindow()
@@ -581,7 +581,7 @@ function gameWin() {
     setModalText("YOU WIN!")
 
     //Set the retry button text
-    setRestartText("PRESS SPACE TO PLAY AGAIN!")
+    setRestartText("PLAY AGAIN!")
 
     //Unhide the modal window
     showModalWindow()
@@ -598,7 +598,7 @@ function gameLose() {
     setModalText("YOU LOSE")
 
     //Set the retry button text
-    setRestartText("PRESS SPACE TO TRY AGAIN!")
+    setRestartText("TRY AGAIN!")
 
     //Unhide the modal window
     showModalWindow()
