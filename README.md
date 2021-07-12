@@ -25,20 +25,13 @@ In the not-so-distant future, an elderly and weary Snake lives a solitary life o
 * Icons made by Pixel perfect from www.flaticon.com.
 * Icons made by Smashicons from www.flaticon.com.
 
-## Color Schemes
-
-Light Mode                 |  Dark Mode
-:-------------------------:|:-------------------------:
-![LIGHT MODE](/images/readme/desktop.png/)  |  ![DARK MODE](/images/readme/desktopdark.png/)
-
-
-## Mobile Friendly
+## Screenshots
 
 |  Device                  |  Light Mode                   |  Dark Mode                     | 
 |:-------------------------:|:-------------------------:|:-------------------------:|
 | Desktop |  ![DESKTOP LIGHT MODE](/images/readme/desktop.png/)  |  ![DESKTOP DARK MODE](/images/readme/desktopdark.png/)  
-| iPhone | ![IPHONE LIGHT MODE](/images/readme/iphone.jpg/)  |  ![IPHONE DARK MODE](/images/readme/iphonedark.jpg/)  
 | iPad | ![IPAD LIGHT MODE](/images/readme/ipad.jpeg/)  |  ![IPAD DARK MODE](/images/readme/ipaddark.jpg/)  
+| iPhone | ![IPHONE LIGHT MODE](/images/readme/iphone.jpg/)  |  ![IPHONE DARK MODE](/images/readme/iphonedark.jpg/)  
 
 ## Future Enhancements
 
