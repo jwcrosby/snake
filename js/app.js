@@ -115,7 +115,7 @@ init()
 function init() {
 
     //Check the user's preferred color scheme (light/dark mode)
-    //checkUserColorSchemePreference()
+    checkUserColorSchemePreference()
 
     //Set the initial game board parameters
     gameBoard = []
