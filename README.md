@@ -19,19 +19,18 @@ In the not-so-distant future, an elderly and weary Snake lives a solitary life o
 * CSS
 * JavaScript
 
-## Attributions
-
-* Icons made by iconixar from www.flaticon.com.
-* Icons made by Pixel perfect from www.flaticon.com.
-* Icons made by Smashicons from www.flaticon.com.
-
 ## Screenshots
-
 |  Device                  |  Light Mode                   |  Dark Mode                     | 
 |:-------------------------:|:-------------------------:|:-------------------------:|
 | Desktop |  ![DESKTOP LIGHT MODE](/images/readme/desktop.png/)  |  ![DESKTOP DARK MODE](/images/readme/desktopdark.png/)  
 | iPad | ![IPAD LIGHT MODE](/images/readme/ipad.jpeg/)  |  ![IPAD DARK MODE](/images/readme/ipaddark.jpg/)  
 | iPhone | ![IPHONE LIGHT MODE](/images/readme/iphone.jpg/)  |  ![IPHONE DARK MODE](/images/readme/iphonedark.jpg/)  
+
+## Attributions
+
+* Icons made by iconixar from www.flaticon.com.
+* Icons made by Pixel perfect from www.flaticon.com.
+* Icons made by Smashicons from www.flaticon.com.
 
 ## Future Enhancements
 
